@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catenary Drawing</title>
+    <style>
+        /* SVG should be positioned underneath the canvas */
+        svg {
+            position: absolute; /* Position SVG underneath the canvas */
+            z-index: -1; /* Ensure the SVG is below the canvas */
+            fill: #201E1F; /* Color the SVG elements red */
+            width: 800px;
+            height: 600px;
+        }
+        /* Ensure the canvas is transparent and above the SVG */
+        canvas {
+            position: absolute; /* Keep the canvas above the SVG */
+            z-index: 1;
+            background-color: transparent; /* Ensure the canvas is transparent */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /*background-color: transparent;*/
+            background-color: #201E1F;
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG element that will appear underneath the canvas -->
+    <svg id="catenarySvg" width="800" height="600">
+        <!-- Example: A red rectangle -->
+        <rect x="50" y="50" width="700" height="500" />
+    </svg>
+
+    <!-- Canvas for drawing the catenary -->
+    <canvas id="catenaryCanvas" width="800" height="600"></canvas>
+
+    <script src="dist/bundle.js"></script>
+</body>
+</html>
