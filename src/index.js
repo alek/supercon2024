@@ -68,7 +68,7 @@ function highlightGridLines(x, y, strokeWidth = 0.1) {
 }
 
 // Render the grid on the SVG
-renderGrid(GRID_SIZE);
+// renderGrid(GRID_SIZE);
 
 // Event listeners for drawing catenaries and interacting with the canvas
 canvas.addEventListener('mousedown', (event) => {
@@ -153,7 +153,7 @@ function draw() {
         const tempCatenary = getCatenaryCurve(points[0], points[1], 500);
         context.beginPath();
         context.lineWidth = 2;
-        context.strokeStyle = 'green';
+        context.strokeStyle = '#ffd300';
         drawResult(tempCatenary, context);
         context.stroke();
     }
@@ -185,7 +185,7 @@ function drawTemporaryCatenary(x, y) {
     const tempCatenary = getCatenaryCurve(points[0], { x, y }, 500);
     context.beginPath();
     context.lineWidth = 2;
-    context.strokeStyle = 'green';
+    context.strokeStyle = '#ffd300';
     drawResult(tempCatenary, context);
     context.stroke();
 
@@ -197,8 +197,8 @@ function drawTemporaryCatenary(x, y) {
 }
 
 // Add functions to draw basic SVG shapes
-function drawRectangle(x, y, width, height) {
-    drawSvg.rect(width, height).move(x, y).fill('none').stroke({ color: '#FFD300', width: 2 });
+function drawRectangle(x, y, width, height, lineColor = 'white', lineWidth = 1 ) {
+    drawSvg.rect(width, height).move(x, y).fill('none').stroke({ color: lineColor, width: lineWidth });
 }
 
 function drawCircle(cx, cy, r) {
@@ -216,10 +216,10 @@ function drawPlug(cx, cy, r = 4) {
 
 const range = Array.from({ length: (800 / GRID_SIZE) - 2 }, (_, k) => (k + 1) * GRID_SIZE);
 
-
 for (const i of range) {
     for (const j of range) {
         if (Math.random() < 0.1) {
+            drawRectangle(i-GRID_SIZE, j-GRID_SIZE/2, GRID_SIZE*5, GRID_SIZE, 'rgba(255,255,255,0.3)', 1)
             drawPlug(i, j);
         }
     }
