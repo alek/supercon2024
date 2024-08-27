@@ -13,7 +13,7 @@ let points = [];
 let catenaries = [];
 let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
-const GRID_SIZE = 30
+const GRID_SIZE = 20
 
 // Get device pixel ratio
 const dpr = window.devicePixelRatio || 1;
@@ -132,7 +132,7 @@ function draw() {
     catenaries.forEach(({ points: catenaryPoints, catenary }) => {
         // Draw the catenary curve
         context.beginPath();
-        context.lineWidth = 4;
+        context.lineWidth = 5;
         context.strokeStyle = 'white';
         context.lineJoin = 'round'; // Smooth line joins
         context.lineCap = 'round';  // Smooth line ends   
@@ -207,9 +207,14 @@ function drawTemporaryCatenary(x, y) {
     context.fill();
 }
 
-// Add functions to draw basic SVG shapes
-function drawRectangle(x, y, width, height, lineColor = 'white', lineWidth = 1 ) {
-    drawSvg.rect(width, height).move(x, y).fill('none').stroke({ color: lineColor, width: lineWidth });
+// Helper functions to draw basic SVG shapes
+
+function drawRectangle(x, y, width, height, lineColor = 'white', lineWidth = 1, cornerRadius = 0) {
+    drawSvg.rect(width, height)
+        .move(x, y)
+        .fill('none')
+        .stroke({ color: lineColor, width: lineWidth })
+        .radius(cornerRadius);  // Set the corner radius
 }
 
 function drawCircle(cx, cy, r) {
@@ -225,13 +230,49 @@ function drawPlug(cx, cy, r = 4) {
     drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
 }
 
-const range = Array.from({ length: (800 / GRID_SIZE) - 2 }, (_, k) => (k + 1) * GRID_SIZE);
+function drawButtons(cx, cy) {
+    for (let y=0; y<3; y++) {
+        for (let x=0; x<3; x++) {
+            drawSvg.rect(3, 3).move(cx + x*6, cy - 7 + y*5).fill('#fff');
+        }
+    }
+}
 
-for (const i of range) {
-    for (const j of range) {
-        if (Math.random() < 0.1) {
-            drawRectangle(i-GRID_SIZE, j-GRID_SIZE/2, GRID_SIZE*5, GRID_SIZE, 'rgba(255,255,255,0.3)', 1)
-            drawPlug(i, j);
+function drawPot(cx, cy, r=GRID_SIZE/2) {
+    drawSvg.circle(r * 2).center(cx, cy).fill('#fff');
+    drawSvg.circle(4).center(cx+GRID_SIZE/4, cy-GRID_SIZE/4).fill('#201E1F');
+}
+
+function drawSwitch(cx, cy, state = 'on') {
+    const outerRect = drawSvg.rect(GRID_SIZE / 2, GRID_SIZE)
+        .move(cx, cy - GRID_SIZE / 2)
+        .fill('none')
+        .stroke({ color: '#fff', width: 1 });
+
+    const innerRect = drawSvg.rect(GRID_SIZE / 2 - 4, GRID_SIZE / 2 - 2)
+        .move(cx + 2, cy + (state === 'on' ? -GRID_SIZE / 2 + 2 : 0))
+        .fill('#fff');
+}
+
+for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 2) {
+    for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * 11) {
+        if (Math.random() < 0.2) {
+            // Always render the first element
+            drawRectangle(x - GRID_SIZE, y - GRID_SIZE, GRID_SIZE * 11, GRID_SIZE * 2, 'rgba(255,255,255,0.3)', 1, 20);
+            drawPlug(x, y);
+
+            const elements = [
+                () => drawButtons(x + GRID_SIZE * 4, y),
+                () => drawPot(x + GRID_SIZE * 6, y),
+                () => drawSwitch(x + GRID_SIZE * 7, y, 'on'),
+                () => drawSwitch(x + GRID_SIZE * 8, y, 'off')
+            ];
+
+            elements.forEach(drawElement => {
+                if (Math.random() < 0.5) {
+                    drawElement();
+                }
+            });
         }
     }
 }
