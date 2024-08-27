@@ -6,6 +6,9 @@ const context = canvas.getContext('2d');
 const svgContainer = document.getElementById('catenarySvg');
 const drawSvg = SVG().addTo(svgContainer).size('100%', '100%'); // Use svg.js to create the SVG drawing context
 
+const svgElement = document.getElementById('catenarySvg');
+const [svgWidth, svgHeight] = [svgElement.getAttribute('width'), svgElement.getAttribute('height')];
+
 let points = [];
 let catenaries = [];
 let draggingPoint = null;
@@ -206,18 +209,19 @@ function drawEllipse(cx, cy, rx, ry) {
     drawSvg.ellipse(rx * 2, ry * 2).center(cx, cy).fill('none').stroke({ color: '#FFD300', width: 2 });
 }
 
-// Example usage:
-//drawRectangle(100, 100, 200, 100);
-//drawCircle(300, 300, 50);
-//drawEllipse(500, 300, 100, 50);
-
 function drawPlug(cx, cy, r = 4) {
     drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });   
     drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
 }
 
+const range = Array.from({ length: (800 / GRID_SIZE) - 2 }, (_, k) => (k + 1) * GRID_SIZE);
 
-//drawSvg.rect(400, 200).move(100, 100).fill('none').stroke({ color: 'rgba(255,255,255,0.5)', width: 1 });
 
-drawPlug(200, 200)
-drawPlug(200, 400)
+for (const i of range) {
+    for (const j of range) {
+        if (Math.random() < 0.1) {
+            drawPlug(i, j);
+        }
+    }
+}
+
