@@ -15,6 +15,8 @@ let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
 const GRID_SIZE = 20
 
+const plugRegistry = [];
+
 // Get device pixel ratio
 const dpr = window.devicePixelRatio || 1;
 
@@ -47,21 +49,55 @@ function renderGrid(gridSize = 50) {
     }
 }
 
-// Snap to the nearest grid intersection if within 11 pixels
-function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize*0.4) {
+// // Snap to the nearest grid intersection if within 11 pixels
+// function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize*0.4) {
+//     const nearestX = Math.round(x / gridSize) * gridSize;
+//     const nearestY = Math.round(y / gridSize) * gridSize;
+
+//     const distance = Math.hypot(nearestX - x, nearestY - y);
+
+//     if (distance <= snapThreshold) {
+//         // Increase the stroke-width of the corresponding grid lines
+//         highlightGridLines(nearestX, nearestY, 0.05);
+//         return { x: nearestX, y: nearestY };
+//     }
+
+//     return { x, y };
+// }
+
+function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.4) {
+    // First, try snapping to the nearest plug
+    let nearestPlug = null;
+    let minDistance = snapThreshold;
+
+    plugRegistry.forEach(plug => {
+        const distance = Math.hypot(plug.x - x, plug.y - y);
+        if (distance <= minDistance) {
+            nearestPlug = plug;
+            minDistance = distance;
+        }
+    });
+
+    if (nearestPlug) {
+        return { x: nearestPlug.x, y: nearestPlug.y };
+    }
+
+    // If no plug is close enough, snap to the grid
     const nearestX = Math.round(x / gridSize) * gridSize;
     const nearestY = Math.round(y / gridSize) * gridSize;
 
-    const distance = Math.hypot(nearestX - x, nearestY - y);
+    const gridDistance = Math.hypot(nearestX - x, nearestY - y);
 
-    if (distance <= snapThreshold) {
+    if (gridDistance <= snapThreshold) {
         // Increase the stroke-width of the corresponding grid lines
         highlightGridLines(nearestX, nearestY, 0.05);
         return { x: nearestX, y: nearestY };
     }
 
+    // If no snap, return original position
     return { x, y };
 }
+
 
 // Highlight grid lines corresponding to a specific grid intersection
 function highlightGridLines(x, y, strokeWidth = 0.1) {
@@ -228,6 +264,7 @@ function drawEllipse(cx, cy, rx, ry) {
 function drawPlug(cx, cy, r = 4) {
     drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });   
     drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
+    plugRegistry.push({ x: cx, y: cy });
 }
 
 function drawButtons(cx, cy) {
@@ -262,6 +299,7 @@ for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 2) {
             drawPlug(x, y);
 
             const elements = [
+                () => drawPlug(x + GRID_SIZE+5, y),
                 () => drawButtons(x + GRID_SIZE * 4, y),
                 () => drawPot(x + GRID_SIZE * 6, y),
                 () => drawSwitch(x + GRID_SIZE * 7, y, 'on'),
