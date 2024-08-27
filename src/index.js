@@ -15,6 +15,19 @@ let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
 const GRID_SIZE = 20
 
+const cableColors = [
+    "#FF4136",  // Red: A bright, bold red, often used for visual emphasis.
+    "#FF851B",  // Orange: A vivid orange, striking and easily distinguishable.
+    "#FFDC00",  // Yellow: A bright yellow, commonly used for visibility.
+    "#2ECC40",  // Green: A vibrant green, stands out well against darker colors.
+    "#0074D9",  // Blue: A deep blue, providing a strong contrast with warmer colors.
+    "#B10DC9",  // Purple: A rich purple, less common, adding variety to the palette.
+    "#F012BE",  // Pink: A bright, almost neon pink, very eye-catching.
+    "#111111",  // Black: A dark, solid black, standard for many patch cables.
+    "#FFFFFF",  // White: Pure white, offering high contrast with darker backgrounds.
+    "#AAAAAA"   // Gray: A neutral gray, for more muted connections.
+]
+
 const plugRegistry = [];
 
 // Get device pixel ratio
@@ -24,6 +37,28 @@ const dpr = window.devicePixelRatio || 1;
 // canvas.width = canvas.clientWidth * dpr;
 // canvas.height = canvas.clientHeight * dpr;
 // context.scale(dpr, dpr);
+
+
+//  utils
+
+function getRandomCableColor() {
+    const randomIndex = Math.floor(Math.random() * cableColors.length);
+    return cableColors[randomIndex];
+}
+
+function getRandomAlphanumericString() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const length = Math.floor(Math.random() * 9) + 8; // Random length between 8 and 16
+    let result = '';
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }
+
+    return result;
+}
+
 
 // Function to render a grid on the SVG element with a background color and white grid lines
 function renderGrid(gridSize = 50) {
@@ -261,6 +296,18 @@ function drawEllipse(cx, cy, rx, ry) {
     drawSvg.ellipse(rx * 2, ry * 2).center(cx, cy).fill('none').stroke({ color: '#FFD300', width: 2 });
 }
 
+function drawText(textContent, x, y, fontSize = 16, fontColor = '#ffffff', letterSpacing = 0) {
+    drawSvg.text(textContent)
+        .move(x, y)          // Position the text at (x, y)
+        .font({
+            size: fontSize,          // Set the font size
+            fill: fontColor,         // Set the font color
+            family: 'Roboto Mono',   // Use the web font
+            weight: 100,             // Set the font weight to light
+            letterSpacing: letterSpacing  // Set the letter spacing
+        });
+}
+
 function drawPlug(cx, cy, r = 4) {
     drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });   
     drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
@@ -291,12 +338,13 @@ function drawSwitch(cx, cy, state = 'on') {
         .fill('#fff');
 }
 
-for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 2) {
-    for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * 11) {
+for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
+    for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * 12) {
         if (Math.random() < 0.2) {
             // Always render the first element
             drawRectangle(x - GRID_SIZE, y - GRID_SIZE+2, GRID_SIZE * 11, GRID_SIZE * 2-4, 'rgba(255,255,255,0.3)', 1, 20);
             drawPlug(x, y);
+            drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
 
             const elements = [
                 () => drawPlug(x + GRID_SIZE+5, y),
