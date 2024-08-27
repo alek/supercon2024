@@ -134,7 +134,6 @@ canvas.addEventListener('mouseup', () => {
                 (plug.x === points[1].x && plug.y === points[1].y)
             ) {
                 if (plug.rect) {
-                    console.log("GOT RECT: ")
                     plug.rect.fill('#FF4136'); // Change rectangle color to red
                 }
 
