@@ -342,7 +342,7 @@ function drawSwitch(cx, cy, state = 'on') {
 let increment = 12
 for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 2) {
     for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * increment) {
-        if (Math.random() < 1) {
+        if (Math.random() < 0.9) {
             increment = 2
             drawPlug(x, y);
             // drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
