@@ -13,7 +13,15 @@ let points = [];
 let catenaries = [];
 let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
-const GRID_SIZE = 50
+const GRID_SIZE = 30
+
+// Get device pixel ratio
+const dpr = window.devicePixelRatio || 1;
+
+// // Adjust canvas size for higher resolution
+// canvas.width = canvas.clientWidth * dpr;
+// canvas.height = canvas.clientHeight * dpr;
+// context.scale(dpr, dpr);
 
 // Function to render a grid on the SVG element with a background color and white grid lines
 function renderGrid(gridSize = 50) {
@@ -124,8 +132,11 @@ function draw() {
     catenaries.forEach(({ points: catenaryPoints, catenary }) => {
         // Draw the catenary curve
         context.beginPath();
-        context.lineWidth = 2;
+        context.lineWidth = 4;
         context.strokeStyle = 'white';
+        context.lineJoin = 'round'; // Smooth line joins
+        context.lineCap = 'round';  // Smooth line ends   
+             
         drawResult(catenary, context);
         context.stroke();
 
