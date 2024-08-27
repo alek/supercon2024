@@ -339,6 +339,11 @@ function drawText(textContent, x, y, fontSize = 16, fontColor = '#ffffff', lette
         });
 }
 
+function drawLine(x1, y1, x2, y2, lineColor = '#ffffff', lineWidth = 1) {
+    drawSvg.line(x1, y1, x2, y2)
+        .stroke({ color: lineColor, width: lineWidth });
+}
+
 // function drawPlug(cx, cy, r = 4) {
 //     drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });   
 //     drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
@@ -369,6 +374,7 @@ function drawPot(cx, cy, r=GRID_SIZE/2) {
 
 function drawKnob(cx, cy, r=GRID_SIZE/2) {
     drawSvg.circle(r * 2-4).center(cx+2, cy).fill('none').stroke({ color: '#fff', width: 1 });   
+     drawSvg.line(cx+2, cy, cx+2, cy-GRID_SIZE/2+4).stroke({ color: '#fff', width: 1 });
 }
 
 function drawSwitch(cx, cy, state = 'on') {
