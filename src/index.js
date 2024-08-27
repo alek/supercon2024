@@ -105,7 +105,7 @@ function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.5) 
     let minDistance = snapThreshold;
 
     plugRegistry.forEach(plug => {
-        const distance = Math.hypot(plug.x - x, plug.y - y);
+        const distance = Math.hypot(plug.x - x, plug.y - y);        
         if (distance <= minDistance) {
             nearestPlug = plug;
             minDistance = distance;
@@ -117,8 +117,10 @@ function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.5) 
     }
 
     // If no plug is close enough, snap to the grid
-    const nearestX = Math.round(x / gridSize) * gridSize;
-    const nearestY = Math.round(y / gridSize) * gridSize;
+    // const nearestX = Math.round(x / gridSize) * gridSize;
+    // const nearestY = Math.round(y / gridSize) * gridSize;
+    const nearestX = x / gridSize * gridSize;
+    const nearestY = y / gridSize * gridSize;
 
     const gridDistance = Math.hypot(nearestX - x, nearestY - y);
 
@@ -391,7 +393,7 @@ function drawSwitch(cx, cy, state = 'on') {
 let increment = 12
 for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
     for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * increment) {
-        if (Math.random() < 0.9) {
+        if (Math.random() < 0.6) {
             increment = 2
             drawPlug(x, y);
             drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
