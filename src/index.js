@@ -295,7 +295,7 @@ for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 2) {
     for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * 11) {
         if (Math.random() < 0.2) {
             // Always render the first element
-            drawRectangle(x - GRID_SIZE, y - GRID_SIZE, GRID_SIZE * 11, GRID_SIZE * 2, 'rgba(255,255,255,0.3)', 1, 20);
+            drawRectangle(x - GRID_SIZE, y - GRID_SIZE+2, GRID_SIZE * 11, GRID_SIZE * 2-4, 'rgba(255,255,255,0.3)', 1, 20);
             drawPlug(x, y);
 
             const elements = [
