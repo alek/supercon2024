@@ -423,8 +423,8 @@ for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
             const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, 'rgba(255,255,255,0.4)');
             drawPlug(x, y, 4, null, textElement);
 
-            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
-                drawPlug(x + GRID_SIZE + increment, y, null, textElement);
+            if (Math.random() < 0.4) {
+                drawPlug(x + GRID_SIZE + increment, y, 4, null, textElement);
                 increment++;
             }
 
