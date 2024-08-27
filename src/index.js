@@ -330,7 +330,7 @@ function drawEllipse(cx, cy, rx, ry) {
 }
 
 function drawText(textContent, x, y, fontSize = 16, fontColor = '#ffffff', letterSpacing = 0) {
-    drawSvg.text(textContent)
+    return drawSvg.text(textContent)
         .move(x, y)          // Position the text at (x, y)
         .font({
             size: fontSize,          // Set the font size
@@ -352,12 +352,37 @@ function drawLine(x1, y1, x2, y2, lineColor = '#ffffff', lineWidth = 1) {
 //     plugRegistry.push({ x: cx, y: cy });
 // }
 
-function drawPlug(cx, cy, r = 4, associatedRect = null) {
-    drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });
-    drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });
+// function drawPlug(cx, cy, r = 4, associatedRect = null) {
+//     drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });
+//     drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });
 
-    // Register the plug along with its associated rectangle
-    plugRegistry.push({ x: cx, y: cy, rect: associatedRect });
+//     // Register the plug along with its associated rectangle
+//     plugRegistry.push({ x: cx, y: cy, rect: associatedRect });
+// }
+
+function drawPlug(cx, cy, r = 4, associatedRect = null, associatedText = null) {
+    drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });
+    const plugElement = drawSvg.circle(r * 2)
+        .center(cx, cy)
+        .fill('rgba(0, 0, 0, 0)')  // Transparent fill to ensure clickability
+        .stroke({ color: '#fff', width: 1 })
+        .css({ cursor: 'pointer' });  // Add pointer cursor for clickability indication
+
+    // Register the plug along with its associated rectangle and text
+    plugRegistry.push({ x: cx, y: cy, rect: associatedRect, text: associatedText });
+
+    // Add event listener to change the text weight on selection
+    plugElement.on('click', () => {
+        console.log("CLICK!");
+        if (associatedText) {
+            associatedText.font({ weight: 'bold' });
+        }
+    });
+
+    // Debugging: Test with a basic click event
+    plugElement.on('click', () => {
+        alert("Plug clicked at position: " + cx + ", " + cy);
+    });
 }
 
 function drawButtons(cx, cy) {
@@ -390,47 +415,46 @@ function drawSwitch(cx, cy, state = 'on') {
         .fill('#fff');
 }
 
-let increment = 12
+let increment = 12;
 for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
-    for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * increment) {
+    for (let x = GRID_SIZE * 2; x < svgWidth - 6*GRID_SIZE; x += GRID_SIZE * increment) {
         if (Math.random() < 0.6) {
-            increment = 2
-            drawPlug(x, y);
-            drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
+            increment = 2;
+            const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, 'rgba(255,255,255,0.4)');
+            drawPlug(x, y, 4, null, textElement);
 
-            if (Math.random() < 0.4) {
-                drawPlug(x + GRID_SIZE+increment, y);
+            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
+                drawPlug(x + GRID_SIZE + increment, y, null, textElement);
                 increment++;
             }
 
-            if (Math.random() < 0.4) {
+            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
                 drawButtons(x + GRID_SIZE * increment, y);
                 increment++;
             }
 
-            if (Math.random() < 0.4) {
+            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
                 drawPot(x + GRID_SIZE * increment, y);
-                increment++
+                increment++;
             }
 
-            if (Math.random() < 0.4) {
+            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
                 drawKnob(x + GRID_SIZE * increment, y);
-                increment++
+                increment++;
             }
 
-            if (Math.random() < 0.4) {
+            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
                 drawSwitch(x + GRID_SIZE * increment, y, 'on');
-                increment++
+                increment++;
             }
 
-            if (Math.random() < 0.4) {
+            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
                 drawSwitch(x + GRID_SIZE * increment, y, 'off');
-                increment++
+                increment++;
             }
 
-            drawRectangle(x - GRID_SIZE, y - GRID_SIZE+2, GRID_SIZE * (increment+1.5), GRID_SIZE * 2-4, 'rgba(255,255,255,0.3)', 1, 20);
-            increment += 1.75
-
+            drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * (increment + 1.5), GRID_SIZE * 2 - 4, 'rgba(255,255,255,0.3)', 1, 20);
+            increment += 1.75;
         }
     }
 }
