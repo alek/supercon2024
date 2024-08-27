@@ -317,7 +317,8 @@ function drawPlug(cx, cy, r = 4) {
 function drawButtons(cx, cy) {
     for (let y=0; y<3; y++) {
         for (let x=0; x<3; x++) {
-            drawSvg.rect(3, 3).move(cx + x*6, cy - 7 + y*5).fill('#fff');
+            // drawSvg.rect(3, 3).move(cx + x*6, cy - 7 + y*5).fill('#fff');
+            drawSvg.rect(3, 3).move(cx - 8 + x*4, cy - 5 + y*4).fill('#fff');
         }
     }
 }
@@ -338,27 +339,42 @@ function drawSwitch(cx, cy, state = 'on') {
         .fill('#fff');
 }
 
-for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
-    for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * 12) {
-        if (Math.random() < 0.2) {
-            // Always render the first element
-            drawRectangle(x - GRID_SIZE, y - GRID_SIZE+2, GRID_SIZE * 11, GRID_SIZE * 2-4, 'rgba(255,255,255,0.3)', 1, 20);
+let increment = 12
+for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 2) {
+    for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * increment) {
+        if (Math.random() < 1) {
+            increment = 2
             drawPlug(x, y);
-            drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
+            // drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
 
-            const elements = [
-                () => drawPlug(x + GRID_SIZE+5, y),
-                () => drawButtons(x + GRID_SIZE * 4, y),
-                () => drawPot(x + GRID_SIZE * 6, y),
-                () => drawSwitch(x + GRID_SIZE * 7, y, 'on'),
-                () => drawSwitch(x + GRID_SIZE * 8, y, 'off')
-            ];
+            if (Math.random() < 0.5) {
+                drawPlug(x + GRID_SIZE+increment, y);
+                increment++;
+            }
 
-            elements.forEach(drawElement => {
-                if (Math.random() < 0.5) {
-                    drawElement();
-                }
-            });
+            if (Math.random() < 0.5) {
+                drawButtons(x + GRID_SIZE * increment, y);
+                increment++;
+            }
+
+            if (Math.random() < 0.5) {
+                drawPot(x + GRID_SIZE * increment, y);
+                increment++
+            }
+
+            if (Math.random() < 0.5) {
+                drawSwitch(x + GRID_SIZE * increment, y, 'on');
+                increment++
+            }
+
+            if (Math.random() < 0.5) {
+                drawSwitch(x + GRID_SIZE * increment, y, 'off');
+                increment++
+            }
+
+            drawRectangle(x - GRID_SIZE, y - GRID_SIZE+2, GRID_SIZE * (increment+2)-5, GRID_SIZE * 2-4, 'rgba(255,255,255,0.3)', 1, 20);
+            increment += 2
+
         }
     }
 }
