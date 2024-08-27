@@ -6,8 +6,7 @@ const context = canvas.getContext('2d');
 const svgContainer = document.getElementById('catenarySvg');
 const drawSvg = SVG().addTo(svgContainer).size('100%', '100%'); // Use svg.js to create the SVG drawing context
 
-const svgElement = document.getElementById('catenarySvg');
-const [svgWidth, svgHeight] = [svgElement.getAttribute('width'), svgElement.getAttribute('height')];
+const [svgWidth, svgHeight] = [svgContainer.getAttribute('width'), svgContainer.getAttribute('height')];
 
 let points = [];
 let catenaries = [];
@@ -48,7 +47,7 @@ function getRandomCableColor() {
 
 function getRandomAlphanumericString() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    const length = Math.floor(Math.random() * 9) + 8; // Random length between 8 and 16
+    const length = Math.floor(Math.random() * 6) + 4; // Random length between 8 and 16
     let result = '';
 
     for (let i = 0; i < length; i++) {
@@ -184,11 +183,35 @@ canvas.addEventListener('mousemove', (event) => {
     }
 });
 
+// canvas.addEventListener('mouseup', () => {
+//     if (points.length === 2) {
+//         // When two points are defined, calculate the catenary and add to the list
+//         const catenary = getCatenaryCurve(points[0], points[1], 500);
+//         catenaries.push({ points: [...points], catenary });
+//         points = []; // Reset points for the next catenary
+//         draw(); // Re-draw after adding a new catenary
+//     }
+//     draggingPoint = null;
+// });
+
 canvas.addEventListener('mouseup', () => {
     if (points.length === 2) {
         // When two points are defined, calculate the catenary and add to the list
         const catenary = getCatenaryCurve(points[0], points[1], 500);
         catenaries.push({ points: [...points], catenary });
+
+        // Change rectangle color to red if a plug was connected
+        plugRegistry.forEach(plug => {
+            if (
+                (plug.x === points[0].x && plug.y === points[0].y) ||
+                (plug.x === points[1].x && plug.y === points[1].y)
+            ) {
+                if (plug.rect) {
+                    plug.rect.fill('#FF4136'); // Change rectangle color to red
+                }
+            }
+        });
+
         points = []; // Reset points for the next catenary
         draw(); // Re-draw after adding a new catenary
     }
@@ -280,8 +303,16 @@ function drawTemporaryCatenary(x, y) {
 
 // Helper functions to draw basic SVG shapes
 
+// function drawRectangle(x, y, width, height, lineColor = 'white', lineWidth = 1, cornerRadius = 0) {
+//     drawSvg.rect(width, height)
+//         .move(x, y)
+//         .fill('none')
+//         .stroke({ color: lineColor, width: lineWidth })
+//         .radius(cornerRadius);  // Set the corner radius
+// }
+
 function drawRectangle(x, y, width, height, lineColor = 'white', lineWidth = 1, cornerRadius = 0) {
-    drawSvg.rect(width, height)
+    return drawSvg.rect(width, height)
         .move(x, y)
         .fill('none')
         .stroke({ color: lineColor, width: lineWidth })
@@ -308,10 +339,18 @@ function drawText(textContent, x, y, fontSize = 16, fontColor = '#ffffff', lette
         });
 }
 
-function drawPlug(cx, cy, r = 4) {
-    drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });   
-    drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
-    plugRegistry.push({ x: cx, y: cy });
+// function drawPlug(cx, cy, r = 4) {
+//     drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });   
+//     drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
+//     plugRegistry.push({ x: cx, y: cy });
+// }
+
+function drawPlug(cx, cy, r = 4, associatedRect = null) {
+    drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });
+    drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });
+
+    // Register the plug along with its associated rectangle
+    plugRegistry.push({ x: cx, y: cy, rect: associatedRect });
 }
 
 function drawButtons(cx, cy) {
@@ -324,8 +363,12 @@ function drawButtons(cx, cy) {
 }
 
 function drawPot(cx, cy, r=GRID_SIZE/2) {
-    drawSvg.circle(r * 2).center(cx, cy).fill('#fff');
-    drawSvg.circle(4).center(cx+GRID_SIZE/4, cy-GRID_SIZE/4).fill('#201E1F');
+    drawSvg.circle(r * 2-2).center(cx, cy).fill('#fff');
+    drawSvg.circle(4).center(cx+GRID_SIZE/4, cy-GRID_SIZE/4+1).fill('#201E1F');
+}
+
+function drawKnob(cx, cy, r=GRID_SIZE/2) {
+    drawSvg.circle(r * 2-4).center(cx+2, cy).fill('none').stroke({ color: '#fff', width: 1 });   
 }
 
 function drawSwitch(cx, cy, state = 'on') {
@@ -340,40 +383,45 @@ function drawSwitch(cx, cy, state = 'on') {
 }
 
 let increment = 12
-for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 2) {
+for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
     for (let x = GRID_SIZE * 2; x < svgWidth; x += GRID_SIZE * increment) {
         if (Math.random() < 0.9) {
             increment = 2
             drawPlug(x, y);
-            // drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
+            drawText(getRandomAlphanumericString(), x - GRID_SIZE/2, y-GRID_SIZE*2, 8, 'rgba(255,255,255,0.4)'); 
 
-            if (Math.random() < 0.5) {
+            if (Math.random() < 0.4) {
                 drawPlug(x + GRID_SIZE+increment, y);
                 increment++;
             }
 
-            if (Math.random() < 0.5) {
+            if (Math.random() < 0.4) {
                 drawButtons(x + GRID_SIZE * increment, y);
                 increment++;
             }
 
-            if (Math.random() < 0.5) {
+            if (Math.random() < 0.4) {
                 drawPot(x + GRID_SIZE * increment, y);
                 increment++
             }
 
-            if (Math.random() < 0.5) {
+            if (Math.random() < 0.4) {
+                drawKnob(x + GRID_SIZE * increment, y);
+                increment++
+            }
+
+            if (Math.random() < 0.4) {
                 drawSwitch(x + GRID_SIZE * increment, y, 'on');
                 increment++
             }
 
-            if (Math.random() < 0.5) {
+            if (Math.random() < 0.4) {
                 drawSwitch(x + GRID_SIZE * increment, y, 'off');
                 increment++
             }
 
-            drawRectangle(x - GRID_SIZE, y - GRID_SIZE+2, GRID_SIZE * (increment+2)-5, GRID_SIZE * 2-4, 'rgba(255,255,255,0.3)', 1, 20);
-            increment += 2
+            drawRectangle(x - GRID_SIZE, y - GRID_SIZE+2, GRID_SIZE * (increment+1.5), GRID_SIZE * 2-4, 'rgba(255,255,255,0.3)', 1, 20);
+            increment += 1.75
 
         }
     }
