@@ -100,7 +100,7 @@ function renderGrid(gridSize = 50) {
 //     return { x, y };
 // }
 
-function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.4) {
+function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.5) {
     // First, try snapping to the nearest plug
     let nearestPlug = null;
     let minDistance = snapThreshold;
@@ -249,7 +249,7 @@ function drawTemporaryCatenary(x, y) {
     catenaries.forEach(({ points: catenaryPoints, catenary }) => {
         // Draw the existing catenary curves
         context.beginPath();
-        context.lineWidth = 2;
+        context.lineWidth = 5;
         context.strokeStyle = 'white';
         drawResult(catenary, context);
         context.stroke();
