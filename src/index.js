@@ -1,62 +1,43 @@
 import { getCatenaryCurve, drawResult } from 'catenary-curve';
+import { SVG } from '@svgdotjs/svg.js';
 
 const canvas = document.getElementById('catenaryCanvas');
 const context = canvas.getContext('2d');
-const svg = document.getElementById('catenarySvg');
+const svgContainer = document.getElementById('catenarySvg');
+const drawSvg = SVG().addTo(svgContainer).size('100%', '100%'); // Use svg.js to create the SVG drawing context
 
 let points = [];
 let catenaries = [];
 let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
+const GRID_SIZE = 50
 
 // Function to render a grid on the SVG element with a background color and white grid lines
-function renderGrid(svg, gridSize = 50) {
-    const width = svg.clientWidth;
-    const height = svg.clientHeight;
+function renderGrid(gridSize = 50) {
+    const width = svgContainer.clientWidth;
+    const height = svgContainer.clientHeight;
 
     // Clear existing grid lines and background (if any)
-    while (svg.firstChild) {
-        svg.removeChild(svg.firstChild);
-    }
+    drawSvg.clear();
 
     // Add a background rectangle
-    const backgroundRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    backgroundRect.setAttribute('x', 0);
-    backgroundRect.setAttribute('y', 0);
-    backgroundRect.setAttribute('width', width);
-    backgroundRect.setAttribute('height', height);
-    backgroundRect.setAttribute('fill', '#201E1F');
-    svg.appendChild(backgroundRect);
+    drawSvg.rect(width, height).fill('#201E1F');
 
     // Draw vertical grid lines
     for (let x = 0; x <= width; x += gridSize) {
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', x);
-        line.setAttribute('y1', 0);
-        line.setAttribute('x2', x);
-        line.setAttribute('y2', height);
-        line.setAttribute('stroke', 'white');
-        line.setAttribute('stroke-width', '0.05');
-        svg.appendChild(line);
+        const line = drawSvg.line(x, 0, x, height).stroke({ color: 'white', width: 0.05 });
         gridLines.push({ type: 'vertical', x, line });
     }
 
     // Draw horizontal grid lines
     for (let y = 0; y <= height; y += gridSize) {
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', 0);
-        line.setAttribute('y1', y);
-        line.setAttribute('x2', width);
-        line.setAttribute('y2', y);
-        line.setAttribute('stroke', 'white');
-        line.setAttribute('stroke-width', '0.05');
-        svg.appendChild(line);
+        const line = drawSvg.line(0, y, width, y).stroke({ color: 'white', width: 0.05 });
         gridLines.push({ type: 'horizontal', y, line });
     }
 }
 
 // Snap to the nearest grid intersection if within 11 pixels
-function snapToGrid(x, y, gridSize = 50, snapThreshold = 11) {
+function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize*0.4) {
     const nearestX = Math.round(x / gridSize) * gridSize;
     const nearestY = Math.round(y / gridSize) * gridSize;
 
@@ -72,21 +53,21 @@ function snapToGrid(x, y, gridSize = 50, snapThreshold = 11) {
 }
 
 // Highlight grid lines corresponding to a specific grid intersection
-function highlightGridLines(x, y, strokeWidth = 0.05) {
+function highlightGridLines(x, y, strokeWidth = 0.1) {
     gridLines.forEach(lineObj => {
         if (lineObj.type === 'vertical' && lineObj.x === x) {
-            lineObj.line.setAttribute('stroke-width', strokeWidth);
+            lineObj.line.stroke({ width: strokeWidth });
         }
         if (lineObj.type === 'horizontal' && lineObj.y === y) {
-            // lineObj.line.setAttribute('stroke', '#FFD300');
-            lineObj.line.setAttribute('stroke-width', strokeWidth);
+            lineObj.line.stroke({ width: strokeWidth });
         }
     });
 }
 
 // Render the grid on the SVG
-renderGrid(svg);
+renderGrid(GRID_SIZE);
 
+// Event listeners for drawing catenaries and interacting with the canvas
 canvas.addEventListener('mousedown', (event) => {
     let { offsetX: x, offsetY: y } = event;
 
@@ -169,7 +150,7 @@ function draw() {
         const tempCatenary = getCatenaryCurve(points[0], points[1], 500);
         context.beginPath();
         context.lineWidth = 2;
-        context.strokeStyle = '#FFD300';
+        context.strokeStyle = 'green';
         drawResult(tempCatenary, context);
         context.stroke();
     }
@@ -201,7 +182,7 @@ function drawTemporaryCatenary(x, y) {
     const tempCatenary = getCatenaryCurve(points[0], { x, y }, 500);
     context.beginPath();
     context.lineWidth = 2;
-    context.strokeStyle = '#FFD300';
+    context.strokeStyle = 'green';
     drawResult(tempCatenary, context);
     context.stroke();
 
@@ -211,3 +192,32 @@ function drawTemporaryCatenary(x, y) {
     context.arc(points[0].x, points[0].y, 5, 0, Math.PI * 2);
     context.fill();
 }
+
+// Add functions to draw basic SVG shapes
+function drawRectangle(x, y, width, height) {
+    drawSvg.rect(width, height).move(x, y).fill('none').stroke({ color: '#FFD300', width: 2 });
+}
+
+function drawCircle(cx, cy, r) {
+    drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#FFD300', width: 2 });
+}
+
+function drawEllipse(cx, cy, rx, ry) {
+    drawSvg.ellipse(rx * 2, ry * 2).center(cx, cy).fill('none').stroke({ color: '#FFD300', width: 2 });
+}
+
+// Example usage:
+//drawRectangle(100, 100, 200, 100);
+//drawCircle(300, 300, 50);
+//drawEllipse(500, 300, 100, 50);
+
+function drawPlug(cx, cy, r = 4) {
+    drawSvg.circle(r * 2).center(cx, cy).fill('none').stroke({ color: '#fff', width: 1 });   
+    drawSvg.circle(r * 4).center(cx, cy).fill('none').stroke({ color: '#fff', width: 2 });   
+}
+
+
+//drawSvg.rect(400, 200).move(100, 100).fill('none').stroke({ color: 'rgba(255,255,255,0.5)', width: 1 });
+
+drawPlug(200, 200)
+drawPlug(200, 400)
