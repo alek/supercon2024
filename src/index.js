@@ -139,8 +139,9 @@ canvas.addEventListener('mouseup', () => {
 
                 // Make associated text bold & colored
                 if (plug.text) {
-                    // plug.text.font({ weight: '700' });  // Set the font weight to bold
-                    plug.text.fill('#ffd300');              // Set the font color to red
+                    plug.text.font({ weight: '700' });  // Set the font weight to bold
+                    // plug.text.fill('#ffd300');              // Set the font color to red
+                    plug.text.fill('#fff');              // Set the font color to red
                 }
             }
         });
@@ -326,8 +327,13 @@ function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
     }
 }
 
-// Call the function to render the dot matrix display with random pattern
+// Immediately render the dot matrix display once
 renderDotMatrix('displaySvg', 5, 100, 10, 10);
+
+// Set up an interval to redraw the pattern every second (1000 ms)
+setInterval(() => {
+    renderDotMatrix('displaySvg', 5, 100, 10, 10);
+}, 1000);
 
 // Example of how to draw and associate elements
 let increment = 12;
