@@ -12,7 +12,7 @@ let points = [];
 let catenaries = [];
 let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
-const GRID_SIZE = 30;
+const GRID_SIZE = 25;
 
 const cableColors = [
     "#FF4136",  // Red
@@ -281,11 +281,59 @@ function drawSwitch(cx, cy, state = 'on') {
         .fill('#fff');
 }
 
+function generateRandomPattern(rows, columns) {
+    const pattern = [];
+    for (let row = 0; row < rows; row++) {
+        const rowPattern = [];
+        for (let col = 0; col < columns; col++) {
+            rowPattern.push(Math.random() > 0.5 ? 1 : 0); // Randomly set each dot to 1 (on) or 0 (off)
+        }
+        pattern.push(rowPattern);
+    }
+    return pattern;
+}
+
+function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
+    // Get the SVG element by ID
+    const svg = document.getElementById(svgId);
+    
+    // Clear any existing content in the SVG
+    svg.innerHTML = '';
+
+    // Generate a random pattern
+    const pattern = generateRandomPattern(rows, columns);
+
+    // Loop through each row and column to create the dots
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < columns; col++) {
+            // Determine the x and y position for each dot
+            const x = col * (dotSize + gap);
+            const y = row * (dotSize + gap);
+
+            // Check if the dot should be "on" based on the pattern
+            const isOn = pattern[row][col];
+
+            // Create the circle element for the dot
+            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            dot.setAttribute('cx', x + dotSize / 2);
+            dot.setAttribute('cy', y + dotSize / 2);
+            dot.setAttribute('r', dotSize / 2);
+            dot.setAttribute('fill', isOn ? '#272526' : '#fff');
+
+            // Append the dot to the SVG
+            svg.appendChild(dot);
+        }
+    }
+}
+
+// Call the function to render the dot matrix display with random pattern
+renderDotMatrix('displaySvg', 5, 100, 10, 10);
+
 // Example of how to draw and associate elements
 let increment = 12;
 for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
     for (let x = GRID_SIZE * 2; x < svgWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
-        if (Math.random() < 0.6) {
+        if (Math.random() < 0.9) {
             increment = 2;
             const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, 'rgba(255,255,255,0.4)');
             drawPlug(x, y, 4, null, textElement);
