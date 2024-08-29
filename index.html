@@ -21,26 +21,51 @@
             background-color: transparent; /* Ensure the canvas is transparent */
         }
         body {
+            /*height: 100vh;*/
+            /*min-height: 100vh;*/
+            /*background-color: transparent;*/
+            padding: 0;
+            margin: 0;
+            background-color: #201E1F;
+
+        }
+        header {
+            width: 100%;
+            /*background-color: #fff;*/
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 0;
+            margin: 0;
+            height: 3em;
+        }
+        .patch-container {
+            height: 100vh;
+            min-height: 100vh;
+            background-color: transparent;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            /*background-color: transparent;*/
-            background-color: #201E1F;
+
         }
     </style>
 </head>
 <body>
-    <!-- SVG element that will appear underneath the canvas -->
-    <svg id="catenarySvg" width="900" height="600">
-        <!-- Example: A red rectangle -->
-<!--         <rect x="50" y="50" width="700" height="500" /> -->
-    </svg>
+    <header>
+        <div class="display">
+            
+        </div>
+    </header>
+    <div class="patch-container">
+        <!-- SVG element that will appear underneath the canvas -->
+        <svg id="catenarySvg" width="900" height="600">
+            <!-- Example: A red rectangle -->
+    <!--         <rect x="50" y="50" width="700" height="500" /> -->
+        </svg>
 
-    <!-- Canvas for drawing the catenary -->
-    <canvas id="catenaryCanvas" width="900" height="600"></canvas>
+        <!-- Canvas for drawing the catenary -->
+        <canvas id="catenaryCanvas" width="900" height="600"></canvas>
+    </div>
 
     <script src="dist/bundle.js"></script>
 </body>

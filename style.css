@@ -11,3 +11,7 @@ canvas {
     border: 1px solid #ccc;
     background-color: #fff;
 }
+
+header {
+    display: block;
+}

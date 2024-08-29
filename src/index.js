@@ -12,7 +12,7 @@ let points = [];
 let catenaries = [];
 let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
-const GRID_SIZE = 20;
+const GRID_SIZE = 30;
 
 const cableColors = [
     "#FF4136",  // Red
