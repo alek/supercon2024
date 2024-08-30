@@ -335,6 +335,53 @@ function generateRandomPattern(rows, columns) {
     return pattern;
 }
 
+// pattern corresponding to current catenary connection state
+function generateCatenaryPattern(rows, columns) {
+    const pattern = [];
+    for (let row = 0; row < rows; row++) {
+        const rowPattern = [];
+        for (let col = 0; col < columns; col++) {
+            rowPattern.push(Math.random() > 0.1*catenaries.length ? 1 : 0); // Randomly set each dot to 1 (on) or 0 (off)
+        }
+        pattern.push(rowPattern);
+    }
+    return pattern;
+}
+
+// random matrix
+// function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
+//     // Get the SVG element by ID
+//     const svg = document.getElementById(svgId);
+    
+//     // Clear any existing content in the SVG
+//     svg.innerHTML = '';
+
+//     // Generate a random pattern
+//     const pattern = generateRandomPattern(rows, columns);
+
+//     // Loop through each row and column to create the dots
+//     for (let row = 0; row < rows; row++) {
+//         for (let col = 0; col < columns; col++) {
+//             // Determine the x and y position for each dot
+//             const x = col * (dotSize + gap);
+//             const y = row * (dotSize + gap);
+
+//             // Check if the dot should be "on" based on the pattern
+//             const isOn = pattern[row][col];
+
+//             // Create the circle element for the dot
+//             const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+//             dot.setAttribute('cx', x + dotSize / 2);
+//             dot.setAttribute('cy', y + dotSize / 2);
+//             dot.setAttribute('r', dotSize / 2);
+//             dot.setAttribute('fill', isOn ? palette.dotoff : palette.doton);
+
+//             // Append the dot to the SVG
+//             svg.appendChild(dot);
+//         }
+//     }
+// }
+
 function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
     // Get the SVG element by ID
     const svg = document.getElementById(svgId);
@@ -343,7 +390,11 @@ function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
     svg.innerHTML = '';
 
     // Generate a random pattern
-    const pattern = generateRandomPattern(rows, columns);
+    let pattern = generateRandomPattern(rows, columns);
+    if (catenaries.length > 0) {
+        console.log("CAT")
+        pattern = generateCatenaryPattern(rows, columns)
+    }
 
     // Loop through each row and column to create the dots
     for (let row = 0; row < rows; row++) {
@@ -368,13 +419,14 @@ function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
     }
 }
 
+
 // Immediately render the dot matrix display once
 renderDotMatrix('displaySvg', 5, 100, 10, 10);
 
 // Set up an interval to redraw the pattern every second (1000 ms)
 setInterval(() => {
     renderDotMatrix('displaySvg', 5, 100, 10, 10);
-}, 1000);
+}, 250);
 
 // Example of how to draw and associate elements
 let increment = 12;
