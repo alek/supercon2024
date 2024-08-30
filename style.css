@@ -1,17 +1,74 @@
+/* SVG should be positioned underneath the canvas */
+.catenarySvg {
+    position: absolute; /* Position SVG underneath the canvas */
+    z-index: -1; /* Ensure the SVG is below the canvas */
+    fill: #201E1F; /* Color the SVG elements red */
+    width: 900;
+    height: 600px;
+}
+/* Ensure the canvas is transparent and above the SVG */
+canvas {
+    position: absolute; /* Keep the canvas above the SVG */
+    z-index: 1;
+    background-color: transparent; /* Ensure the canvas is transparent */
+}
 body {
+    /*height: 100vh;*/
+    /*min-height: 100vh;*/
+    /*background-color: transparent;*/
+    padding: 0;
     margin: 0;
+    /*background-color: #201E1F;*/
+    background-color: #252725;
+}
+header {
+    width: 850px;
+    align:  center;
+    height: 3em;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5em auto 2em auto;
+}
+
+.header-nav {
+    display: flex;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.6em;
+    color:  #E6E5D7;
+    gap: 3em;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.header-nav .button {
+    color:  #222322;
+    background-color: #E5E6D5;
+    padding: 1em 2em 1em 2em;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+.patch-container {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+}
+.display {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+}
+/* Style for dots that are "on" */
+.dot-on {
+    fill: #FF0000; /* Red color for active dots */
 }
 
-canvas {
-    border: 1px solid #ccc;
-    background-color: #fff;
-}
-
-header {
-    display: block;
-}
+/* Style for dots that are "off" */
+.dot-off {
+    fill: #555; /* Dark gray for inactive dots */
+}        

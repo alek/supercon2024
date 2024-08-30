@@ -40,7 +40,6 @@ const palette = {
     "wires":  ['#D57729', '#25A7D8', '#27A14A']
 }
 
-
 // randomization approach
 // const palette = (() => {
 //     const palettes = [
@@ -345,40 +344,6 @@ function generateCatenaryPattern(rows, columns) {
     return pattern;
 }
 
-// random matrix
-// function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
-//     // Get the SVG element by ID
-//     const svg = document.getElementById(svgId);
-    
-//     // Clear any existing content in the SVG
-//     svg.innerHTML = '';
-
-//     // Generate a random pattern
-//     const pattern = generateRandomPattern(rows, columns);
-
-//     // Loop through each row and column to create the dots
-//     for (let row = 0; row < rows; row++) {
-//         for (let col = 0; col < columns; col++) {
-//             // Determine the x and y position for each dot
-//             const x = col * (dotSize + gap);
-//             const y = row * (dotSize + gap);
-
-//             // Check if the dot should be "on" based on the pattern
-//             const isOn = pattern[row][col];
-
-//             // Create the circle element for the dot
-//             const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-//             dot.setAttribute('cx', x + dotSize / 2);
-//             dot.setAttribute('cy', y + dotSize / 2);
-//             dot.setAttribute('r', dotSize / 2);
-//             dot.setAttribute('fill', isOn ? palette.dotoff : palette.doton);
-
-//             // Append the dot to the SVG
-//             svg.appendChild(dot);
-//         }
-//     }
-// }
-
 function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
     // Get the SVG element by ID
     const svg = document.getElementById(svgId);
@@ -414,7 +379,6 @@ function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
         }
     }
 }
-
 
 // Immediately render the dot matrix display once
 renderDotMatrix('displaySvg', 5, 100, 10, 10);

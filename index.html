@@ -5,66 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackaday Superconference 2024</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&display=swap" rel="stylesheet">
-    <style>
-        /* SVG should be positioned underneath the canvas */
-        .catenarySvg {
-            position: absolute; /* Position SVG underneath the canvas */
-            z-index: -1; /* Ensure the SVG is below the canvas */
-            fill: #201E1F; /* Color the SVG elements red */
-            width: 900;
-            height: 600px;
-        }
-        /* Ensure the canvas is transparent and above the SVG */
-        canvas {
-            position: absolute; /* Keep the canvas above the SVG */
-            z-index: 1;
-            background-color: transparent; /* Ensure the canvas is transparent */
-        }
-        body {
-            /*height: 100vh;*/
-            /*min-height: 100vh;*/
-            /*background-color: transparent;*/
-            padding: 0;
-            margin: 0;
-            /*background-color: #201E1F;*/
-            background-color: #252725;
-        }
-        header {
-            width: 100%;
-            /*background-color: rgba(255,255,255,0.03);*/
-            /*border-bottom: 1px solid rgba(255,255,255,0.1);*/
-            padding: 0;
-            margin: 0;
-            height: 3em;
-        }
-        .patch-container {
-            background-color: transparent;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .display {
-            display: flex;
-            justify-content: center;
-            padding-top: 2em;
-            padding-bottom: 2em;
-
-        }
-        /* Style for dots that are "on" */
-        .dot-on {
-            fill: #FF0000; /* Red color for active dots */
-        }
-
-        /* Style for dots that are "off" */
-        .dot-off {
-            fill: #555; /* Dark gray for inactive dots */
-        }        
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
+        <img src="logo.svg" height="40px" alt="Logo" />
+        <div class="header-nav">
+            <div>( speakers )</div>
+            <div>( workshops )</div>
+            <div>( schedule )</div>
+            <div class="button">Get Tickets</div>        
+        </div>
     </header>
     <div class="display">
         <svg id="displaySvg" width="800" height="70">
