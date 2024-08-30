@@ -45,12 +45,15 @@ header a {
     align-items: center;
 }
 
+.header-nav > * {
+    cursor: pointer;
+}
+
 .header-nav .button {
     color:  #222322;
     background-color: #E5E6D5;
     padding: 1em 2em 1em 2em;
     border-radius: 2em;
-    cursor: pointer;
 }
 
 .header-nav .button:hover {
