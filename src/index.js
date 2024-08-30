@@ -182,7 +182,6 @@ canvas.addEventListener('touchstart', (event) => {
 
 canvas.addEventListener('mousemove', (event) => {
     event.preventDefault(); // Prevent default behavior like scrolling    
-    document.getElementById('debug').textContent = JSON.stringify(getEventPosition(event));
     let { offsetX: x, offsetY: y } = getEventPosition(event);
 
     if (draggingPoint) {
@@ -197,6 +196,7 @@ canvas.addEventListener('mousemove', (event) => {
 
 canvas.addEventListener('touchmove', (event) => {
     event.preventDefault(); // Prevent default behavior like scrolling
+    document.getElementById('debug').textContent = JSON.stringify(getEventPosition(event));
     let { offsetX: x, offsetY: y } = getEventPosition(event);
 
     if (draggingPoint) {
