@@ -36,7 +36,8 @@ const palette = {
     "plugged": '#E6E5D7',
     "dotoff": '#232222',
     "doton": '#E6E5D7',
-    "wires":  ['#FF5800', '#E6E5D6', '#FF8B00']
+    // "wires":  ['#FF5800', '#E6E5D6', '#FF8B00']
+    "wires":  ['#D57729', '#25A7D8', '#27A14A']
 }
 
 
