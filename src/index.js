@@ -126,9 +126,20 @@ function highlightGridLines(x, y, strokeWidth = 0.1) {
     });
 }
 
+// Function to handle both mouse and touch events
+function getEventPosition(event) {
+    if (event.touches && event.touches.length > 0) {
+        return {
+            offsetX: event.touches[0].clientX - canvas.getBoundingClientRect().left,
+            offsetY: event.touches[0].clientY - canvas.getBoundingClientRect().top
+        };
+    }
+    return { offsetX: event.offsetX, offsetY: event.offsetY };
+}
+
 // Event listeners for drawing catenaries and interacting with the canvas
 canvas.addEventListener('mousedown', (event) => {
-    let { offsetX: x, offsetY: y } = event;
+    let { offsetX: x, offsetY: y } = getEventPosition(event);
     let type;
 
     ({ x, y, type } = snapToGrid(x, y));
@@ -147,8 +158,26 @@ canvas.addEventListener('mousedown', (event) => {
 
 });
 
+canvas.addEventListener('touchmove', onMove);
+
+function onMove(event) {
+    event.preventDefault(); // Prevent default behavior like scrolling
+
+    if (draggingPoint) {
+        let { offsetX: x, offsetY: y } = getEventPosition(event);
+        ({ x, y } = snapToGrid(x, y));
+        draggingPoint.x = x;
+        draggingPoint.y = y;
+        draw();
+    } else if (points.length === 1) {
+        let { offsetX: x, offsetY: y } = getEventPosition(event);
+        drawTemporaryCatenary(x, y);
+    }
+}
+
+
 canvas.addEventListener('mousemove', (event) => {
-    let { offsetX: x, offsetY: y } = event;
+    let { offsetX: x, offsetY: y } = getEventPosition(event);
 
     if (draggingPoint) {
         ({ x, y } = snapToGrid(x, y));
