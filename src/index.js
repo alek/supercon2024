@@ -17,16 +17,225 @@ const GRID_SIZE = 25;
 
 // color palette
 
-const palette = {
-    'background': "#252725",
-    "foreground": "#D9CDBE",
-    "text": '#D9CDBE',
-    "rectangle": 'rgba(217,205,190,0.3)',
-    "plugged": '#27A149',
-    "dotoff": '#252725',
-    "doton": '#D9CDBE',
-    "wires":  ['#D57729', '#25A7D8', '#27A14A']
-}
+// const palette = {
+//     'background': "#252725",
+//     "foreground": "#D9CDBE",
+//     "text": '#D9CDBE',
+//     "rectangle": 'rgba(217,205,190,0.3)',
+//     "plugged": '#27A149',
+//     "dotoff": '#252725',
+//     "doton": '#D9CDBE',
+//     "wires":  ['#D57729', '#25A7D8', '#27A14A']
+// }
+
+const palette = (() => {
+    const palettes = [
+    {
+        "background": "#FF6363",
+        "foreground": "#FFFFFF",
+        "text": "#FFFFFF",
+        "rectangle": "rgba(255,255,255,0.3)",
+        "plugged": "#FFD700",
+        "dotoff": "#FFFFFF",
+        "doton": "#FFD700",
+        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
+    },
+    {
+        "background": "#FFCC00",
+        "foreground": "#333333",
+        "text": "#333333",
+        "rectangle": "rgba(51,51,51,0.3)",
+        "plugged": "#FF3366",
+        "dotoff": "#333333",
+        "doton": "#FF3366",
+        "wires": ["#00BCD4", "#FFEB3B", "#8BC34A"]
+    },
+    {
+        "background": "#33CCFF",
+        "foreground": "#1A1A1A",
+        "text": "#1A1A1A",
+        "rectangle": "rgba(26,26,26,0.3)",
+        "plugged": "#FF0033",
+        "dotoff": "#1A1A1A",
+        "doton": "#FF0033",
+        "wires": ["#FF5722", "#FF9800", "#4CAF50"]
+    },
+    {
+        "background": "#FFD700",
+        "foreground": "#202124",
+        "text": "#202124",
+        "rectangle": "rgba(32,33,36,0.3)",
+        "plugged": "#1E90FF",
+        "dotoff": "#202124",
+        "doton": "#1E90FF",
+        "wires": ["#FF4500", "#9C27B0", "#00BCD4"]
+    },
+    {
+        "background": "#FF3366",
+        "foreground": "#FFFFFF",
+        "text": "#FFFFFF",
+        "rectangle": "rgba(255,255,255,0.3)",
+        "plugged": "#4CAF50",
+        "dotoff": "#FFFFFF",
+        "doton": "#4CAF50",
+        "wires": ["#FFEB3B", "#00BCD4", "#FF9800"]
+    },
+    {
+        "background": "#33FFCC",
+        "foreground": "#222222",
+        "text": "#222222",
+        "rectangle": "rgba(34,34,34,0.3)",
+        "plugged": "#FF6347",
+        "dotoff": "#222222",
+        "doton": "#FF6347",
+        "wires": ["#FF5722", "#FFEB3B", "#03A9F4"]
+    },
+    {
+        "background": "#FF99CC",
+        "foreground": "#0A0A0A",
+        "text": "#0A0A0A",
+        "rectangle": "rgba(10,10,10,0.3)",
+        "plugged": "#00BFFF",
+        "dotoff": "#0A0A0A",
+        "doton": "#00BFFF",
+        "wires": ["#8BC34A", "#FFEB3B", "#FF5722"]
+    },
+    {
+        "background": "#99CC33",
+        "foreground": "#FFFFFF",
+        "text": "#FFFFFF",
+        "rectangle": "rgba(255,255,255,0.3)",
+        "plugged": "#FF4500",
+        "dotoff": "#FFFFFF",
+        "doton": "#FF4500",
+        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
+    },
+    {
+        "background": "#3366FF",
+        "foreground": "#FFFFFF",
+        "text": "#FFFFFF",
+        "rectangle": "rgba(255,255,255,0.3)",
+        "plugged": "#FFCC00",
+        "dotoff": "#FFFFFF",
+        "doton": "#FFCC00",
+        "wires": ["#FF5722", "#FF9800", "#4CAF50"]
+    },
+    {
+        "background": "#FF6347",
+        "foreground": "#202124",
+        "text": "#202124",
+        "rectangle": "rgba(32,33,36,0.3)",
+        "plugged": "#00FF7F",
+        "dotoff": "#202124",
+        "doton": "#00FF7F",
+        "wires": ["#FFC107", "#4CAF50", "#FF9800"]
+    },
+    {
+        "background": "#FFB6C1",
+        "foreground": "#1A1A1A",
+        "text": "#1A1A1A",
+        "rectangle": "rgba(26,26,26,0.3)",
+        "plugged": "#1E90FF",
+        "dotoff": "#1A1A1A",
+        "doton": "#1E90FF",
+        "wires": ["#FF5722", "#FFC107", "#00BCD4"]
+    },
+    {
+        "background": "#99FF33",
+        "foreground": "#333333",
+        "text": "#333333",
+        "rectangle": "rgba(51,51,51,0.3)",
+        "plugged": "#FF3366",
+        "dotoff": "#333333",
+        "doton": "#FF3366",
+        "wires": ["#FFEB3B", "#00BCD4", "#FF9800"]
+    },
+    {
+        "background": "#FF4500",
+        "foreground": "#FFFFFF",
+        "text": "#FFFFFF",
+        "rectangle": "rgba(255,255,255,0.3)",
+        "plugged": "#33FFCC",
+        "dotoff": "#FFFFFF",
+        "doton": "#33FFCC",
+        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
+    },
+    {
+        "background": "#66FF33",
+        "foreground": "#1A1A1A",
+        "text": "#1A1A1A",
+        "rectangle": "rgba(26,26,26,0.3)",
+        "plugged": "#FF0033",
+        "dotoff": "#1A1A1A",
+        "doton": "#FF0033",
+        "wires": ["#FF5722", "#FF9800", "#4CAF50"]
+    },
+    {
+        "background": "#33FFFF",
+        "foreground": "#202124",
+        "text": "#202124",
+        "rectangle": "rgba(32,33,36,0.3)",
+        "plugged": "#FF00FF",
+        "dotoff": "#202124",
+        "doton": "#FF00FF",
+        "wires": ["#FF4500", "#9C27B0", "#00BCD4"]
+    },
+    {
+        "background": "#FF3366",
+        "foreground": "#FFFFFF",
+        "text": "#FFFFFF",
+        "rectangle": "rgba(255,255,255,0.3)",
+        "plugged": "#FFCC00",
+        "dotoff": "#FFFFFF",
+        "doton": "#FFCC00",
+        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
+    },
+    {
+        "background": "#99FFCC",
+        "foreground": "#222222",
+        "text": "#222222",
+        "rectangle": "rgba(34,34,34,0.3)",
+        "plugged": "#FF6347",
+        "dotoff": "#222222",
+        "doton": "#FF6347",
+        "wires": ["#FF5722", "#FFEB3B", "#03A9F4"]
+    },
+    {
+        "background": "#3366CC",
+        "foreground": "#FFFFFF",
+        "text": "#FFFFFF",
+        "rectangle": "rgba(255,255,255,0.3)",
+        "plugged": "#FFCC00",
+        "dotoff": "#FFFFFF",
+        "doton": "#FFCC00",
+        "wires": ["#FF5722", "#FF9800", "#4CAF50"]
+    },
+    {
+        "background": "#FF6347",
+        "foreground": "#202124",
+        "text": "#202124",
+        "rectangle": "rgba(32,33,36,0.3)",
+        "plugged": "#00FF7F",
+        "dotoff": "#202124",
+        "doton": "#00FF7F",
+        "wires": ["#FFC107", "#4CAF50", "#FF9800"]
+    },
+    {
+        "background": "#FFB6C1",
+        "foreground": "#1A1A1A",
+        "text": "#1A1A1A",
+        "rectangle": "rgba(26,26,26,0.3)",
+        "plugged": "#1E90FF",
+        "dotoff": "#1A1A1A",
+        "doton": "#1E90FF",
+        "wires": ["#FF5722", "#FFC107", "#00BCD4"]
+    }
+]
+
+
+    // Randomly select a palette and return it
+    return palettes[Math.floor(Math.random() * palettes.length)];
+})();
 
 const plugRegistry = [];
 
@@ -382,6 +591,8 @@ renderDotMatrix('displaySvg', 5, 100, 10, 10);
 setInterval(() => {
     renderDotMatrix('displaySvg', 5, 100, 10, 10);
 }, 250);
+
+document.body.style.backgroundColor = palette.background;
 
 // Example of how to draw and associate elements
 let increment = 12;
