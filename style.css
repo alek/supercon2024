@@ -60,7 +60,7 @@ header a {
 
 /* Media Query */
 @media (max-width: 540px) {
-    .header-nav > *:not(.button) {
+    .header-nav > *:not(a) {
         display: none;
     }
 }
