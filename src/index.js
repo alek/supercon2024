@@ -28,26 +28,7 @@ const palette = {
     "wires":  ['#D57729', '#25A7D8', '#27A14A']
 }
 
-const cableColors = [
-    "#FF4136",  // Red
-    "#FF851B",  // Orange
-    "#FFDC00",  // Yellow
-    "#2ECC40",  // Green
-    "#0074D9",  // Blue
-    "#B10DC9",  // Purple
-    "#F012BE",  // Pink
-    "#111111",  // Black
-    "#FFFFFF",  // White
-    "#AAAAAA"   // Gray
-];
-
 const plugRegistry = [];
-
-// Function to generate a random color from the cableColors array
-function getRandomCableColor() {
-    const randomIndex = Math.floor(Math.random() * cableColors.length);
-    return cableColors[randomIndex];
-}
 
 // Function to generate a random alphanumeric string
 function getRandomAlphanumericString() {
@@ -149,15 +130,9 @@ canvas.addEventListener('mouseup', () => {
                 (plug.x === points[0].x && plug.y === points[0].y) ||
                 (plug.x === points[1].x && plug.y === points[1].y)
             ) {
-                if (plug.rect) {
-                    plug.rect.fill('#FF4136'); // Change rectangle color to red
-                }
-
                 // Make associated text bold & colored
                 if (plug.text) {
                     plug.text.font({ weight: '700' });  // Set the font weight to bold
-                    // plug.text.fill(palette.accent);              // Set the font color to red
-                    // plug.text.fill(palette.wire);              // Set the font color to red
                 }
             }
         });
