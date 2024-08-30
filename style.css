@@ -92,3 +92,8 @@ header a {
 .dot-off {
     fill: #555; /* Dark gray for inactive dots */
 }        
+
+#debug {
+    color:  #fff;
+    margin:  auto;
+}

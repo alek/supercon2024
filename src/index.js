@@ -162,6 +162,7 @@ canvas.addEventListener('touchmove', onMove);
 
 function onMove(event) {
     event.preventDefault(); // Prevent default behavior like scrolling
+    document.getElementById('debug').textContent = "move";
 
     if (draggingPoint) {
         let { offsetX: x, offsetY: y } = getEventPosition(event);
