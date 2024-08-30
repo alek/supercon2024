@@ -58,6 +58,13 @@ header a {
     color: #fff;
 }
 
+/* Media Query */
+@media (max-width: 540px) {
+    .header-nav > *:not(.button) {
+        display: none;
+    }
+}
+
 .patch-container {
     background-color: transparent;
     margin: 0;
