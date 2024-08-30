@@ -28,213 +28,45 @@ const GRID_SIZE = 25;
 //     "wires":  ['#D57729', '#25A7D8', '#27A14A']
 // }
 
-const palette = (() => {
-    const palettes = [
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FFFFFF",
-        "text": "#FFFFFF",
-        "rectangle": "rgba(255,255,255,0.5)",
-        "plugged": "#FFD700",
-        "dotoff": "#FFFFFF",
-        "doton": "#FFD700",
-        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#CCCCCC",
-        "text": "#CCCCCC",
-        "rectangle": "rgba(204,204,204,0.5)",
-        "plugged": "#FF3366",
-        "dotoff": "#CCCCCC",
-        "doton": "#FF3366",
-        "wires": ["#00BCD4", "#FFEB3B", "#8BC34A"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#E0E0E0",
-        "text": "#E0E0E0",
-        "rectangle": "rgba(224,224,224,0.5)",
-        "plugged": "#FF0033",
-        "dotoff": "#E0E0E0",
-        "doton": "#FF0033",
-        "wires": ["#FF5722", "#FF9800", "#4CAF50"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#F5F5F5",
-        "text": "#F5F5F5",
-        "rectangle": "rgba(245,245,245,0.5)",
-        "plugged": "#1E90FF",
-        "dotoff": "#F5F5F5",
-        "doton": "#1E90FF",
-        "wires": ["#FF4500", "#9C27B0", "#00BCD4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FFD700",
-        "text": "#FFD700",
-        "rectangle": "rgba(255,215,0,0.5)",
-        "plugged": "#4CAF50",
-        "dotoff": "#FFD700",
-        "doton": "#4CAF50",
-        "wires": ["#FFEB3B", "#00BCD4", "#FF9800"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FF6347",
-        "text": "#FF6347",
-        "rectangle": "rgba(255,99,71,0.5)",
-        "plugged": "#00FF7F",
-        "dotoff": "#FF6347",
-        "doton": "#00FF7F",
-        "wires": ["#FF5722", "#FFEB3B", "#03A9F4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#87CEEB",
-        "text": "#87CEEB",
-        "rectangle": "rgba(135,206,235,0.5)",
-        "plugged": "#00BFFF",
-        "dotoff": "#87CEEB",
-        "doton": "#00BFFF",
-        "wires": ["#8BC34A", "#FFEB3B", "#FF5722"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FF1493",
-        "text": "#FF1493",
-        "rectangle": "rgba(255,20,147,0.5)",
-        "plugged": "#FFD700",
-        "dotoff": "#FF1493",
-        "doton": "#FFD700",
-        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FFCC00",
-        "text": "#FFCC00",
-        "rectangle": "rgba(255,204,0,0.5)",
-        "plugged": "#00FF00",
-        "dotoff": "#FFCC00",
-        "doton": "#00FF00",
-        "wires": ["#FF5722", "#FF9800", "#4CAF50"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#00FFFF",
-        "text": "#00FFFF",
-        "rectangle": "rgba(0,255,255,0.5)",
-        "plugged": "#FF00FF",
-        "dotoff": "#00FFFF",
-        "doton": "#FF00FF",
-        "wires": ["#FF4500", "#9C27B0", "#00BCD4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FFFF00",
-        "text": "#FFFF00",
-        "rectangle": "rgba(255,255,0,0.5)",
-        "plugged": "#00FF7F",
-        "dotoff": "#FFFF00",
-        "doton": "#00FF7F",
-        "wires": ["#FFC107", "#4CAF50", "#FF9800"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#9ACD32",
-        "text": "#9ACD32",
-        "rectangle": "rgba(154,205,50,0.5)",
-        "plugged": "#1E90FF",
-        "dotoff": "#9ACD32",
-        "doton": "#1E90FF",
-        "wires": ["#FF5722", "#FFC107", "#00BCD4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FF8C00",
-        "text": "#FF8C00",
-        "rectangle": "rgba(255,140,0,0.5)",
-        "plugged": "#FF3366",
-        "dotoff": "#FF8C00",
-        "doton": "#FF3366",
-        "wires": ["#FFEB3B", "#00BCD4", "#FF9800"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#98FB98",
-        "text": "#98FB98",
-        "rectangle": "rgba(152,251,152,0.5)",
-        "plugged": "#33FFCC",
-        "dotoff": "#98FB98",
-        "doton": "#33FFCC",
-        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#F08080",
-        "text": "#F08080",
-        "rectangle": "rgba(240,128,128,0.5)",
-        "plugged": "#FF0033",
-        "dotoff": "#F08080",
-        "doton": "#FF0033",
-        "wires": ["#FF5722", "#FF9800", "#4CAF50"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FF00FF",
-        "text": "#FF00FF",
-        "rectangle": "rgba(255,0,255,0.5)",
-        "plugged": "#FFD700",
-        "dotoff": "#FF00FF",
-        "doton": "#FFD700",
-        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#FFDAB9",
-        "text": "#FFDAB9",
-        "rectangle": "rgba(255,218,185,0.5)",
-        "plugged": "#FF4500",
-        "dotoff": "#FFDAB9",
-        "doton": "#FF4500",
-        "wires": ["#FF5722", "#FFEB3B", "#03A9F4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#ADFF2F",
-        "text": "#ADFF2F",
-        "rectangle": "rgba(173,255,47,0.5)",
-        "plugged": "#FF6347",
-        "dotoff": "#ADFF2F",
-        "doton": "#FF6347",
-        "wires": ["#8BC34A", "#FFEB3B", "#FF5722"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#4682B4",
-        "text": "#4682B4",
-        "rectangle": "rgba(70,130,180,0.5)",
-        "plugged": "#FFCC00",
-        "dotoff": "#4682B4",
-        "doton": "#FFCC00",
-        "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
-    },
-    {
-        "background": "#1C1C1B",
-        "foreground": "#00FF00",
-        "text": "#00FF00",
-        "rectangle": "rgba(0,255,0,0.5)",
-        "plugged": "#1E90FF",
-        "dotoff": "#00FF00",
-        "doton": "#1E90FF",
-        "wires": ["#FF5722", "#FFC107", "#00BCD4"]
-    }
-]
+const palette = {
+    'background': "#232222",
+    "foreground": "#D9CDBE",
+    "text": '#E6E6D5',
+    "rectangle": 'rgba(217,205,190,0.3)',
+    "plugged": '#E6E5D7',
+    "dotoff": '#232222',
+    "doton": '#E6E5D7',
+    "wires":  ['#FF5800', '#E6E5D6', '#FF8B00']
+}
 
-    // Randomly select a palette and return it
-    return palettes[Math.floor(Math.random() * palettes.length)];
-})();
+
+// randomization approach
+// const palette = (() => {
+//     const palettes = [
+//     {
+//         "background": "#1C1C1B",
+//         "foreground": "#FFFFFF",
+//         "text": "#FFFFFF",
+//         "rectangle": "rgba(255,255,255,0.5)",
+//         "plugged": "#FFD700",
+//         "dotoff": "#FFFFFF",
+//         "doton": "#FFD700",
+//         "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
+//     },
+//     {
+//         "background": "#1C1C1B",
+//         "foreground": "#CCCCCC",
+//         "text": "#CCCCCC",
+//         "rectangle": "rgba(204,204,204,0.5)",
+//         "plugged": "#FF3366",
+//         "dotoff": "#CCCCCC",
+//         "doton": "#FF3366",
+//         "wires": ["#00BCD4", "#FFEB3B", "#8BC34A"]
+//     }]
+
+//     // Randomly select a palette and return it
+//     return palettes[Math.floor(Math.random() * palettes.length)];
+// })();
 
 const plugRegistry = [];
 
