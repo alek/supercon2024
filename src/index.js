@@ -31,7 +31,7 @@ const GRID_SIZE = 25;
 const palette = (() => {
     const palettes = [
     {
-        "background": "#FF6363",
+        "background": "#1C1C1B",
         "foreground": "#FFFFFF",
         "text": "#FFFFFF",
         "rectangle": "rgba(255,255,255,0.3)",
@@ -41,7 +41,7 @@ const palette = (() => {
         "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
     },
     {
-        "background": "#FFCC00",
+        "background": "#1C1C1B",
         "foreground": "#333333",
         "text": "#333333",
         "rectangle": "rgba(51,51,51,0.3)",
@@ -51,7 +51,7 @@ const palette = (() => {
         "wires": ["#00BCD4", "#FFEB3B", "#8BC34A"]
     },
     {
-        "background": "#33CCFF",
+        "background": "#1C1C1B",
         "foreground": "#1A1A1A",
         "text": "#1A1A1A",
         "rectangle": "rgba(26,26,26,0.3)",
@@ -61,7 +61,7 @@ const palette = (() => {
         "wires": ["#FF5722", "#FF9800", "#4CAF50"]
     },
     {
-        "background": "#FFD700",
+        "background": "#1C1C1B",
         "foreground": "#202124",
         "text": "#202124",
         "rectangle": "rgba(32,33,36,0.3)",
@@ -71,7 +71,7 @@ const palette = (() => {
         "wires": ["#FF4500", "#9C27B0", "#00BCD4"]
     },
     {
-        "background": "#FF3366",
+        "background": "#1C1C1B",
         "foreground": "#FFFFFF",
         "text": "#FFFFFF",
         "rectangle": "rgba(255,255,255,0.3)",
@@ -81,7 +81,7 @@ const palette = (() => {
         "wires": ["#FFEB3B", "#00BCD4", "#FF9800"]
     },
     {
-        "background": "#33FFCC",
+        "background": "#1C1C1B",
         "foreground": "#222222",
         "text": "#222222",
         "rectangle": "rgba(34,34,34,0.3)",
@@ -91,7 +91,7 @@ const palette = (() => {
         "wires": ["#FF5722", "#FFEB3B", "#03A9F4"]
     },
     {
-        "background": "#FF99CC",
+        "background": "#1C1C1B",
         "foreground": "#0A0A0A",
         "text": "#0A0A0A",
         "rectangle": "rgba(10,10,10,0.3)",
@@ -101,7 +101,7 @@ const palette = (() => {
         "wires": ["#8BC34A", "#FFEB3B", "#FF5722"]
     },
     {
-        "background": "#99CC33",
+        "background": "#1C1C1B",
         "foreground": "#FFFFFF",
         "text": "#FFFFFF",
         "rectangle": "rgba(255,255,255,0.3)",
@@ -111,7 +111,7 @@ const palette = (() => {
         "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
     },
     {
-        "background": "#3366FF",
+        "background": "#1C1C1B",
         "foreground": "#FFFFFF",
         "text": "#FFFFFF",
         "rectangle": "rgba(255,255,255,0.3)",
@@ -121,7 +121,7 @@ const palette = (() => {
         "wires": ["#FF5722", "#FF9800", "#4CAF50"]
     },
     {
-        "background": "#FF6347",
+        "background": "#1C1C1B",
         "foreground": "#202124",
         "text": "#202124",
         "rectangle": "rgba(32,33,36,0.3)",
@@ -131,7 +131,7 @@ const palette = (() => {
         "wires": ["#FFC107", "#4CAF50", "#FF9800"]
     },
     {
-        "background": "#FFB6C1",
+        "background": "#1C1C1B",
         "foreground": "#1A1A1A",
         "text": "#1A1A1A",
         "rectangle": "rgba(26,26,26,0.3)",
@@ -141,7 +141,7 @@ const palette = (() => {
         "wires": ["#FF5722", "#FFC107", "#00BCD4"]
     },
     {
-        "background": "#99FF33",
+        "background": "#1C1C1B",
         "foreground": "#333333",
         "text": "#333333",
         "rectangle": "rgba(51,51,51,0.3)",
@@ -151,7 +151,7 @@ const palette = (() => {
         "wires": ["#FFEB3B", "#00BCD4", "#FF9800"]
     },
     {
-        "background": "#FF4500",
+        "background": "#1C1C1B",
         "foreground": "#FFFFFF",
         "text": "#FFFFFF",
         "rectangle": "rgba(255,255,255,0.3)",
@@ -161,7 +161,7 @@ const palette = (() => {
         "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
     },
     {
-        "background": "#66FF33",
+        "background": "#1C1C1B",
         "foreground": "#1A1A1A",
         "text": "#1A1A1A",
         "rectangle": "rgba(26,26,26,0.3)",
@@ -171,7 +171,7 @@ const palette = (() => {
         "wires": ["#FF5722", "#FF9800", "#4CAF50"]
     },
     {
-        "background": "#33FFFF",
+        "background": "#1C1C1B",
         "foreground": "#202124",
         "text": "#202124",
         "rectangle": "rgba(32,33,36,0.3)",
@@ -181,7 +181,7 @@ const palette = (() => {
         "wires": ["#FF4500", "#9C27B0", "#00BCD4"]
     },
     {
-        "background": "#FF3366",
+        "background": "#1C1C1B",
         "foreground": "#FFFFFF",
         "text": "#FFFFFF",
         "rectangle": "rgba(255,255,255,0.3)",
@@ -191,7 +191,7 @@ const palette = (() => {
         "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
     },
     {
-        "background": "#99FFCC",
+        "background": "#1C1C1B",
         "foreground": "#222222",
         "text": "#222222",
         "rectangle": "rgba(34,34,34,0.3)",
@@ -201,7 +201,7 @@ const palette = (() => {
         "wires": ["#FF5722", "#FFEB3B", "#03A9F4"]
     },
     {
-        "background": "#3366CC",
+        "background": "#1C1C1B",
         "foreground": "#FFFFFF",
         "text": "#FFFFFF",
         "rectangle": "rgba(255,255,255,0.3)",
@@ -211,7 +211,7 @@ const palette = (() => {
         "wires": ["#FF5722", "#FF9800", "#4CAF50"]
     },
     {
-        "background": "#FF6347",
+        "background": "#1C1C1B",
         "foreground": "#202124",
         "text": "#202124",
         "rectangle": "rgba(32,33,36,0.3)",
@@ -221,7 +221,7 @@ const palette = (() => {
         "wires": ["#FFC107", "#4CAF50", "#FF9800"]
     },
     {
-        "background": "#FFB6C1",
+        "background": "#1C1C1B",
         "foreground": "#1A1A1A",
         "text": "#1A1A1A",
         "rectangle": "rgba(26,26,26,0.3)",
@@ -231,7 +231,6 @@ const palette = (() => {
         "wires": ["#FF5722", "#FFC107", "#00BCD4"]
     }
 ]
-
 
     // Randomly select a palette and return it
     return palettes[Math.floor(Math.random() * palettes.length)];
