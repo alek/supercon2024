@@ -213,7 +213,7 @@ function draw() {
     });
 
     if (points.length > 0) {
-        context.fillStyle = color;
+        context.fillStyle = wirePalette[(catenaries.length)%wirePalette.length];
         points.forEach(point => {
             context.beginPath();
             context.arc(point.x, point.y, 5, 0, Math.PI * 2);
@@ -225,7 +225,7 @@ function draw() {
         const tempCatenary = getCatenaryCurve(points[0], points[1], 500);
         context.beginPath();
         context.lineWidth = 2;
-        context.strokeStyle = palette.wire;
+        context.strokeStyle = wirePalette[catenaries.length%wirePalette.length];
         drawResult(tempCatenary, context);
         context.stroke();
     }
@@ -254,11 +254,11 @@ function drawTemporaryCatenary(x, y) {
     const tempCatenary = getCatenaryCurve(points[0], { x, y }, 500);
     context.beginPath();
     context.lineWidth = 2;
-    context.strokeStyle = palette.wire;
+    context.strokeStyle = wirePalette[catenaries.length%wirePalette.length];
     drawResult(tempCatenary, context);
     context.stroke();
 
-    context.fillStyle = palette.plugged;
+    context.fillStyle = wirePalette[catenaries.length%wirePalette.length];
     context.beginPath();
     context.arc(points[0].x, points[0].y, 5, 0, Math.PI * 2);
     context.fill();
