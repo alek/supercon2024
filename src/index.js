@@ -158,27 +158,27 @@ canvas.addEventListener('mousedown', (event) => {
 
 });
 
-canvas.addEventListener('touchstart', (event) => {
-    event.preventDefault(); // Prevent default behavior like scrolling    
-    document.getElementById('debug').textContent = 'touch start';
-    let { offsetX: x, offsetY: y } = getEventPosition(event);
-    let type;
+// canvas.addEventListener('touchstart', (event) => {
+//     event.preventDefault(); // Prevent default behavior like scrolling    
+//     document.getElementById('debug').textContent = 'touch start';
+//     let { offsetX: x, offsetY: y } = getEventPosition(event);
+//     let type;
 
-    ({ x, y, type } = snapToGrid(x, y));
+//     ({ x, y, type } = snapToGrid(x, y));
 
-    if (type == "plug" && points.length < 2) {
-        document.getElementById('debug').textContent = 'HIT A PLUG';
-        points.push({ x, y });
+//     if (type == "plug" && points.length < 2) {
+//         document.getElementById('debug').textContent = 'HIT A PLUG';
+//         points.push({ x, y });
 
-        points.forEach(point => {
-            if (Math.hypot(point.x - x, point.y - y) < 10) {
-                draggingPoint = point;
-            }
-        });
+//         points.forEach(point => {
+//             if (Math.hypot(point.x - x, point.y - y) < 10) {
+//                 draggingPoint = point;
+//             }
+//         });
 
-        draw();        
-    }
-});
+//         draw();        
+//     }
+// });
 
 
 canvas.addEventListener('mousemove', (event) => {
@@ -195,20 +195,20 @@ canvas.addEventListener('mousemove', (event) => {
     }
 });
 
-canvas.addEventListener('touchmove', (event) => {
-    event.preventDefault(); // Prevent default behavior like scrolling
-    document.getElementById('debug').textContent = JSON.stringify(getEventPosition(event));
-    let { offsetX: x, offsetY: y } = getEventPosition(event);
+// canvas.addEventListener('touchmove', (event) => {
+//     event.preventDefault(); // Prevent default behavior like scrolling
+//     document.getElementById('debug').textContent = JSON.stringify(getEventPosition(event));
+//     let { offsetX: x, offsetY: y } = getEventPosition(event);
 
-    if (draggingPoint) {
-        ({ x, y } = snapToGrid(x, y));
-        draggingPoint.x = x;
-        draggingPoint.y = y;
-        draw();
-    } else if (points.length === 1) {
-        drawTemporaryCatenary(x, y);
-    }
-});
+//     if (draggingPoint) {
+//         ({ x, y } = snapToGrid(x, y));
+//         draggingPoint.x = x;
+//         draggingPoint.y = y;
+//         draw();
+//     } else if (points.length === 1) {
+//         drawTemporaryCatenary(x, y);
+//     }
+// });
 
 
 canvas.addEventListener('mouseup', () => {
