@@ -160,6 +160,7 @@ canvas.addEventListener('mousedown', (event) => {
 
 canvas.addEventListener('touchstart', (event) => {
     event.preventDefault(); // Prevent default behavior like scrolling    
+    document.getElementById('debug').textContent = 'touch start';
     let { offsetX: x, offsetY: y } = getEventPosition(event);
     let type;
 
