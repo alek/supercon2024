@@ -77,7 +77,7 @@ function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.5) 
     });
 
     if (nearestPlug) {
-        return { x: nearestPlug.x, y: nearestPlug.y };
+        return { x: nearestPlug.x, y: nearestPlug.y, type: "plug" };
     }
 
     const nearestX = Math.round(x / gridSize) * gridSize;
@@ -87,10 +87,10 @@ function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.5) 
 
     if (gridDistance <= snapThreshold) {
         highlightGridLines(nearestX, nearestY, 0.05);
-        return { x: nearestX, y: nearestY };
+        return { x: nearestX, y: nearestY, type: "grid" };
     }
 
-    return { x, y };
+    return { x, y, type: "miss" };
 }
 
 // Highlight grid lines corresponding to a specific grid intersection
@@ -108,20 +108,22 @@ function highlightGridLines(x, y, strokeWidth = 0.1) {
 // Event listeners for drawing catenaries and interacting with the canvas
 canvas.addEventListener('mousedown', (event) => {
     let { offsetX: x, offsetY: y } = event;
+    let type;
 
-    ({ x, y } = snapToGrid(x, y));
+    ({ x, y, type } = snapToGrid(x, y));
 
-    if (points.length < 2) {
+    if (type == "plug" && points.length < 2) {
         points.push({ x, y });
+
+        points.forEach(point => {
+            if (Math.hypot(point.x - x, point.y - y) < 10) {
+                draggingPoint = point;
+            }
+        });
+
+        draw();        
     }
 
-    points.forEach(point => {
-        if (Math.hypot(point.x - x, point.y - y) < 10) {
-            draggingPoint = point;
-        }
-    });
-
-    draw();
 });
 
 canvas.addEventListener('mousemove', (event) => {
@@ -371,7 +373,6 @@ function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
     // Generate a random pattern
     let pattern = generateRandomPattern(rows, columns);
     if (catenaries.length > 0) {
-        console.log("CAT")
         pattern = generateCatenaryPattern(rows, columns)
     }
 
