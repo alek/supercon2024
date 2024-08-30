@@ -197,6 +197,11 @@ function draw() {
         context.lineJoin = 'round';
         context.lineCap = 'round';
 
+        context.shadowColor = 'rgba(20, 20, 20, 0.2)'; // Shadow color (black with 50% opacity)
+        context.shadowBlur = 5; // Blur level
+        context.shadowOffsetX = 5; // Horizontal shadow offset
+        context.shadowOffsetY = 5; // Vertical shadow offset
+
         drawResult(catenary, context);
         context.stroke();
 
@@ -222,6 +227,13 @@ function draw() {
         context.beginPath();
         context.lineWidth = 2;
         context.strokeStyle = palette.wires[catenaries.length%palette.wires.length];
+
+        context.shadowColor = 'rgba(20, 20, 20, 0.2)'; // Shadow color (black with 50% opacity)
+        context.shadowBlur = 5; // Blur level
+        context.shadowOffsetX = 5; // Horizontal shadow offset
+        context.shadowOffsetY = 5; // Vertical shadow offset
+
+
         drawResult(tempCatenary, context);
         context.stroke();
     }
@@ -251,6 +263,12 @@ function drawTemporaryCatenary(x, y) {
     context.beginPath();
     context.lineWidth = 2;
     context.strokeStyle = palette.wires[catenaries.length%palette.wires.length];
+
+    context.shadowColor = 'rgba(20, 20, 20, 0.2)'; // Shadow color (black with 50% opacity)
+    context.shadowBlur = 5; // Blur level
+    context.shadowOffsetX = 5; // Horizontal shadow offset
+    context.shadowOffsetY = 5; // Vertical shadow offset
+
     drawResult(tempCatenary, context);
     context.stroke();
 
