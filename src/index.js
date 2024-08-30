@@ -158,9 +158,8 @@ canvas.addEventListener('mousedown', (event) => {
 
 });
 
-canvas.addEventListener('touchmove', (event) => {
-    event.preventDefault(); // Prevent default behavior like scrolling
-    document.getElementById('debug').textContent = JSON.stringify(getEventPosition(event));
+canvas.addEventListener('touchstart', (event) => {
+    event.preventDefault(); // Prevent default behavior like scrolling    
     let { offsetX: x, offsetY: y } = getEventPosition(event);
     let type;
 
@@ -179,7 +178,10 @@ canvas.addEventListener('touchmove', (event) => {
     }
 });
 
+
 canvas.addEventListener('mousemove', (event) => {
+    event.preventDefault(); // Prevent default behavior like scrolling    
+    document.getElementById('debug').textContent = JSON.stringify(getEventPosition(event));
     let { offsetX: x, offsetY: y } = getEventPosition(event);
 
     if (draggingPoint) {
@@ -191,6 +193,21 @@ canvas.addEventListener('mousemove', (event) => {
         drawTemporaryCatenary(x, y);
     }
 });
+
+canvas.addEventListener('touchmove', (event) => {
+    event.preventDefault(); // Prevent default behavior like scrolling
+    let { offsetX: x, offsetY: y } = getEventPosition(event);
+
+    if (draggingPoint) {
+        ({ x, y } = snapToGrid(x, y));
+        draggingPoint.x = x;
+        draggingPoint.y = y;
+        draw();
+    } else if (points.length === 1) {
+        drawTemporaryCatenary(x, y);
+    }
+});
+
 
 canvas.addEventListener('mouseup', () => {
     if (points.length === 2) {
