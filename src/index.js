@@ -167,6 +167,7 @@ canvas.addEventListener('touchstart', (event) => {
     ({ x, y, type } = snapToGrid(x, y));
 
     if (type == "plug" && points.length < 2) {
+        document.getElementById('debug').textContent = 'HIT A PLUG';
         points.push({ x, y });
 
         points.forEach(point => {
