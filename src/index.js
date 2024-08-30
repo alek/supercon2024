@@ -17,37 +17,16 @@ const GRID_SIZE = 25;
 
 // color palette
 
-// const palette = {
-//     'background': "#201E1F",
-//     "foreground": "#fff",
-//     "text": 'rgba(255,255,255,0.4)',
-//     "rectangle": 'rgba(255,255,255,0.3)',
-//     "wire": '#ffd300',
-//     "dotoff": '#272526'
-// }
-
-// const palette = {
-//     'background': "#1C1718",
-//     "foreground": "#FE4124",
-//     "text": '#FE4124',
-//     "rectangle": '#71716F',
-//     "wire": '#ffd300',
-//     "dotoff": '#1C1718',
-//     "doton": '#56ACD8'
-// }
-
 const palette = {
     'background': "#252725",
     "foreground": "#D9CDBE",
     "text": '#D9CDBE',
     "rectangle": 'rgba(217,205,190,0.3)',
-    "wire": '#27A149',
     "plugged": '#27A149',
     "dotoff": '#252725',
-    "doton": '#D9CDBE'
+    "doton": '#D9CDBE',
+    "wires":  ['#D57729', '#25A7D8', '#27A14A']
 }
-
-const wirePalette = ['#D57729', '#25A7D8', '#27A14A']
 
 const cableColors = [
     "#FF4136",  // Red
@@ -193,7 +172,7 @@ function draw() {
     // catenaries.forEach(({ points: catenaryPoints, catenary }) => {
     catenaries.forEach(({ points: catenaryPoints, catenary }, index) => {
         
-        let color = wirePalette[index%wirePalette.length]
+        let color = palette.wires[index%palette.wires.length]
 
         context.beginPath();
         context.lineWidth = 5;
@@ -213,7 +192,7 @@ function draw() {
     });
 
     if (points.length > 0) {
-        context.fillStyle = wirePalette[(catenaries.length)%wirePalette.length];
+        context.fillStyle = palette.wires[(catenaries.length)%palette.wires.length];
         points.forEach(point => {
             context.beginPath();
             context.arc(point.x, point.y, 5, 0, Math.PI * 2);
@@ -225,7 +204,7 @@ function draw() {
         const tempCatenary = getCatenaryCurve(points[0], points[1], 500);
         context.beginPath();
         context.lineWidth = 2;
-        context.strokeStyle = wirePalette[catenaries.length%wirePalette.length];
+        context.strokeStyle = palette.wires[catenaries.length%palette.wires.length];
         drawResult(tempCatenary, context);
         context.stroke();
     }
@@ -236,7 +215,7 @@ function drawTemporaryCatenary(x, y) {
 
     // catenaries.forEach(({ points: catenaryPoints, catenary }) => {
     catenaries.forEach(({ points: catenaryPoints, catenary }, index) => {        
-        let color = wirePalette[index%wirePalette.length]
+        let color = palette.wires[index%palette.wires.length]
         context.beginPath();
         context.lineWidth = 5;
         context.strokeStyle = color;
@@ -254,11 +233,11 @@ function drawTemporaryCatenary(x, y) {
     const tempCatenary = getCatenaryCurve(points[0], { x, y }, 500);
     context.beginPath();
     context.lineWidth = 2;
-    context.strokeStyle = wirePalette[catenaries.length%wirePalette.length];
+    context.strokeStyle = palette.wires[catenaries.length%palette.wires.length];
     drawResult(tempCatenary, context);
     context.stroke();
 
-    context.fillStyle = wirePalette[catenaries.length%wirePalette.length];
+    context.fillStyle = palette.wires[catenaries.length%palette.wires.length];
     context.beginPath();
     context.arc(points[0].x, points[0].y, 5, 0, Math.PI * 2);
     context.fill();
