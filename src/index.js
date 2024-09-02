@@ -464,6 +464,10 @@ function generateCatenaryPattern(rows=5, columns=40) {
     return pattern;
 }
 
+function updateCatenaryPattern() {
+        // TODO
+}
+
 function shiftRight(matrix) {
     // Handle the case where the matrix is empty
     if (matrix.length === 0 || matrix[0].length === 0) {
