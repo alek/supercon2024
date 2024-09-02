@@ -391,7 +391,7 @@ function drawSwitch(cx, cy, state = 'on') {
         .fill(palette.foreground);
 }
 
-function generateRandomPattern(rows=5, columns=100) {
+function generateRandomPattern(rows=5, columns=40) {
     const pattern = [];
     for (let row = 0; row < rows; row++) {
         const rowPattern = [];
@@ -422,7 +422,7 @@ function createMatrix(pointsArray, width=svgWidth, height=svgHeight, CONST=GRID_
 
         console.log(x_start + "\t" + y_start + "\t" + x_end + "\t" + y_end)
 
-        matrix[x_start%4][x_end%4] = 1
+        matrix[x_start%4][y_start%4] = 1
         matrix[y_start%4][y_end%4] = 1
         
         // const x = Math.floor(point.x / CONST);
@@ -444,7 +444,7 @@ function createMatrix(pointsArray, width=svgWidth, height=svgHeight, CONST=GRID_
 
 
 // pattern corresponding to current catenary connection state
-function generateCatenaryPattern(rows=5, columns=100) {
+function generateCatenaryPattern(rows=5, columns=40) {
     // console.log(JSON.stringify(catenaries[0].points))
     // console.log(JSON.stringify(createMatrix(catenaries)))
     const matrix = createMatrix(catenaries)
@@ -489,7 +489,59 @@ function shiftRight(matrix) {
     return result;
 }
 
-function renderDotMatrix(svgId, rows=5, columns=100, dotSize=10, gap=10) {
+function shiftRightAndRotate(matrix) {
+    // Handle the case where the matrix is empty
+    if (matrix.length === 0 || matrix[0].length === 0) {
+        return matrix;
+    }
+
+    // Get the number of rows and columns
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+
+    // Create a new matrix to store the result
+    const result = Array.from({ length: numRows }, () => Array(numCols).fill(0));
+
+    // Perform the right shift with rotation
+    for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+            // Calculate the new column index with wrap-around
+            const newCol = (col + 1) % numCols;
+            result[row][newCol] = matrix[row][col];
+        }
+    }
+
+    return result;
+}
+
+function shiftRightAndInvertIfSet(matrix) {
+    // Handle the case where the matrix is empty
+    if (matrix.length === 0 || matrix[0].length === 0) {
+        return matrix;
+    }
+
+    // Get the number of rows and columns
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+
+    // Create a new matrix to store the result
+    const result = Array.from({ length: numRows }, () => Array(numCols).fill(0));
+
+    // Perform the right shift with conditional inversion
+    for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+            // Calculate the new column index with wrap-around
+            const newCol = (col + 1) % numCols;
+            // Invert the value only if the original value is 1
+            result[row][newCol] = matrix[row][col] === 1 ? 0 : matrix[row][col];
+        }
+    }
+
+    return result;
+}
+
+
+function renderDotMatrix(svgId, rows=5, columns=40, dotSize=10, gap=10) {
     // Get the SVG element by ID
     const svg = document.getElementById(svgId);
     
@@ -502,7 +554,8 @@ function renderDotMatrix(svgId, rows=5, columns=100, dotSize=10, gap=10) {
     //     pattern = generateCatenaryPattern(rows, columns)
     // }
 
-    pattern = shiftRight(pattern)
+    pattern = shiftRightAndRotate(pattern)
+    // pattern = shiftRightAndInvertIfSet(pattern)
 
     // Loop through each row and column to create the dots
     for (let row = 0; row < rows; row++) {
@@ -528,11 +581,11 @@ function renderDotMatrix(svgId, rows=5, columns=100, dotSize=10, gap=10) {
 }
 
 // Immediately render the dot matrix display once
-renderDotMatrix('displaySvg', 5, 100, 10, 10);
+renderDotMatrix('displaySvg', 5, 40, 10, 10);
 
 // Set up an interval to redraw the pattern every second (1000 ms)
 setInterval(() => {
-    renderDotMatrix('displaySvg', 5, 100, 10, 10);
+    renderDotMatrix('displaySvg', 5, 40, 10, 10);
 }, 250);
 
 document.body.style.backgroundColor = palette.background;
