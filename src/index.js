@@ -234,6 +234,7 @@ canvas.addEventListener('mouseup', () => {
         draw();
     }
     draggingPoint = null;
+    pattern = generateCatenaryPattern()
 });
 
 function draw() {
@@ -443,7 +444,7 @@ function createMatrix(pointsArray, width=svgWidth, height=svgHeight, CONST=GRID_
 
 
 // pattern corresponding to current catenary connection state
-function generateCatenaryPattern(rows, columns) {
+function generateCatenaryPattern(rows=5, columns=100) {
     // console.log(JSON.stringify(catenaries[0].points))
     // console.log(JSON.stringify(createMatrix(catenaries)))
     const matrix = createMatrix(catenaries)
