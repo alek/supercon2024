@@ -14,6 +14,8 @@ let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
 const GRID_SIZE = 25;
 
+let pattern = generateRandomPattern()
+
 
 // color palette
 
@@ -388,32 +390,105 @@ function drawSwitch(cx, cy, state = 'on') {
         .fill(palette.foreground);
 }
 
-function generateRandomPattern(rows, columns) {
+function generateRandomPattern(rows=5, columns=100) {
     const pattern = [];
     for (let row = 0; row < rows; row++) {
         const rowPattern = [];
         for (let col = 0; col < columns; col++) {
             rowPattern.push(Math.random() > 0.5 ? 1 : 0); // Randomly set each dot to 1 (on) or 0 (off)
+            // rowPattern.push(1);
         }
         pattern.push(rowPattern);
     }
     return pattern;
 }
 
+function createMatrix(pointsArray, width=svgWidth, height=svgHeight, CONST=GRID_SIZE) {
+    // Initialize the matrix with zeros
+    const matrix = Array.from({ length: Math.floor(height / CONST) }, () =>
+        Array(Math.floor(width / CONST)).fill(0)
+    );
+
+    // Iterate through each point in the pointsArray
+    pointsArray.forEach(point => {
+        // const [x_start, y_start, x_end, y_end] = [Math.floor(point.points[0].x/CONST), Math.floor(point.points[0].y/CONST), Math.floor(point.points[1].x/CONST), Math.floor(point.points[1].y/CONST)]
+
+        const [x_start, y_start, x_end, y_end] = point.points
+            .map(({ x, y }) => Math.floor(x / CONST))
+            .concat(point.points.map(({ y }) => Math.floor(y / CONST)))
+            .slice(0, 4);
+
+
+        console.log(x_start + "\t" + y_start + "\t" + x_end + "\t" + y_end)
+
+        matrix[x_start%4][x_end%4] = 1
+        matrix[y_start%4][y_end%4] = 1
+        
+        // const x = Math.floor(point.x / CONST);
+        // const y = Math.floor(point.y / CONST);
+
+        // // Calculate the matrix position
+        // const x = Math.floor(point.x / CONST);
+        // const y = Math.floor(point.y / CONST);
+
+        // // Set the corresponding matrix entry to 1
+        // if (x >= 0 && x < Math.floor(width / CONST) && y >= 0 && y < Math.floor(height / CONST)) {
+        //     console.log("SET!: " + y + "\t" + x)
+        //     matrix[y][x] = 1;
+        // }
+    });
+
+    return matrix;
+}
+
+
 // pattern corresponding to current catenary connection state
 function generateCatenaryPattern(rows, columns) {
+    // console.log(JSON.stringify(catenaries[0].points))
+    // console.log(JSON.stringify(createMatrix(catenaries)))
+    const matrix = createMatrix(catenaries)
     const pattern = [];
     for (let row = 0; row < rows; row++) {
         const rowPattern = [];
         for (let col = 0; col < columns; col++) {
-            rowPattern.push(Math.random() > 0.1*catenaries.length ? 1 : 0); // Randomly set each dot to 1 (on) or 0 (off)
+            if (matrix[row][col] == 1) {
+                rowPattern.push(0)
+            } else {
+                rowPattern.push(1)
+            }
+            // rowPattern.push(Math.random() > 0.1*catenaries.length ? 1 : 0); // Randomly set each dot to 1 (on) or 0 (off)
         }
         pattern.push(rowPattern);
     }
     return pattern;
 }
 
-function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
+function shiftRight(matrix) {
+    // Handle the case where the matrix is empty
+    if (matrix.length === 0 || matrix[0].length === 0) {
+        return matrix;
+    }
+
+    // Get the number of rows and columns
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+
+    // Create a new matrix to store the result
+    const result = Array.from({ length: numRows }, () => Array(numCols).fill(0));
+
+    // Perform the right shift with rotation
+    for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+            // Calculate the new column index with wrap-around
+            const newCol = (col + 1) % numCols;
+            result[row][newCol] = matrix[row][col];
+        }
+    }
+
+    return result;
+}
+
+function renderDotMatrix(svgId, rows=5, columns=100, dotSize=10, gap=10) {
     // Get the SVG element by ID
     const svg = document.getElementById(svgId);
     
@@ -421,10 +496,12 @@ function renderDotMatrix(svgId, rows, columns, dotSize, gap) {
     svg.innerHTML = '';
 
     // Generate a random pattern
-    let pattern = generateRandomPattern(rows, columns);
-    if (catenaries.length > 0) {
-        pattern = generateCatenaryPattern(rows, columns)
-    }
+    // let pattern = generateRandomPattern(rows, columns);
+    // if (catenaries.length > 0 && pattern.length == 0) {
+    //     pattern = generateCatenaryPattern(rows, columns)
+    // }
+
+    pattern = shiftRight(pattern)
 
     // Loop through each row and column to create the dots
     for (let row = 0; row < rows; row++) {
