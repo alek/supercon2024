@@ -14,6 +14,7 @@ let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
 const GRID_SIZE = 25;
 
+let pattern_active = false
 let pattern = generateRandomPattern()
 
 
@@ -217,6 +218,18 @@ canvas.addEventListener('mouseup', () => {
     if (points.length === 2) {
         const catenary = getCatenaryCurve(points[0], points[1], 500);
         catenaries.push({ points: [...points], catenary });
+        if (!pattern_active) {
+            pattern = generateCatenaryPattern()
+            pattern_active = true
+        } else {
+            // update pattern
+            const [x_start, y_start, x_end, y_end] = points
+                .map(({ x, y }) => Math.floor(x / GRID_SIZE))
+                .concat(points.map(({ y }) => Math.floor(y / GRID_SIZE)))
+                .slice(0, 4);
+            pattern[x_start%4][y_start%4] = 0
+            pattern[y_start%4][y_end%4] = 0
+        }
 
         plugRegistry.forEach(plug => {
             if (
@@ -234,7 +247,6 @@ canvas.addEventListener('mouseup', () => {
         draw();
     }
     draggingPoint = null;
-    pattern = generateCatenaryPattern()
 });
 
 function draw() {
@@ -420,7 +432,7 @@ function createMatrix(pointsArray, width=svgWidth, height=svgHeight, CONST=GRID_
             .slice(0, 4);
 
 
-        console.log(x_start + "\t" + y_start + "\t" + x_end + "\t" + y_end)
+        // console.log(x_start + "\t" + y_start + "\t" + x_end + "\t" + y_end)
 
         matrix[x_start%4][y_start%4] = 1
         matrix[y_start%4][y_end%4] = 1
@@ -590,7 +602,7 @@ renderDotMatrix('displaySvg', 5, 40, 10, 10);
 // Set up an interval to redraw the pattern every second (1000 ms)
 setInterval(() => {
     renderDotMatrix('displaySvg', 5, 40, 10, 10);
-}, 250);
+}, 200);
 
 document.body.style.backgroundColor = palette.background;
 
