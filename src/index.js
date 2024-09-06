@@ -17,20 +17,6 @@ const GRID_SIZE = 25;
 let pattern_active = false
 let pattern = generateRandomPattern()
 
-
-// color palette
-
-// const palette = {
-//     'background': "#252725",
-//     "foreground": "#D9CDBE",
-//     "text": '#D9CDBE',
-//     "rectangle": 'rgba(217,205,190,0.3)',
-//     "plugged": '#27A149',
-//     "dotoff": '#252725',
-//     "doton": '#D9CDBE',
-//     "wires":  ['#D57729', '#25A7D8', '#27A14A']
-// }
-
 const palette = {
     'background': "#232222",
     "foreground": "#D9CDBE",
@@ -39,41 +25,11 @@ const palette = {
     "plugged": '#E6E5D7',
     "dotoff": '#232222',
     "doton": '#E6E5D7',
-    // "wires":  ['#FF5800', '#E6E5D6', '#FF8B00']
     "wires":  ['#D57729', '#25A7D8', '#27A14A']
 }
 
-// randomization approach
-// const palette = (() => {
-//     const palettes = [
-//     {
-//         "background": "#1C1C1B",
-//         "foreground": "#FFFFFF",
-//         "text": "#FFFFFF",
-//         "rectangle": "rgba(255,255,255,0.5)",
-//         "plugged": "#FFD700",
-//         "dotoff": "#FFFFFF",
-//         "doton": "#FFD700",
-//         "wires": ["#4CAF50", "#FFC107", "#03A9F4"]
-//     },
-//     {
-//         "background": "#1C1C1B",
-//         "foreground": "#CCCCCC",
-//         "text": "#CCCCCC",
-//         "rectangle": "rgba(204,204,204,0.5)",
-//         "plugged": "#FF3366",
-//         "dotoff": "#CCCCCC",
-//         "doton": "#FF3366",
-//         "wires": ["#00BCD4", "#FFEB3B", "#8BC34A"]
-//     }]
-
-//     // Randomly select a palette and return it
-//     return palettes[Math.floor(Math.random() * palettes.length)];
-// })();
-
 const plugRegistry = [];
 
-// Function to generate a random alphanumeric string
 function getRandomAlphanumericString() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     const length = Math.floor(Math.random() * 6) + 4; // Random length between 8 and 16
