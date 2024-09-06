@@ -450,6 +450,73 @@ function shiftRight(matrix) {
     return result;
 }
 
+function conwaysGameOfLifeStep(matrix) {
+    // Handle the case where the matrix is empty
+    if (matrix.length === 0 || matrix[0].length === 0) {
+        return matrix;
+    }
+
+    // Get the number of rows and columns
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+
+    // Create a new matrix to store the next generation
+    const nextGen = Array.from({ length: numRows }, () => Array(numCols).fill(0));
+
+    // Helper function to count live neighbors
+    function countLiveNeighbors(row, col) {
+        let liveNeighbors = 0;
+        for (let i = -1; i <= 1; i++) {
+            for (let j = -1; j <= 1; j++) {
+                if (i === 0 && j === 0) continue; // Skip the cell itself
+                const newRow = row + i;
+                const newCol = col + j;
+                // Check if the neighbor is within bounds
+                if (newRow >= 0 && newRow < numRows && newCol >= 0 && newCol < numCols) {
+                    liveNeighbors += matrix[newRow][newCol];
+                }
+            }
+        }
+        return liveNeighbors;
+    }
+
+    // Apply Conway's Game of Life rules to each cell
+    let isSameAsPrevious = true; // Flag to check if the matrix stays the same
+    for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+            const liveNeighbors = countLiveNeighbors(row, col);
+            const currentState = matrix[row][col];
+
+            // Apply the rules of the game
+            if (currentState === 1 && (liveNeighbors < 2 || liveNeighbors > 3)) {
+                nextGen[row][col] = 0; // Cell dies
+            } else if (currentState === 1 && (liveNeighbors === 2 || liveNeighbors === 3)) {
+                nextGen[row][col] = 1; // Cell stays alive
+            } else if (currentState === 0 && liveNeighbors === 3) {
+                nextGen[row][col] = 1; // Dead cell becomes alive
+            }
+
+            // Check if the cell state has changed compared to the previous generation
+            if (nextGen[row][col] !== currentState) {
+                isSameAsPrevious = false; // There is a change
+            }
+        }
+    }
+
+    // If the matrix is the same as the previous generation, reset to random state
+    if (isSameAsPrevious) {
+        for (let row = 0; row < numRows; row++) {
+            for (let col = 0; col < numCols; col++) {
+                nextGen[row][col] = Math.random() > 0.5 ? 1 : 0; // Randomly set each cell to 0 or 1
+            }
+        }
+    }
+
+    return nextGen;
+}
+
+
+
 function shiftRightAndRotate(matrix) {
     // Handle the case where the matrix is empty
     if (matrix.length === 0 || matrix[0].length === 0) {
@@ -509,7 +576,11 @@ function renderDotMatrix(svgId, rows=5, columns=40, dotSize=10, gap=10) {
     // Clear any existing content in the SVG
     svg.innerHTML = '';
 
-    pattern = shiftRightAndRotate(pattern)
+    if (catenaries.length == 0) {
+        pattern = conwaysGameOfLifeStep(pattern)
+    } else {
+        pattern = shiftRightAndRotate(pattern) 
+    }
 
     // Loop through each row and column to create the dots
     for (let row = 0; row < rows; row++) {
@@ -526,7 +597,7 @@ function renderDotMatrix(svgId, rows=5, columns=40, dotSize=10, gap=10) {
             dot.setAttribute('cx', x + dotSize / 2);
             dot.setAttribute('cy', y + dotSize / 2);
             dot.setAttribute('r', dotSize / 2);
-            dot.setAttribute('fill', isOn ? palette.dotoff : palette.doton);
+            dot.setAttribute('fill', isOn ? palette.doton : palette.dotoff);
 
             // Append the dot to the SVG
             svg.appendChild(dot);
