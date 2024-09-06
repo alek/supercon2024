@@ -191,6 +191,8 @@ canvas.addEventListener('mouseup', () => {
         const catenary = getCatenaryCurve(points[0], points[1], 500);
         catenaries.push({ points: [...points], catenary });
         let coord = getGridCoordinates(points)
+        pattern[coord.start.y%5][coord.start.x%5] = 1
+        pattern[coord.end.y%5][coord.end.x%5] = 1
 
         plugRegistry.forEach(plug => {
             if (
