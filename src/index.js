@@ -169,6 +169,23 @@ canvas.addEventListener('mousemove', (event) => {
 //     }
 // });
 
+// convert canvas point to grid coordinates
+function getGridCoordinates(points) {
+        const [x_start, y_start, x_end, y_end] = points
+                .map(({ x, y }) => Math.floor(x / GRID_SIZE))
+                .concat(points.map(({ y }) => Math.floor(y / GRID_SIZE)))
+                .slice(0, 4);
+        return {
+            "start": {
+                "x": x_start,
+                "y": y_start
+            }, 
+            "end": {
+                "x": x_end,
+                "y": y_end
+            }
+        }    
+}
 
 canvas.addEventListener('mouseup', () => {
     if (points.length === 2) {
@@ -178,13 +195,10 @@ canvas.addEventListener('mouseup', () => {
             pattern = generateCatenaryPattern()
             pattern_active = true
         } else {
+            let coord = getGridCoordinates(points)
             // update pattern
-            const [x_start, y_start, x_end, y_end] = points
-                .map(({ x, y }) => Math.floor(x / GRID_SIZE))
-                .concat(points.map(({ y }) => Math.floor(y / GRID_SIZE)))
-                .slice(0, 4);
-            pattern[x_start%4][y_start%4] = 0
-            pattern[y_start%4][y_end%4] = 0
+            pattern[coord.start.x%4][coord.start.y%4] = 0
+            pattern[coord.start.y%4][coord.end.y%4] = 0
         }
 
         plugRegistry.forEach(plug => {
@@ -208,7 +222,6 @@ canvas.addEventListener('mouseup', () => {
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // catenaries.forEach(({ points: catenaryPoints, catenary }) => {
     catenaries.forEach(({ points: catenaryPoints, catenary }, index) => {
         
         let color = palette.wires[index%palette.wires.length]
@@ -380,31 +393,10 @@ function createMatrix(pointsArray, width=svgWidth, height=svgHeight, CONST=GRID_
 
     // Iterate through each point in the pointsArray
     pointsArray.forEach(point => {
-        // const [x_start, y_start, x_end, y_end] = [Math.floor(point.points[0].x/CONST), Math.floor(point.points[0].y/CONST), Math.floor(point.points[1].x/CONST), Math.floor(point.points[1].y/CONST)]
+        let coord = getGridCoordinates(point.points)
 
-        const [x_start, y_start, x_end, y_end] = point.points
-            .map(({ x, y }) => Math.floor(x / CONST))
-            .concat(point.points.map(({ y }) => Math.floor(y / CONST)))
-            .slice(0, 4);
-
-
-        // console.log(x_start + "\t" + y_start + "\t" + x_end + "\t" + y_end)
-
-        matrix[x_start%4][y_start%4] = 1
-        matrix[y_start%4][y_end%4] = 1
-        
-        // const x = Math.floor(point.x / CONST);
-        // const y = Math.floor(point.y / CONST);
-
-        // // Calculate the matrix position
-        // const x = Math.floor(point.x / CONST);
-        // const y = Math.floor(point.y / CONST);
-
-        // // Set the corresponding matrix entry to 1
-        // if (x >= 0 && x < Math.floor(width / CONST) && y >= 0 && y < Math.floor(height / CONST)) {
-        //     console.log("SET!: " + y + "\t" + x)
-        //     matrix[y][x] = 1;
-        // }
+        matrix[coord.start.x%4][coord.start.y%4] = 1
+        matrix[coord.start.y%4][coord.end.y%4] = 1
     });
 
     return matrix;
@@ -413,8 +405,6 @@ function createMatrix(pointsArray, width=svgWidth, height=svgHeight, CONST=GRID_
 
 // pattern corresponding to current catenary connection state
 function generateCatenaryPattern(rows=5, columns=40) {
-    // console.log(JSON.stringify(catenaries[0].points))
-    // console.log(JSON.stringify(createMatrix(catenaries)))
     const matrix = createMatrix(catenaries)
     const pattern = [];
     for (let row = 0; row < rows; row++) {
@@ -425,7 +415,6 @@ function generateCatenaryPattern(rows=5, columns=40) {
             } else {
                 rowPattern.push(1)
             }
-            // rowPattern.push(Math.random() > 0.1*catenaries.length ? 1 : 0); // Randomly set each dot to 1 (on) or 0 (off)
         }
         pattern.push(rowPattern);
     }
@@ -520,14 +509,7 @@ function renderDotMatrix(svgId, rows=5, columns=40, dotSize=10, gap=10) {
     // Clear any existing content in the SVG
     svg.innerHTML = '';
 
-    // Generate a random pattern
-    // let pattern = generateRandomPattern(rows, columns);
-    // if (catenaries.length > 0 && pattern.length == 0) {
-    //     pattern = generateCatenaryPattern(rows, columns)
-    // }
-
     pattern = shiftRightAndRotate(pattern)
-    // pattern = shiftRightAndInvertIfSet(pattern)
 
     // Loop through each row and column to create the dots
     for (let row = 0; row < rows; row++) {
