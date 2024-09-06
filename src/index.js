@@ -421,10 +421,6 @@ function generateCatenaryPattern(rows=5, columns=40) {
     return pattern;
 }
 
-function updateCatenaryPattern() {
-        // TODO
-}
-
 function shiftRight(matrix) {
     // Handle the case where the matrix is empty
     if (matrix.length === 0 || matrix[0].length === 0) {
@@ -542,6 +538,34 @@ function shiftRightAndRotate(matrix) {
     return result;
 }
 
+function shiftDiagonally(matrix) {
+    // Handle the case where the matrix is empty
+    if (matrix.length === 0 || matrix[0].length === 0) {
+        return matrix;
+    }
+
+    // Get the number of rows and columns
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+
+    // Create a new matrix to store the result
+    const result = Array.from({ length: numRows }, () => Array(numCols).fill(0));
+
+    // Perform the diagonal shift with wrap-around
+    for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+            // Calculate the new row and column indices with wrap-around
+            const newRow = (row + 1) % numRows;
+            const newCol = (col + 1) % numCols;
+            result[newRow][newCol] = matrix[row][col];
+        }
+    }
+
+    return result;
+}
+
+
+
 function shiftRightAndInvertIfSet(matrix) {
     // Handle the case where the matrix is empty
     if (matrix.length === 0 || matrix[0].length === 0) {
@@ -579,7 +603,8 @@ function renderDotMatrix(svgId, rows=5, columns=40, dotSize=10, gap=10) {
     if (catenaries.length == 0) {
         pattern = conwaysGameOfLifeStep(pattern)
     } else {
-        pattern = shiftRightAndRotate(pattern) 
+        // pattern = shiftRightAndRotate(pattern) 
+        pattern = shiftDiagonally(pattern)
     }
 
     // Loop through each row and column to create the dots
