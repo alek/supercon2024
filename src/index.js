@@ -14,7 +14,6 @@ let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
 const GRID_SIZE = 25;
 
-let pattern_active = false
 let pattern = generateRandomPattern()
 
 const palette = {
@@ -191,15 +190,7 @@ canvas.addEventListener('mouseup', () => {
     if (points.length === 2) {
         const catenary = getCatenaryCurve(points[0], points[1], 500);
         catenaries.push({ points: [...points], catenary });
-        if (!pattern_active) {
-            pattern = generateCatenaryPattern()
-            pattern_active = true
-        } else {
-            let coord = getGridCoordinates(points)
-            // update pattern
-            pattern[coord.start.x%4][coord.start.y%4] = 0
-            pattern[coord.start.y%4][coord.end.y%4] = 0
-        }
+        let coord = getGridCoordinates(points)
 
         plugRegistry.forEach(plug => {
             if (
