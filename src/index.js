@@ -623,6 +623,10 @@ function renderDotMatrix(svgId, rows=5, columns=40, dotSize=10, gap=10) {
     }
 }
 
+function flip(p=0.4) {
+    return (Math.random() < p)
+}
+
 // Immediately render the dot matrix display once
 renderDotMatrix('displaySvg', 5, 40, 10, 10);
 
@@ -637,37 +641,37 @@ document.body.style.backgroundColor = palette.background;
 let increment = 12;
 for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
     for (let x = GRID_SIZE * 2; x < svgWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
-        if (Math.random() < 0.9) {
+        if (flip(0.9)) {
             increment = 2;
             const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, palette.text);
             drawPlug(x, y, 4, null, textElement);
 
-            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
+            if (flip() && GRID_SIZE + increment < svgWidth) {
                 drawPlug(x + GRID_SIZE + increment, y, null, textElement);
                 increment++;
             }
 
-            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
+            if (flip() && GRID_SIZE + increment < svgWidth) {
                 drawButtons(x + GRID_SIZE * increment, y);
                 increment++;
             }
 
-            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
+            if (flip() && GRID_SIZE + increment < svgWidth) {
                 drawPot(x + GRID_SIZE * increment, y);
                 increment++;
             }
 
-            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
+            if (flip() && GRID_SIZE + increment < svgWidth) {
                 drawKnob(x + GRID_SIZE * increment, y);
                 increment++;
             }
 
-            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
+            if (flip() && GRID_SIZE + increment < svgWidth) {
                 drawSwitch(x + GRID_SIZE * increment, y, 'on');
                 increment++;
             }
 
-            if (Math.random() < 0.4 && GRID_SIZE + increment < svgWidth) {
+            if (flip() && GRID_SIZE + increment < svgWidth) {
                 drawSwitch(x + GRID_SIZE * increment, y, 'off');
                 increment++;
             }
