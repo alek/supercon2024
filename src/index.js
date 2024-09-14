@@ -585,8 +585,7 @@ function shiftRightAndInvertIfSet(matrix) {
     return result;
 }
 
-
-function renderDotMatrix(svgId, rows=5, columns=40, dotSize=10, gap=10) {
+function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
     // Get the SVG element by ID
     const svg = document.getElementById(svgId);
     
@@ -628,11 +627,11 @@ function flip(p=0.4) {
 }
 
 // Immediately render the dot matrix display once
-renderDotMatrix('displaySvg', 5, 40, 10, 10);
+renderDotMatrix('displaySvg', 4, 32, 10, 10);
 
 // Set up an interval to redraw the pattern every second (1000 ms)
 setInterval(() => {
-    renderDotMatrix('displaySvg', 5, 40, 10, 10);
+    renderDotMatrix('displaySvg', 4, 32, 10, 10);
 }, 200);
 
 document.body.style.backgroundColor = palette.background;
@@ -676,7 +675,13 @@ for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
                 increment++;
             }
 
-            drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * (increment + 1.5), GRID_SIZE * 2 - 4, palette.rectangle, 1, 20);
+            if (increment > 2) {
+                drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * (increment + 1.5), GRID_SIZE * 2 - 4, palette.rectangle, 1, 20);
+            } else {
+                drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * increment, GRID_SIZE * 2 - 4, palette.rectangle, 1, 20);
+                x -= GRID_SIZE*increment*0.5
+            }
+
             increment += 1.75;
         }
     }
