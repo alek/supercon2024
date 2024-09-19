@@ -592,6 +592,17 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
     // Clear any existing content in the SVG
     svg.innerHTML = '';
 
+    // Add a semitransparent red rectangle in the middle of the SVG
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', 315); // Center horizontally
+    rect.setAttribute('y', 0); // Center vertically
+    rect.setAttribute('width', 320);
+    rect.setAttribute('height', 70);
+    rect.setAttribute('fill', '#D57729');
+    rect.setAttribute('fill-opacity', 1);
+
+    svg.appendChild(rect);
+
     if (catenaries.length == 0) {
         pattern = conwaysGameOfLifeStep(pattern)
     } else {
@@ -618,11 +629,14 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
 
             // Append the dot to the SVG
             svg.appendChild(dot);
+
         }
+        // play the sound if midi triggerred - corresponding to the whole row?
+
     }
 }
 
-function flip(p=0.4) {
+function flip(p=0) {
     return (Math.random() < p)
 }
 
@@ -640,7 +654,7 @@ document.body.style.backgroundColor = palette.background;
 let increment = 12;
 for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
     for (let x = GRID_SIZE * 2; x < svgWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
-        if (flip(0.9)) {
+        if (flip(1)) {
             increment = 2;
             const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, palette.text);
             drawPlug(x, y, 4, null, textElement);
