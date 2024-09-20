@@ -28,6 +28,66 @@ const palette = {
 }
 
 const plugRegistry = [];
+let midiOutputs = []; // Store all available MIDI output devices by index
+let isMIDIInitialized = false; // Flag to track whether MIDI is initialized
+// const deviceMap = [12, 0, 3, 4, 9, 11]
+const deviceMap = [12, 0, 4, 3, 11, 3, 4]
+const bMajorScale = [11, 13, 15, 16, 18, 20, 22, 23, 35, 37, 39, 40, 42, 44, 46, 47, 59, 61, 63, 64, 66, 68, 70, 71, 83, 85, 87, 88, 90, 92, 94, 95, 107, 109, 111, 112, 114, 116, 118, 119]
+
+// Function to initialize MIDI access and store all available MIDI output devices
+function initMIDI() {
+  if (navigator.requestMIDIAccess) {
+    navigator.requestMIDIAccess().then(
+      function (midiAccess) {
+        midiAccess.outputs.forEach((output) => {
+          midiOutputs.push(output); // Store each output device in the array
+        });
+
+        if (midiOutputs.length === 0) {
+          console.error('No MIDI output devices found.');
+        } else {
+          isMIDIInitialized = true; // Set flag to true once MIDI devices are initialized
+          //console.log('MIDI output devices initialized:', midiOutputs);
+          midiOutputs.forEach((output, index) => {
+            console.log(`Device ${index}:`, output.name);
+          });
+        }
+      },
+      function () {
+        console.error('Failed to get MIDI access.');
+      }
+    );
+  } else {
+    console.error('WebMIDI is not supported in this browser.');
+  }
+}
+
+// Function to play a MIDI note on a specific device by index
+function playMIDINote(noteNumber, velocity = 127, duration = 1000, deviceIndex = 0, dot) {
+  if (!isMIDIInitialized) {
+    console.error('MIDI devices are not yet initialized. Please wait for initialization.');
+    return;
+  }
+
+  if (deviceIndex >= 0 && deviceIndex < midiOutputs.length) {
+    let midiOutput = midiOutputs[deviceIndex];
+    
+    //console.log(`Playing on device ${deviceIndex}: ${midiOutput.name}`);
+
+    // Send a "Note On" message
+    midiOutput.send([0x90, noteNumber, velocity]);
+
+    // Send a "Note Off" message after the specified duration
+    setTimeout(() => {
+      midiOutput.send([0x80, noteNumber, 0]);
+      dot.setAttribute('fill', palette.dotoff);
+      // dot.setAttribute('stroke', palette.dotoff);
+    }, duration);
+
+  } else {
+    console.error('Invalid MIDI output device index.');
+  }
+}
 
 function getRandomAlphanumericString() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -439,6 +499,29 @@ function shiftRight(matrix) {
     return result;
 }
 
+function shiftDown(matrix) {
+    // Handle the case where the matrix is empty
+    if (matrix.length === 0 || matrix[0].length === 0) {
+        return matrix;
+    }
+
+    // Get the number of rows and columns
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+
+    // Create a new matrix to store the result
+    const result = Array.from({ length: numRows }, () => Array(numCols).fill(0));
+
+    // Perform the right shift with rotation
+    for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+            const newRow = (row + 1) % numRows;
+            result[newRow][col] = matrix[row][col];            
+        }
+    }
+    return result;
+}
+
 function conwaysGameOfLifeStep(matrix) {
     // Handle the case where the matrix is empty
     if (matrix.length === 0 || matrix[0].length === 0) {
@@ -593,21 +676,22 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
     svg.innerHTML = '';
 
     // Add a semitransparent red rectangle in the middle of the SVG
-    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    rect.setAttribute('x', 315); // Center horizontally
-    rect.setAttribute('y', 0); // Center vertically
-    rect.setAttribute('width', 320);
-    rect.setAttribute('height', 70);
-    rect.setAttribute('fill', '#D57729');
-    rect.setAttribute('fill-opacity', 1);
+    // const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    // rect.setAttribute('x', 315); // Center horizontally
+    // rect.setAttribute('y', 0); // Center vertically
+    // rect.setAttribute('width', 320);
+    // rect.setAttribute('height', 70);
+    // rect.setAttribute('fill', '#D57729');
+    // rect.setAttribute('fill-opacity', 1);
 
-    svg.appendChild(rect);
+    // svg.appendChild(rect);
 
     if (catenaries.length == 0) {
         pattern = conwaysGameOfLifeStep(pattern)
     } else {
         // pattern = shiftRightAndRotate(pattern) 
-        pattern = shiftDiagonally(pattern)
+        // pattern = shiftDiagonally(pattern)
+        pattern = shiftDown(pattern)
     }
 
     // Loop through each row and column to create the dots
@@ -629,14 +713,19 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
 
             // Append the dot to the SVG
             svg.appendChild(dot);
+            if (isOn) {
+                if (Math.random() < 0.5) {
+                    dot.setAttribute('fill', "#D57729");
+                    playMIDINote(bMajorScale[col], 127, 50, deviceMap[row], dot) 
+                }                
+            }
 
         }
-        // play the sound if midi triggerred - corresponding to the whole row?
 
     }
 }
 
-function flip(p=0) {
+function flip(p=0.3) {
     return (Math.random() < p)
 }
 
@@ -646,13 +735,14 @@ renderDotMatrix('displaySvg', 4, 32, 10, 10);
 // Set up an interval to redraw the pattern every second (1000 ms)
 setInterval(() => {
     renderDotMatrix('displaySvg', 4, 32, 10, 10);
-}, 200);
+}, 150);
 
 document.body.style.backgroundColor = palette.background;
+initMIDI()
 
 // Example of how to draw and associate elements
 let increment = 12;
-for (let y = GRID_SIZE * 2; y < svgHeight; y += GRID_SIZE * 3) {
+for (let y = GRID_SIZE * 2; y < svgHeight*0.6; y += GRID_SIZE * 3) {
     for (let x = GRID_SIZE * 2; x < svgWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
         if (flip(1)) {
             increment = 2;
