@@ -14,7 +14,8 @@ let draggingPoint = null;
 const gridLines = []; // To store references to grid lines for easy access later
 const GRID_SIZE = 25;
 
-let pattern = generateRandomPattern()
+// let pattern = generateRandomPattern()
+let pattern = generateEmptyPattern()
 
 const palette = {
     'background': "#232222",
@@ -102,6 +103,7 @@ function getRandomAlphanumericString() {
     return result;
 }
 
+
 // Snap to the nearest grid or plug
 function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.5) {
     let nearestPlug = null;
@@ -130,6 +132,10 @@ function snapToGrid(x, y, gridSize = GRID_SIZE, snapThreshold = gridSize * 0.5) 
     }
 
     return { x, y, type: "miss" };
+}
+
+function findIndexOfEntry(array, target) {
+  return array.findIndex(entry => entry.x === target.x && entry.y === target.y);
 }
 
 // Highlight grid lines corresponding to a specific grid intersection
@@ -230,7 +236,7 @@ canvas.addEventListener('mousemove', (event) => {
 
 // convert canvas point to grid coordinates
 function getGridCoordinates(points) {
-        const [x_start, y_start, x_end, y_end] = points
+        const [x_end, y_end, x_start, y_start] = points
                 .map(({ x, y }) => Math.floor(x / GRID_SIZE))
                 .concat(points.map(({ y }) => Math.floor(y / GRID_SIZE)))
                 .slice(0, 4);
@@ -251,8 +257,15 @@ canvas.addEventListener('mouseup', () => {
         const catenary = getCatenaryCurve(points[0], points[1], 500);
         catenaries.push({ points: [...points], catenary });
         let coord = getGridCoordinates(points)
-        pattern[coord.start.y%5][coord.start.x%5] = 1
-        pattern[coord.end.y%5][coord.end.x%5] = 1
+        
+        let outPlug = snapToGrid(points[0].x, points[0].y)
+        let inPlug = snapToGrid(points[1].x, points[1].y)
+
+        let outIndex = findIndexOfEntry(plugRegistry, {'x': outPlug.x, 'y': outPlug.y})
+        let inIndex = findIndexOfEntry(plugRegistry, {'x': inPlug.x, 'y': inPlug.y})
+
+        pattern[0][outIndex] = 1
+        pattern[0][inIndex] = 1
 
         plugRegistry.forEach(plug => {
             if (
@@ -432,6 +445,18 @@ function generateRandomPattern(rows=5, columns=40) {
         for (let col = 0; col < columns; col++) {
             rowPattern.push(Math.random() > 0.5 ? 1 : 0); // Randomly set each dot to 1 (on) or 0 (off)
             // rowPattern.push(1);
+        }
+        pattern.push(rowPattern);
+    }
+    return pattern;
+}
+
+function generateEmptyPattern(rows=5, columns=40) {
+    const pattern = [];
+    for (let row = 0; row < rows; row++) {
+        const rowPattern = [];
+        for (let col = 0; col < columns; col++) {
+            rowPattern.push(0);
         }
         pattern.push(rowPattern);
     }
@@ -675,23 +700,13 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
     // Clear any existing content in the SVG
     svg.innerHTML = '';
 
-    // Add a semitransparent red rectangle in the middle of the SVG
-    // const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    // rect.setAttribute('x', 315); // Center horizontally
-    // rect.setAttribute('y', 0); // Center vertically
-    // rect.setAttribute('width', 320);
-    // rect.setAttribute('height', 70);
-    // rect.setAttribute('fill', '#D57729');
-    // rect.setAttribute('fill-opacity', 1);
-
-    // svg.appendChild(rect);
-
     if (catenaries.length == 0) {
-        pattern = conwaysGameOfLifeStep(pattern)
+        // pattern = conwaysGameOfLifeStep(pattern)
     } else {
         // pattern = shiftRightAndRotate(pattern) 
         // pattern = shiftDiagonally(pattern)
         pattern = shiftDown(pattern)
+        
     }
 
     // Loop through each row and column to create the dots
@@ -713,10 +728,12 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
 
             // Append the dot to the SVG
             svg.appendChild(dot);
-            if (isOn) {
-                if (Math.random() < 0.5) {
+            if (isOn && row > 1) {
+                if (Math.random() < 1) {
                     dot.setAttribute('fill', "#D57729");
-                    playMIDINote(bMajorScale[col], 127, 50, deviceMap[row], dot) 
+                    // playMIDINote(bMajorScale[col], 127, 50, deviceMap[row], dot) 
+                    // playMIDINote(bMajorScale[col], 127, 50, 3, dot) 
+                    playMIDINote(bMajorScale[col], 127, 50, row == 2 ? 12 : 3, dot) 
                 }                
             }
 
