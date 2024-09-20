@@ -265,7 +265,7 @@ canvas.addEventListener('mouseup', () => {
         let inIndex = findIndexOfEntry(plugRegistry, {'x': inPlug.x, 'y': inPlug.y})
 
         pattern[0][outIndex] = 1
-        pattern[0][inIndex] = 1
+        pattern[2][inIndex] = 1
 
         plugRegistry.forEach(plug => {
             if (
@@ -706,6 +706,14 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
         // pattern = shiftRightAndRotate(pattern) 
         // pattern = shiftDiagonally(pattern)
         pattern = shiftDown(pattern)
+
+        if (Math.random() < 0.2) {
+            pattern = shiftDiagonally(pattern)
+        }
+
+        if (Math.random() < 0.1) {
+            pattern = shiftRightAndRotate(pattern) 
+        }
         
     }
 
@@ -728,12 +736,13 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
 
             // Append the dot to the SVG
             svg.appendChild(dot);
-            if (isOn && row > 1) {
-                if (Math.random() < 1) {
+            // if (isOn && row > 0) {
+            if (isOn) {
+                if (Math.random() < 0.3) {
                     dot.setAttribute('fill', "#D57729");
-                    // playMIDINote(bMajorScale[col], 127, 50, deviceMap[row], dot) 
+                    playMIDINote(bMajorScale[col], 127, 250, deviceMap[row], dot) 
                     // playMIDINote(bMajorScale[col], 127, 50, 3, dot) 
-                    playMIDINote(bMajorScale[col], 127, 50, row == 2 ? 12 : 3, dot) 
+                    // playMIDINote(bMajorScale[col], 127, 50, row == 2 ? 12 : 3, dot) 
                 }                
             }
 
@@ -752,7 +761,7 @@ renderDotMatrix('displaySvg', 4, 32, 10, 10);
 // Set up an interval to redraw the pattern every second (1000 ms)
 setInterval(() => {
     renderDotMatrix('displaySvg', 4, 32, 10, 10);
-}, 150);
+}, 250);
 
 document.body.style.backgroundColor = palette.background;
 initMIDI()
