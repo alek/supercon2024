@@ -33,7 +33,17 @@ let midiOutputs = []; // Store all available MIDI output devices by index
 let isMIDIInitialized = false; // Flag to track whether MIDI is initialized
 // const deviceMap = [12, 0, 3, 4, 9, 11]
 const deviceMap = [12, 0, 4, 3, 11, 3, 4]
-const bMajorScale = [11, 13, 15, 16, 18, 20, 22, 23, 35, 37, 39, 40, 42, 44, 46, 47, 59, 61, 63, 64, 66, 68, 70, 71, 83, 85, 87, 88, 90, 92, 94, 95, 107, 109, 111, 112, 114, 116, 118, 119]
+const aMajorPentatonic = [
+  21, 23, 25, 28, 30,  // A0
+  33, 35, 37, 40, 42,  // A1
+  45, 47, 49, 52, 54,  // A2
+  57, 59, 61, 64, 66,  // A3
+  69, 71, 73, 76, 78,  // A4 (Middle A)
+  81, 83, 85, 88, 90,  // A5
+  93, 95, 97, 100, 102,  // A6
+  105, 107, 109, 112, 114,  // A7
+  117, 119, 121, 124, 126  // A8
+]
 
 // Function to initialize MIDI access and store all available MIDI output devices
 function initMIDI() {
@@ -63,8 +73,8 @@ function initMIDI() {
   }
 }
 
-// Function to play a MIDI note on a specific device by index
-function playMIDINote(noteNumber, velocity = 127, duration = 1000, deviceIndex = 0, dot) {
+// Function to play a MIDI note on a specific device and channel by index
+function playMIDINote(noteNumber, velocity = 127, duration = 1000, deviceIndex = 0, dot, midiChannel = 0) {
   if (!isMIDIInitialized) {
     console.error('MIDI devices are not yet initialized. Please wait for initialization.');
     return;
@@ -72,23 +82,30 @@ function playMIDINote(noteNumber, velocity = 127, duration = 1000, deviceIndex =
 
   if (deviceIndex >= 0 && deviceIndex < midiOutputs.length) {
     let midiOutput = midiOutputs[deviceIndex];
-    
-    //console.log(`Playing on device ${deviceIndex}: ${midiOutput.name}`);
+
+    // Ensure the MIDI channel is between 0 and 15
+    midiChannel = midiChannel < 0 ? 0 : (midiChannel > 15 ? 15 : midiChannel);
+
+    // "Note On" and "Note Off" messages with the specified channel (0x90 is for channel 1, etc.)
+    let noteOnMessage = [0x90 + midiChannel, noteNumber, velocity];
+    let noteOffMessage = [0x80 + midiChannel, noteNumber, 0];
 
     // Send a "Note On" message
-    midiOutput.send([0x90, noteNumber, velocity]);
+    midiOutput.send(noteOnMessage);
 
     // Send a "Note Off" message after the specified duration
     setTimeout(() => {
-      midiOutput.send([0x80, noteNumber, 0]);
-      dot.setAttribute('fill', palette.dotoff);
-      // dot.setAttribute('stroke', palette.dotoff);
+      midiOutput.send(noteOffMessage);
+      if (dot) {
+        dot.setAttribute('fill', palette.dotoff);
+      }
     }, duration);
 
   } else {
     console.error('Invalid MIDI output device index.');
   }
 }
+
 
 function getRandomAlphanumericString() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -696,6 +713,13 @@ function shiftRightAndInvertIfSet(matrix) {
 function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
     // Get the SVG element by ID
     const svg = document.getElementById(svgId);
+    if (Math.random() < 0.5) {
+        playMIDINote(36, 127, 50, 10, null, 3) 
+    }
+    if (Math.random() < 0.25) {
+        playMIDINote(37, 127, 50, 10, null, 3) 
+    }
+    playMIDINote(38, Math.floor(Math.random()*127), 50, 10, null, 3) 
     
     // Clear any existing content in the SVG
     svg.innerHTML = '';
@@ -740,9 +764,7 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
             if (isOn) {
                 if (Math.random() < 0.3) {
                     dot.setAttribute('fill', "#D57729");
-                    playMIDINote(bMajorScale[col], 127, 250, deviceMap[row], dot) 
-                    // playMIDINote(bMajorScale[col], 127, 50, 3, dot) 
-                    // playMIDINote(bMajorScale[col], 127, 50, row == 2 ? 12 : 3, dot) 
+                    playMIDINote(aMajorPentatonic[col], 127, 200, deviceMap[row], dot) 
                 }                
             }
 
@@ -761,10 +783,10 @@ renderDotMatrix('displaySvg', 4, 32, 10, 10);
 // Set up an interval to redraw the pattern every second (1000 ms)
 setInterval(() => {
     renderDotMatrix('displaySvg', 4, 32, 10, 10);
-}, 250);
+}, 200);
 
 document.body.style.backgroundColor = palette.background;
-initMIDI()
+// initMIDI()
 
 // Example of how to draw and associate elements
 let increment = 12;
