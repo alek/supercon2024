@@ -111,4 +111,5 @@ header a:hover {
     width: 640px; /* Matches the width of displaySvg */
     text-align: center; /* Centers the text inside */
     margin: 0 auto; /* Centers the container itself */
+    margin-top: -150px;
 }
