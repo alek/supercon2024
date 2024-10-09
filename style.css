@@ -20,7 +20,10 @@ body {
     margin: 0;
     /*background-color: #201E1F;*/
     background-color: #252725;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #E6E5D7;
 }
+
 header {
     max-width: 850px;
     align:  center;
@@ -34,6 +37,10 @@ header {
 header a {
     text-decoration: none;
     color: #fff;
+}
+
+header a:hover {
+    color: #D57729;
 }
 
 .header-nav {
@@ -77,6 +84,7 @@ header a {
     justify-content: center;
     align-items: center;
 }
+
 .display {
     display: flex;
     justify-content: center;
@@ -97,4 +105,10 @@ header a {
 #debug {
     color:  #fff;
     margin:  auto;
+}
+
+.content-container {
+    width: 640px; /* Matches the width of displaySvg */
+    text-align: center; /* Centers the text inside */
+    margin: 0 auto; /* Centers the container itself */
 }
