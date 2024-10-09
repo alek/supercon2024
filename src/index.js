@@ -28,6 +28,8 @@ const palette = {
     "wires":  ['#D57729', '#25A7D8', '#27A14A']
 }
 
+let midiEnabled = false
+
 const plugRegistry = [];
 let midiOutputs = []; // Store all available MIDI output devices by index
 let isMIDIInitialized = false; // Flag to track whether MIDI is initialized
@@ -713,19 +715,21 @@ function shiftRightAndInvertIfSet(matrix) {
 function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
     // Get the SVG element by ID
     const svg = document.getElementById(svgId);
-    if (Math.random() < 0.5) {
-        playMIDINote(36, 127, 50, 10, null, 3) 
+    if (midiEnabled) {
+        if (Math.random() < 0.5) {
+            playMIDINote(36, 127, 50, 10, null, 3) 
+        }
+        if (Math.random() < 0.25) {
+            playMIDINote(37, 127, 50, 10, null, 3) 
+        }
+        playMIDINote(38, Math.floor(Math.random()*127), 50, 10, null, 3) 
     }
-    if (Math.random() < 0.25) {
-        playMIDINote(37, 127, 50, 10, null, 3) 
-    }
-    playMIDINote(38, Math.floor(Math.random()*127), 50, 10, null, 3) 
-    
+
     // Clear any existing content in the SVG
     svg.innerHTML = '';
 
     if (catenaries.length == 0) {
-        // pattern = conwaysGameOfLifeStep(pattern)
+        pattern = conwaysGameOfLifeStep(pattern)
     } else {
         // pattern = shiftRightAndRotate(pattern) 
         // pattern = shiftDiagonally(pattern)
@@ -763,8 +767,12 @@ function renderDotMatrix(svgId, rows=4, columns=32, dotSize=10, gap=10) {
             // if (isOn && row > 0) {
             if (isOn) {
                 if (Math.random() < 0.3) {
-                    dot.setAttribute('fill', "#D57729");
-                    playMIDINote(aMajorPentatonic[col], 127, 200, deviceMap[row], dot) 
+                    if (catenaries.length > 0) {
+                        dot.setAttribute('fill', "#D57729");
+                    }
+                    if (midiEnabled) {
+                        playMIDINote(aMajorPentatonic[col], 127, 200, deviceMap[row], dot) 
+                    }
                 }                
             }
 
@@ -786,7 +794,11 @@ setInterval(() => {
 }, 200);
 
 document.body.style.backgroundColor = palette.background;
-// initMIDI()
+if (midiEnabled) {
+    initMIDI()
+}
+
+console.log("UO")
 
 // Example of how to draw and associate elements
 let increment = 12;
