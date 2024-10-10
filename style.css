@@ -114,3 +114,74 @@ header a:hover {
     margin: 0 auto; 
     /*margin-top: -150px;*/
 }
+
+a {
+    color: #D57729;
+    text-decoration: none;
+}
+
+/* Container for all talks */
+#speakers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 3em;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-weight: 300;
+    font-size: 1em;
+}
+
+/* Styling each talk */
+.talk {
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect for each talk */
+/*.talk:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}*/
+
+/* Presenter name and pronouns */
+.talk h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Talk title */
+.talk h3 {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+    /*color: #555;*/
+}
+
+.talk h4 {
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    color:  rgba(255,255,255,0.5);
+}
+
+/* Description and bio */
+.talk p {
+    margin-bottom: 15px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Headshot link styling */
+.headshot-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.headshot-link:hover {
+    background-color: #0056b3;
+}

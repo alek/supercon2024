@@ -1,4 +1,4 @@
-const conferencecontent = {
+const CONFERENCECONTENT = {
 	"talks": [
     {
         "Final Copy Approved": "TRUE",

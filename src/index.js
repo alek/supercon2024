@@ -858,15 +858,63 @@ if (canvas && svgContainer) {
     }
 }
 
-console.log(conferencecontent)
-
-// // Convert the JSON object to a pretty-printed string
-// const prettyContent = JSON.stringify(content, null, 4);
-
-// // Find the DOM element with the ID "speakers"
+// const prettyContent = JSON.stringify(CONFERENCECONTENT, null, 4);
 // const speakersElement = document.getElementById("speakers");
-
-// // Set the text content of the element to the pretty-printed JSON
 // if (speakersElement) {
 //     speakersElement.textContent = prettyContent;
 // }
+
+
+// Function to render the talks in HTML
+function renderTalks(talks) {
+    const container = document.getElementById('speakers');
+    if (!container) return; // Ensure the container exists
+
+    // Iterate through each talk and create HTML structure for it
+    talks.forEach(talk => {
+        // Create a wrapper for each talk
+        const talkDiv = document.createElement('div');
+        talkDiv.classList.add('talk');
+
+        // Add the presenter name
+        const name = document.createElement('h2');
+        name.textContent = `${talk['Presenter Name']}`;
+        talkDiv.appendChild(name);
+
+        const pronouns = document.createElement('h4');
+        pronouns.textContent = `${talk['Pronouns']}`;
+        talkDiv.appendChild(pronouns);
+
+        // Add the talk title
+        const title = document.createElement('h3');
+        title.textContent = talk['Talk Title'];
+        talkDiv.appendChild(title);
+
+        // Add the talk description
+        const description = document.createElement('p');
+        description.textContent = talk['Talk Description (20-40 words)'];
+        talkDiv.appendChild(description);
+
+        // Add the presenter bio
+        const bio = document.createElement('p');
+        bio.innerHTML = `<strong>Bio:</strong> ${talk['Presenter Bio (edited, 20-40 words)']}`;
+        talkDiv.appendChild(bio);
+
+        // Add a link to the headshot if available
+        // if (talk['Headshot']) {
+        //     const headshotLink = document.createElement('a');
+        //     headshotLink.href = talk['Headshot'];
+        //     headshotLink.textContent = 'View Headshot';
+        //     headshotLink.target = '_blank';
+        //     headshotLink.classList.add('headshot-link');
+        //     talkDiv.appendChild(headshotLink);
+        // }
+
+        // Append the talkDiv to the container
+        container.appendChild(talkDiv);
+    });
+}
+
+// Call the renderTalks function with the data from the content variable
+renderTalks(CONFERENCECONTENT.talks);
+
