@@ -857,3 +857,16 @@ if (canvas && svgContainer) {
         }
     }
 }
+
+console.log(conferencecontent)
+
+// // Convert the JSON object to a pretty-printed string
+// const prettyContent = JSON.stringify(content, null, 4);
+
+// // Find the DOM element with the ID "speakers"
+// const speakersElement = document.getElementById("speakers");
+
+// // Set the text content of the element to the pretty-printed JSON
+// if (speakersElement) {
+//     speakersElement.textContent = prettyContent;
+// }
