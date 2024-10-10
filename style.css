@@ -108,8 +108,9 @@ header a:hover {
 }
 
 .content-container {
-    width: 640px; /* Matches the width of displaySvg */
-    text-align: center; /* Centers the text inside */
-    margin: 0 auto; /* Centers the container itself */
-    margin-top: -150px;
+    padding: 2em;
+    width: 850px;
+    /*text-align: center;*/
+    margin: 0 auto; 
+    /*margin-top: -150px;*/
 }

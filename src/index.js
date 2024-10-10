@@ -2,11 +2,11 @@ import { getCatenaryCurve, drawResult } from 'catenary-curve';
 import { SVG } from '@svgdotjs/svg.js';
 
 const canvas = document.getElementById('catenaryCanvas');
-const context = canvas.getContext('2d');
-const svgContainer = document.getElementById('catenarySvg');
-const drawSvg = SVG().addTo(svgContainer).size('100%', '100%'); // Use svg.js to create the SVG drawing context
+const context = canvas ? canvas.getContext('2d') : null;
 
-const [svgWidth, svgHeight] = [svgContainer.getAttribute('width'), svgContainer.getAttribute('height')];
+const svgContainer = document.getElementById('catenarySvg');
+const drawSvg = svgContainer ? SVG().addTo(svgContainer).size('100%', '100%') : null;
+const [svgWidth, svgHeight] = svgContainer ? [svgContainer.getAttribute('width'), svgContainer.getAttribute('height')] : [0,0];
 
 let points = [];
 let catenaries = [];
@@ -181,25 +181,27 @@ function getEventPosition(event) {
 }
 
 // Event listeners for drawing catenaries and interacting with the canvas
-canvas.addEventListener('mousedown', (event) => {
-    let { offsetX: x, offsetY: y } = getEventPosition(event);
-    let type;
+if (canvas) {
+    canvas.addEventListener('mousedown', (event) => {
+        let { offsetX: x, offsetY: y } = getEventPosition(event);
+        let type;
 
-    ({ x, y, type } = snapToGrid(x, y));
+        ({ x, y, type } = snapToGrid(x, y));
 
-    if (type == "plug" && points.length < 2) {
-        points.push({ x, y });
+        if (type == "plug" && points.length < 2) {
+            points.push({ x, y });
 
-        points.forEach(point => {
-            if (Math.hypot(point.x - x, point.y - y) < 10) {
-                draggingPoint = point;
-            }
-        });
+            points.forEach(point => {
+                if (Math.hypot(point.x - x, point.y - y) < 10) {
+                    draggingPoint = point;
+                }
+            });
 
-        draw();        
-    }
+            draw();        
+        }
 
-});
+    });
+}
 
 // canvas.addEventListener('touchstart', (event) => {
 //     event.preventDefault(); // Prevent default behavior like scrolling    
@@ -224,19 +226,21 @@ canvas.addEventListener('mousedown', (event) => {
 // });
 
 
-canvas.addEventListener('mousemove', (event) => {
-    event.preventDefault(); // Prevent default behavior like scrolling    
-    let { offsetX: x, offsetY: y } = getEventPosition(event);
+if (canvas) {
+    canvas.addEventListener('mousemove', (event) => {
+        event.preventDefault(); // Prevent default behavior like scrolling    
+        let { offsetX: x, offsetY: y } = getEventPosition(event);
 
-    if (draggingPoint) {
-        ({ x, y } = snapToGrid(x, y));
-        draggingPoint.x = x;
-        draggingPoint.y = y;
-        draw();
-    } else if (points.length === 1) {
-        drawTemporaryCatenary(x, y);
-    }
-});
+        if (draggingPoint) {
+            ({ x, y } = snapToGrid(x, y));
+            draggingPoint.x = x;
+            draggingPoint.y = y;
+            draw();
+        } else if (points.length === 1) {
+            drawTemporaryCatenary(x, y);
+        }
+    });
+}
 
 // canvas.addEventListener('touchmove', (event) => {
 //     event.preventDefault(); // Prevent default behavior like scrolling
@@ -271,38 +275,40 @@ function getGridCoordinates(points) {
         }    
 }
 
-canvas.addEventListener('mouseup', () => {
-    if (points.length === 2) {
-        const catenary = getCatenaryCurve(points[0], points[1], 500);
-        catenaries.push({ points: [...points], catenary });
-        let coord = getGridCoordinates(points)
-        
-        let outPlug = snapToGrid(points[0].x, points[0].y)
-        let inPlug = snapToGrid(points[1].x, points[1].y)
+if (canvas) {
+    canvas.addEventListener('mouseup', () => {
+        if (points.length === 2) {
+            const catenary = getCatenaryCurve(points[0], points[1], 500);
+            catenaries.push({ points: [...points], catenary });
+            let coord = getGridCoordinates(points)
+            
+            let outPlug = snapToGrid(points[0].x, points[0].y)
+            let inPlug = snapToGrid(points[1].x, points[1].y)
 
-        let outIndex = findIndexOfEntry(plugRegistry, {'x': outPlug.x, 'y': outPlug.y})
-        let inIndex = findIndexOfEntry(plugRegistry, {'x': inPlug.x, 'y': inPlug.y})
+            let outIndex = findIndexOfEntry(plugRegistry, {'x': outPlug.x, 'y': outPlug.y})
+            let inIndex = findIndexOfEntry(plugRegistry, {'x': inPlug.x, 'y': inPlug.y})
 
-        pattern[0][outIndex] = 1
-        pattern[2][inIndex] = 1
+            pattern[0][outIndex] = 1
+            pattern[2][inIndex] = 1
 
-        plugRegistry.forEach(plug => {
-            if (
-                (plug.x === points[0].x && plug.y === points[0].y) ||
-                (plug.x === points[1].x && plug.y === points[1].y)
-            ) {
-                // Make associated text bold & colored
-                if (plug.text) {
-                    plug.text.font({ weight: '700' });  // Set the font weight to bold
+            plugRegistry.forEach(plug => {
+                if (
+                    (plug.x === points[0].x && plug.y === points[0].y) ||
+                    (plug.x === points[1].x && plug.y === points[1].y)
+                ) {
+                    // Make associated text bold & colored
+                    if (plug.text) {
+                        plug.text.font({ weight: '700' });  // Set the font weight to bold
+                    }
                 }
-            }
-        });
+            });
 
-        points = [];
-        draw();
-    }
-    draggingPoint = null;
-});
+            points = [];
+            draw();
+        }
+        draggingPoint = null;
+    });
+}
 
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -786,67 +792,68 @@ function flip(p=0.3) {
 }
 
 // Immediately render the dot matrix display once
-renderDotMatrix('displaySvg', 4, 32, 10, 10);
-
-// Set up an interval to redraw the pattern every second (1000 ms)
-setInterval(() => {
+if (document.getElementById('displaySvg')) {
     renderDotMatrix('displaySvg', 4, 32, 10, 10);
-}, 200);
+
+    // Set up an interval to redraw the pattern every second (1000 ms)
+    setInterval(() => {
+        renderDotMatrix('displaySvg', 4, 32, 10, 10);
+    }, 200);
+}
 
 document.body.style.backgroundColor = palette.background;
 if (midiEnabled) {
     initMIDI()
 }
 
-console.log("UO")
+if (canvas && svgContainer) {
+    let increment = 12;
+    for (let y = GRID_SIZE * 2; y < svgHeight*0.6; y += GRID_SIZE * 3) {
+        for (let x = GRID_SIZE * 2; x < svgWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
+            if (flip(1)) {
+                increment = 2;
+                const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, palette.text);
+                drawPlug(x, y, 4, null, textElement);
 
-// Example of how to draw and associate elements
-let increment = 12;
-for (let y = GRID_SIZE * 2; y < svgHeight*0.6; y += GRID_SIZE * 3) {
-    for (let x = GRID_SIZE * 2; x < svgWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
-        if (flip(1)) {
-            increment = 2;
-            const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, palette.text);
-            drawPlug(x, y, 4, null, textElement);
+                if (flip() && GRID_SIZE + increment < svgWidth) {
+                    drawPlug(x + GRID_SIZE + increment, y, null, textElement);
+                    increment++;
+                }
 
-            if (flip() && GRID_SIZE + increment < svgWidth) {
-                drawPlug(x + GRID_SIZE + increment, y, null, textElement);
-                increment++;
+                if (flip() && GRID_SIZE + increment < svgWidth) {
+                    drawButtons(x + GRID_SIZE * increment, y);
+                    increment++;
+                }
+
+                if (flip() && GRID_SIZE + increment < svgWidth) {
+                    drawPot(x + GRID_SIZE * increment, y);
+                    increment++;
+                }
+
+                if (flip() && GRID_SIZE + increment < svgWidth) {
+                    drawKnob(x + GRID_SIZE * increment, y);
+                    increment++;
+                }
+
+                if (flip() && GRID_SIZE + increment < svgWidth) {
+                    drawSwitch(x + GRID_SIZE * increment, y, 'on');
+                    increment++;
+                }
+
+                if (flip() && GRID_SIZE + increment < svgWidth) {
+                    drawSwitch(x + GRID_SIZE * increment, y, 'off');
+                    increment++;
+                }
+
+                if (increment > 2) {
+                    drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * (increment + 1.5), GRID_SIZE * 2 - 4, palette.rectangle, 1, 20);
+                } else {
+                    drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * increment, GRID_SIZE * 2 - 4, palette.rectangle, 1, 20);
+                    x -= GRID_SIZE*increment*0.5
+                }
+
+                increment += 1.75;
             }
-
-            if (flip() && GRID_SIZE + increment < svgWidth) {
-                drawButtons(x + GRID_SIZE * increment, y);
-                increment++;
-            }
-
-            if (flip() && GRID_SIZE + increment < svgWidth) {
-                drawPot(x + GRID_SIZE * increment, y);
-                increment++;
-            }
-
-            if (flip() && GRID_SIZE + increment < svgWidth) {
-                drawKnob(x + GRID_SIZE * increment, y);
-                increment++;
-            }
-
-            if (flip() && GRID_SIZE + increment < svgWidth) {
-                drawSwitch(x + GRID_SIZE * increment, y, 'on');
-                increment++;
-            }
-
-            if (flip() && GRID_SIZE + increment < svgWidth) {
-                drawSwitch(x + GRID_SIZE * increment, y, 'off');
-                increment++;
-            }
-
-            if (increment > 2) {
-                drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * (increment + 1.5), GRID_SIZE * 2 - 4, palette.rectangle, 1, 20);
-            } else {
-                drawRectangle(x - GRID_SIZE, y - GRID_SIZE + 2, GRID_SIZE * increment, GRID_SIZE * 2 - 4, palette.rectangle, 1, 20);
-                x -= GRID_SIZE*increment*0.5
-            }
-
-            increment += 1.75;
         }
     }
 }
