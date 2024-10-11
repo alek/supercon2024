@@ -169,6 +169,7 @@ a {
 .talk p {
     margin-bottom: 15px;
     font-family: 'Roboto Mono', monospace;
+    font-size: 0.8em;
 }
 
 /* Headshot link styling */
