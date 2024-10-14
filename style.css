@@ -131,6 +131,15 @@ a {
     font-size: 1em;
 }
 
+h1 {
+    display: flex;
+    align-items: center;
+}
+
+h1 img {
+    margin-right: 10px;
+}
+
 /* Styling each talk */
 .talk {
     margin-bottom: 20px;
