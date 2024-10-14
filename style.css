@@ -208,6 +208,32 @@ strong {
     background-color: #0056b3;
 }
 
+footer {
+    background-color: #E5E6D5;
+    height: 5em;
+    margin-top: 5em;
+    padding-top: 1em;
+    color: black;
+}
+
+footer h4 {
+    font-weight: 500;
+}
+
+.footer-content {
+    max-width: 850px;
+    align:  center;
+    align-items: center;
+    height: 3em;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin: 0.5em auto 2em auto;
+    font-size: 0.75em;    
+    gap:  1em;
+}
+
+
 @media (max-width: 780px) {
 
     .header-nav > * {
@@ -244,6 +270,17 @@ strong {
 
     .header-nav .button {
         margin-top: 3em;
+    }
+
+    footer {
+        height: 3em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .footer-content {
+        font-size: 0.5em;
+        gap:  0.5em;
     }
 
 }
