@@ -866,8 +866,8 @@ if (canvas && svgContainer) {
 
 
 // Function to render the talks in HTML
-function renderTalks(talks) {
-    const container = document.getElementById('speakers');
+function renderTalks(talks, target) {
+    const container = document.getElementById(target);
     if (!container) return; // Ensure the container exists
 
     // Iterate through each talk and create HTML structure for it
@@ -915,6 +915,6 @@ function renderTalks(talks) {
     });
 }
 
-// Call the renderTalks function with the data from the content variable
-renderTalks(CONFERENCECONTENT.talks);
-
+renderTalks(CONFERENCECONTENT.talks, 'speakers');
+renderTalks(CONFERENCECONTENT.workshops, 'workshops');
+renderTalks(CONFERENCECONTENT.talks, 'schedule');
