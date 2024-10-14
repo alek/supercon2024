@@ -6,7 +6,7 @@ const context = canvas ? canvas.getContext('2d') : null;
 
 const svgContainer = document.getElementById('catenarySvg');
 const drawSvg = svgContainer ? SVG().addTo(svgContainer).size('100%', '100%') : null;
-const [svgWidth, svgHeight] = svgContainer ? [svgContainer.getAttribute('width'), svgContainer.getAttribute('height')] : [0,0];
+let [svgWidth, svgHeight] = svgContainer ? [svgContainer.getAttribute('width'), svgContainer.getAttribute('height')] : [0,0];
 
 let points = [];
 let catenaries = [];
@@ -914,6 +914,28 @@ function renderTalks(talks, target) {
         container.appendChild(talkDiv);
     });
 }
+
+// Function to resize the elements
+function resizeCatenaryElements() {
+    // Check if screen width is lower than 540px
+    if (window.innerWidth < 540) {
+        // Select the elements
+        const catenarySvg = document.getElementById('catenarySvg');
+        const catenaryCanvas = document.getElementById('catenaryCanvas');
+
+        if (catenarySvg && catenaryCanvas) {
+            // Resize them to 80% of their current width
+            const newWidth = catenarySvg.clientWidth * 0.8;
+            catenarySvg.setAttribute('width', newWidth);
+            catenaryCanvas.setAttribute('width', newWidth);
+        }
+        [svgWidth, svgHeight] = svgContainer ? [svgContainer.getAttribute('width'), svgContainer.getAttribute('height')] : [0,0];
+        console.log(svgWidth)
+    }
+}
+
+// window.addEventListener('load', resizeCatenaryElements);
+// window.addEventListener('resize', resizeCatenaryElements);
 
 renderTalks(CONFERENCECONTENT.talks, 'speakers');
 renderTalks(CONFERENCECONTENT.workshops, 'workshops');
