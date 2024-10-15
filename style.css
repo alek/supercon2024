@@ -217,6 +217,15 @@ strong {
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.2s;
+    overflow: hidden; /* Ensure the radius is applied */
+}
+
+.headshot-link img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the container */
+    object-position: top; /* Crops the top of the image */
+    border-radius: 4px;
 }
 
 .headshot-link:hover {
