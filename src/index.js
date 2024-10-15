@@ -791,13 +791,19 @@ function flip(p=0.3) {
     return (Math.random() < p)
 }
 
+
+if (window.innerWidth < 600) {
+    let svgElement = document.getElementById('displaySvg');
+    svgElement.setAttribute('width', window.innerWidth*0.8);
+}
+
 // Immediately render the dot matrix display once
 if (document.getElementById('displaySvg')) {
-    renderDotMatrix('displaySvg', 4, 32, 10, 10);
+    renderDotMatrix('displaySvg', 4, window.innerWidth < 600 ? Math.ceil(window.innerWidth/25) : 32, 10, 10);
 
     // Set up an interval to redraw the pattern every second (1000 ms)
     setInterval(() => {
-        renderDotMatrix('displaySvg', 4, 32, 10, 10);
+        renderDotMatrix('displaySvg', 4, window.innerWidth < 600 ? Math.ceil(window.innerWidth/25) : 32, 10, 10);
     }, 200);
 }
 
