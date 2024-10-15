@@ -784,8 +784,8 @@ if (midiEnabled) {
 if (canvas && svgContainer) {
     let increment = 12;
     let maxWidth = svgWidth;
-    if (window.innerWidth < 600) {
-        maxWidth = window.innerWidth;
+    if (window.innerWidth < 850) {
+        maxWidth = window.innerWidth*0.8;
     }
     for (let y = GRID_SIZE * 2; y < svgHeight*0.6; y += GRID_SIZE * 3) {
         for (let x = GRID_SIZE * 2; x < maxWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
