@@ -792,13 +792,14 @@ function flip(p=0.3) {
 }
 
 
-if (window.innerWidth < 600) {
-    let svgElement = document.getElementById('displaySvg');
-    svgElement.setAttribute('width', window.innerWidth*0.8);
-}
-
 // Immediately render the dot matrix display once
 if (document.getElementById('displaySvg')) {
+
+    if (window.innerWidth < 600) {
+        let svgElement = document.getElementById('displaySvg');
+        svgElement.setAttribute('width', window.innerWidth*0.8);
+    }
+
     renderDotMatrix('displaySvg', 4, window.innerWidth < 600 ? Math.ceil(window.innerWidth/25) : 32, 10, 10);
 
     // Set up an interval to redraw the pattern every second (1000 ms)
@@ -814,39 +815,43 @@ if (midiEnabled) {
 
 if (canvas && svgContainer) {
     let increment = 12;
+    let maxWidth = svgWidth;
+    if (window.innerWidth < 600) {
+        maxWidth = window.innerWidth;
+    }
     for (let y = GRID_SIZE * 2; y < svgHeight*0.6; y += GRID_SIZE * 3) {
-        for (let x = GRID_SIZE * 2; x < svgWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
+        for (let x = GRID_SIZE * 2; x < maxWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
             if (flip(1)) {
                 increment = 2;
                 const textElement = drawText(getRandomAlphanumericString(), x - GRID_SIZE / 2, y - GRID_SIZE * 2, 8, palette.text);
                 drawPlug(x, y, 4, null, textElement);
 
-                if (flip() && GRID_SIZE + increment < svgWidth) {
+                if (flip() && GRID_SIZE + increment < maxWidth) {
                     drawPlug(x + GRID_SIZE + increment, y, null, textElement);
                     increment++;
                 }
 
-                if (flip() && GRID_SIZE + increment < svgWidth) {
+                if (flip() && GRID_SIZE + increment < maxWidth) {
                     drawButtons(x + GRID_SIZE * increment, y);
                     increment++;
                 }
 
-                if (flip() && GRID_SIZE + increment < svgWidth) {
+                if (flip() && GRID_SIZE + increment < maxWidth) {
                     drawPot(x + GRID_SIZE * increment, y);
                     increment++;
                 }
 
-                if (flip() && GRID_SIZE + increment < svgWidth) {
+                if (flip() && GRID_SIZE + increment < maxWidth) {
                     drawKnob(x + GRID_SIZE * increment, y);
                     increment++;
                 }
 
-                if (flip() && GRID_SIZE + increment < svgWidth) {
+                if (flip() && GRID_SIZE + increment < maxWidth) {
                     drawSwitch(x + GRID_SIZE * increment, y, 'on');
                     increment++;
                 }
 
-                if (flip() && GRID_SIZE + increment < svgWidth) {
+                if (flip() && GRID_SIZE + increment < maxWidth) {
                     drawSwitch(x + GRID_SIZE * increment, y, 'off');
                     increment++;
                 }
