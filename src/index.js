@@ -1045,11 +1045,11 @@ function renderSchedule(schedule, target) {
     dayOrder.forEach(day => {
         if (groupedByDay[day]) {
             // Sort the entries by time within the day (time is the primary sort criterion)
-            groupedByDay[day].sort((a, b) => {
-                const timeA = parseTime(a['Time']);
-                const timeB = parseTime(b['Time']);
-                return (timeA || 0) - (timeB || 0); // Handle null times by pushing them to the end
-            });
+            // groupedByDay[day].sort((a, b) => {
+            //     const timeA = parseTime(a['Time']);
+            //     const timeB = parseTime(b['Time']);
+            //     return (timeA || 0) - (timeB || 0); // Handle null times by pushing them to the end
+            // });
 
             // Create an h1 for the day
             const dayHeader = document.createElement('h1');
