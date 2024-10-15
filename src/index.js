@@ -1012,7 +1012,107 @@ function getWorkshopEntries(schedule) {
         });
 }
 
+// Function to render the schedule in HTML, grouped by day and sorted by time (time prioritized over location)
+function renderSchedule(schedule, target) {
+    const container = document.getElementById(target);
+    if (!container) return; // Ensure the container exists
+
+    // Clear the container before rendering the schedule
+    container.innerHTML = '';
+
+    // Define the correct day order
+    const dayOrder = ['Friday', 'Saturday', 'Sunday'];
+
+    // Helper function to convert time strings to a comparable format (24-hour format)
+    function parseTime(timeStr) {
+        if (!timeStr) return null; // Handle missing time
+        const [time, modifier] = timeStr.split(' '); // Split time and AM/PM
+        let [hours, minutes] = time.split(':').map(Number); // Split hours and minutes
+        if (modifier === 'PM' && hours !== 12) hours += 12; // Convert PM to 24-hour format
+        if (modifier === 'AM' && hours === 12) hours = 0; // Handle 12 AM as 0 hours
+        return hours * 60 + minutes; // Return total minutes for easy comparison
+    }
+
+    // Group the schedule entries by day
+    const groupedByDay = schedule.reduce((acc, item) => {
+        const day = item['Day'] || 'No Day Specified'; // Handle missing days
+        if (!acc[day]) acc[day] = [];
+        acc[day].push(item);
+        return acc;
+    }, {});
+
+    // Sort and render the schedule entries according to the correct day order
+    dayOrder.forEach(day => {
+        if (groupedByDay[day]) {
+            // Sort the entries by time within the day (time is the primary sort criterion)
+            groupedByDay[day].sort((a, b) => {
+                const timeA = parseTime(a['Time']);
+                const timeB = parseTime(b['Time']);
+                return (timeA || 0) - (timeB || 0); // Handle null times by pushing them to the end
+            });
+
+            // Create an h1 for the day
+            const dayHeader = document.createElement('h1');
+            dayHeader.textContent = day;
+            container.appendChild(dayHeader);
+
+            // Create a flexbox container for the day's schedule items
+            const flexContainer = document.createElement('div');
+            flexContainer.classList.add('schedule-flex-container');
+
+            // Iterate through each schedule item for the day and create HTML structure
+            groupedByDay[day].forEach(item => {
+                // Create a flex item for each schedule entry
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('schedule-item');
+
+                // Add time and location first, without "Time:" and "Location:" labels
+                const time = document.createElement('h4');
+                const timeText = item['Time'] || 'TBD';
+                time.textContent = `${timeText}`;
+                time.classList.add('time');
+                itemDiv.appendChild(time);
+
+                const location = document.createElement('h4');
+                const locationText = item['Location'] || 'TBD';
+                location.textContent = `${locationText}`;
+                location.classList.add('location');
+                itemDiv.appendChild(location);
+
+                // Add the event title (use "First and Last Name" or Talk Title)
+                const title = document.createElement('h3');
+                const eventTitle = item["Talk Title"] || item["First and Last Name: "] || "Untitled Event";
+                title.textContent = eventTitle;
+                title.classList.add('event-title');
+                itemDiv.appendChild(title);
+
+                // Add presenter name if available and not equal to talk title
+                if (item["First and Last Name: "] && item["Talk Title"]) {
+                    const name = document.createElement('p');
+                    name.textContent = item["First and Last Name: "];
+                    name.classList.add('presenter-name');
+                    itemDiv.appendChild(name);
+                }
+
+                // Add talk description if available
+                if (item["Talk Description (20-40 words)"]) {
+                    const description = document.createElement('p');
+                    description.textContent = item["Talk Description (20-40 words)"];
+                    description.classList.add('description');
+                    itemDiv.appendChild(description);
+                }
+
+                // Append the itemDiv to the flexbox container
+                flexContainer.appendChild(itemDiv);
+            });
+
+            // Append the flex container to the main container
+            container.appendChild(flexContainer);
+        }
+    });
+}
+
 
 renderTalks(getSpeakerTalks(SCHEDULE), 'speakers');
 renderTalks(getWorkshopEntries(SCHEDULE), 'workshops');
-
+renderSchedule(SCHEDULE, 'schedule');

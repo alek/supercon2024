@@ -115,29 +115,41 @@ header a:hover {
     margin:  auto;
 }
 
-.content-container {
-    padding: 2em;
-    width: 850px;
-    /*text-align: center;*/
-    margin: 0 auto; 
-    /*margin-top: -150px;*/
-    margin-bottom: 5em;
-}
 
 a {
     color: #D57729;
     text-decoration: none;
 }
 
-/* Container for all talks */
+/* Enclosing container */
+.content-container {
+    padding: 2em;
+    max-width: 850px;                  /* Fixed width */
+    margin: 0 auto;                /* Center the container */
+    margin-bottom: 5em;
+}
+
+/* Flexbox container for all talks */
 #speakers {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 3em;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;               /* Enable wrapping of items */
+    justify-content: space-between;/* Distribute space between items */
+    gap: 2em;                      /* Space between items */
     font-weight: 300;
     font-size: 1em;
+}
+
+/* Each speaker item should flex to a minimum width but fill available space */
+#speakers > div {
+    flex: 1 1 calc(50% - 1em);     /* Flex to 50% minus gap (1em) */
+    box-sizing: border-box;        /* Make sure padding/borders don't affect width */
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 850px) {
+    #speakers > div {
+        flex: 1 1 100%;            /* On smaller screens, items take full width */
+    }
 }
 
 h1 {
@@ -156,7 +168,9 @@ strong {
 /* Styling each talk */
 .talk {
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -227,6 +241,55 @@ strong {
     margin-top: 1em;
 }
 
+/* Flex container to hold schedule items per day */
+.schedule-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;            /* Space between the items */
+    justify-content: flex-start; /* Align items from the left */
+    margin-top: 20px;
+}
+
+/* Each schedule item */
+.schedule-item {
+    padding: 10px;
+    flex: 1 1 300px;              /* Each item takes up a minimum width of 300px */
+    max-width: 400px;             /* Maximum width for each card */
+    margin-bottom: 20px;
+}
+
+#schedule {
+}
+
+#schedule h1 {
+    border-top: 1px solid rgba(255,255,255,0.5);
+    padding-top: 1em;
+}
+
+#schedule .time {
+    font-weight: 400;
+}
+
+#schedule .location {
+    font-weight: 300;
+    line-height: 1em;
+    margin-top: -1em;
+}
+
+#schedule .event-title {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+#schedule .presenter-name {
+    font-weight: 300;
+}
+
+#schedule .description {
+    font-weight: 200;
+    font-size: 0.75em;
+    font-family: 'Roboto Mono', monospace;
+}
 
 footer {
     background-color: #E5E6D5;
@@ -310,3 +373,10 @@ footer h4 {
     }
 }
 */
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .schedule-item {
+        flex: 1 1 100%;    /* Make each item take full width on small screens */
+    }
+}
