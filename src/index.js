@@ -957,13 +957,6 @@ function resizeCatenaryElements() {
     }
 }
 
-// window.addEventListener('load', resizeCatenaryElements);
-// window.addEventListener('resize', resizeCatenaryElements);
-
-// renderTalks(CONFERENCECONTENT.talks, 'speakers');
-// renderTalks(CONFERENCECONTENT.workshops, 'workshops');
-// renderTalks(CONFERENCECONTENT.talks, 'schedule');
-
 function getSpeakerTalks(schedule) {
     return schedule
         .filter(entry => entry.Type === "speaker")
