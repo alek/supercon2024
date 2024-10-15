@@ -1,728 +1,4 @@
-const CONFERENCECONTENT = {
-	"talks": [
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Alex Toussaint",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Alex Toussaint is passionate about drones and ultrasonic sonar. His current project is a mosquito-killing drone that uses sonar to locate and eliminate mosquitoes, with the goal of making entire cities mosquito-free using a cost-effective solution. ",
-        "Presenter Bio (original)": "I'm a college student passionate about drones and ultrasonic sonar!\n\nI'm currently working on a mosquito-killing drone that uses sonar to locate mosquitoes, then zips over and grinds them in its propellers. The goal is to make entire cities mosquito-free cheaply. We've just demonstrated we could detect mosquitoes with ultrasonic sonar, and are now working on sensor miniaturization and drone integration.\n\nLinks:\n- https://alextoussaint.com (covered in an earlier Hackaday article on my first ultrasonic sonar :) \n- https://twitter.com/alextoussss (more recent pics and demos of my work)\n- https://manifund.org/projects/build-anti-mosqu (some additional details on the \"why\" of my work)",
-        "Talk Title": "How to detect (and kill) mosquitoes with off-the-shelf electronics",
-        "Talk Description (20-40 words)": "This talk explores the physics of sonar and small insect detection, focusing on the off-the-shelf electronics that allow us to study them cheaply. Learn more about ultrasonic phased arrays, detection, target recognition, and more! ",
-        "Talk Description (original)": "This talk explores the physics of sonar and small insect detection, focusing on the off-the-shelf electronics that allow us to study them cheaply. Learn more about ultrasonic phased arrays, detection, target recognition, and more! ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/file/d/1IdaGd6hUUD4XH_WFpeJYoaoMnC5i5pf6/view?usp=drive_link",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Andy Kong",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Andy Kong is an independent researcher working in wearable and implantable technology. His current fascination is with self-powering devices and human sensory augmentation. ",
-        "Presenter Bio (original)": "Andy is an independent researcher working in wearable and implantable technology. He is currently fascinated with self-powering devices and human sensory augmentation, and his past work can be found at andykong.org",
-        "Talk Title": "Human Plants: Open-Source Implants You Don't Need To Recharge",
-        "Talk Description (20-40 words)": "Hobbyist implants like magnets and RFID chips have remained largely the same in the last decade, with power systems being the primary challenge. Learn how energy harvesting like piezoelectric, solar, capacitive, and RF could represent the next step for implantable devices. ",
-        "Talk Description (original)": "Hobbyist implants like magnets and RFID chips have remained largely the same in the last decade, with power systems being the primary challenge. Learn how energy harvesting like piezoelectric, solar, capacitive, and RF could represent the next step for implantable devices. ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1OhrL2V1of62j6EnyQHWocTKIAXNbhHzQ",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Angelica Tavella",
-        "Pronouns": "She/Her",
-        "Presenter Bio (edited, 20-40 words)": "Angelica Tavella is a design researcher and interaction designer specializing in urban renewable energy and healthy human interactions with technology. Angelica is also a lecturer at the Applied Sciences University of Potsdam and produces experimental electronic music.",
-        "Presenter Bio (original)": "Angelica Tavella does design research and interaction design for the digital and physical worlds, most commonly in the areas of urban renewable energy and healthy human interaction with technology.  Her practical expertise is in prototyping, including digital mockups for web and mobile, 3d and physical model-making and digital fabrication, and interfaces for XR and multimodal tools.  She is currently based in Berlin where she works as a freelance interaction designer, a lecturer in interface design at the Applied Sciences University of Potsdam and produces experimental electronic music.\n\nWebsite: http://angelicatavella.com/\nLinkedIn: www.linkedin.com/in/angelica-tavella-bb9a8252\nInstagram: https://www.instagram.com/angelicatavella/",
-        "Talk Title": "User-Friendly Interfaces for Tomorrow's Energy Management",
-        "Talk Description (20-40 words)": "The global shift towards renewable energy sources requires new infrastructure for a more flexible and distributed network. This talk shows source energy metering systems (EMS) can be used to utilize solar power better and gives ideas about how interfaces can become more user-friendly.",
-        "Talk Description (original)": "The global shift towards renewable energy sources requires new infrastructure for a more flexible and distributed network. This talk shows source energy metering systems (EMS) can be used to utilize solar power better and gives ideas about how interfaces can become more user-friendly.",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1pnAGrJn5A7sV7B-Dfjvry5cMcTroWXFE",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Ayesha Iftiqhar-Wilson",
-        "Pronouns": "She/Her",
-        "Presenter Bio (edited, 20-40 words)": "Ayesha Iftiqhar-Wilson is an Electrical Engineer passionate about sustainable technology. She has contributed to diverse climate tech initiatives, such as robotics for sustainable farming and electrification of gas-powered tools and vehicles. She is also a dedicated maker and STEAM outreach creator. ",
-        "Presenter Bio (original)": "Ayesha is an Electrical Engineer with a passion for sustainable technology, having contributed to diverse climate tech initiatives such as robotics for sustainable farming, electrification of gas-powered tools and vehicles. She is also a dedicated maker and STEAM outreach creator, striving to make technology more inclusive and accessible to all. https://www.instagram.com/ayesha.iftiqhar/  https://www.linkedin.com/in/ayesha-iftiqhar/",
-        "Talk Title": "Environmentally-Friendly Electronics: Design Principles for Sustainability",
-        "Talk Description (20-40 words)": "This talk address the issue of electronic waste by introducing Sustainable Design Engineering (SDE) and Design for Environment (DFE) principles. By exploring SDE and DFE, attendees will gain practical insights into integrating environmental considerations into electronics design, fostering a more sustainable approach. ",
-        "Talk Description (original)": "This talk address the issue of electronic waste by introducing Sustainable Design Engineering (SDE) and Design for Environment (DFE) principles. By exploring SDE and DFE, attendees will gain practical insights into integrating environmental considerations into electronics design, fostering a more sustainable approach. ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=163Xw_I8as_JVxfUnRdbMKVG9kCOHOV0u",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Azita Emami",
-        "Pronouns": "She/Her",
-        "Presenter Bio (edited, 20-40 words)": "Azita Emami is the Andrew and Peggy Cherng Professor of Electrical Engineering and Medical Engineering, and the Director of Center for Sensing to Intelligence (S2I) at Caltech. Her current research interests include integrated circuits and systems, integrated photonics, wearable and implantable devices for neural recording, neural stimulation, sensing, drug delivery and high-speed data communication systems. ",
-        "Presenter Bio (original)": "Azita Emami is the Andrew and Peggy Cherng Professor of Electrical Engineering and Medical Engineering, and the Director of Center for Sensing to Intelligence (S2I) at Caltech. She received her M.S. and Ph.D. degrees in Electrical Engineering from Stanford University in 1999 and 2004 respectively, and her B.S. degree from Sharif University of Technology in 1996. From 2004 to 2006 she was with IBM T. J. Watson Research Center before joining Caltech in 2007. She served as the Executive Officer (Department Head) for Electrical Engineering from 2018 to 2024. Her current research interests include integrated circuits and systems, integrated photonics, wearable and implantable devices for neural recording, neural stimulation, sensing, drug delivery and high-speed data communication systems. ",
-        "Talk Title": "Intelligent Devices for Brain-Machine-Interfaces and Health Monitoring",
-        "Talk Description (20-40 words)": "This talk discusses the design challenges and promises of future wearable and implantable devices. Join us as we take a look at wireless health monitoring with tiny chips, and the hardware-software co-design for Brain-Machine-Interfaces (BMI).",
-        "Talk Description (original)": "- Design challenges and promises of future wearable and implantable devices\n- Wireless health monitoring with tiny chips\n- Hardware-software co-design for Brain-Machine-Interfaces (BMI)",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/file/d/1tNkOQr9A3sC26-mlQKF6fkyoxzBIg87a/view?usp=drive_link",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Blair Subbaraman",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Blair Subbaraman explores machine automation as a creative medium, and how domain experts, such as artists and scientists, can leverage existing skills in their use of machines. Currently based in Seattle, Blair is a PhD student at the University of Washington and works in the lab at Machine Agency. ",
-        "Presenter Bio (original)": "Explores machine automation as a creative medium. I am most interested in how domain experts like artists and scientists can leverage existing skills in their use of machines. I amcurrently based in Seattle where I am a PhD student at the University of Washington and works in the lab Machine Agency. ",
-        "Talk Title": "Sketching with Machines",
-        "Talk Description (20-40 words)": "Software for making physical things often overlooks existing skill sets, forcing practitioners to work against built-in assumptions to accomplish their goals. This talk will consider how creative practices can guide the development of digital fabrication systems and communities.",
-        "Talk Description (original)": "Short Description: \nArtists, craftspeople, and scientists are highly skilled makers. Yet, software for making physical things often overlooks existing skill sets, forcing practitioners to work against built-in assumptions to accomplish their goals. Using examples from digital art, ceramics, and plant biology, this talk will consider how creative practices can guide the development of digital fabrication systems and communities.\n\nLonger Description:\nIn particular I’ll present p5.fab, an open source software library I made to control digital fabrication machines from a creative coding environment. With p5.fab, we can programmatically generate machine toolpaths, interactively manipulate settings while the machine is running using MIDI controllers, and document the resulting output. I’ll present examples of printing foams, clay, and gels to show how this approach to machine control can provide a low-threshold way to experiment with materials. I’ll then show a less conventional example which uses a multi-tool changing machine to automate plant biology experiments.",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1_uO-nadLcW75LzsrfA8rGjG52v6wwr3T",
-        "copy emailed for approval": "FALSE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Cedric Honnet",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Cedric Honnet is a PhD student in Human-Computer Interaction, focused on wearables. Before his PhD, he worked for a decade in embedded systems and scalable manufacturing, but spent half of his time in hackerspaces or research labs, experimenting with open-source projects such as eTextile music controllers or miniature 3D positioning for dance performances.",
-        "Presenter Bio (original)": "#human_computer_interfaces #wearable_intelligence #eTextiles #miniaturization #manufacturing #shenzhen_magic\n\nCedric Honnet is a PhD student in Human-Computer Interaction, focused on wearables sensing, computing, and manufacturing.\nBefore his PhD, he worked for a decade as an embedded systems engineer, from video processor design in the Silicon Valley to firmware engineer in various startups in San Francisco, London, Paris or Shenzhen.\nSince 2014, he has spent at least a month per year in Shenzhen exploring design for scalability, accessibility and affordability.\nHis international explorations around the world of research labs, tech/art residencies and hackerspaces, let him to experiment with eTextile music controllers, augmented immersive systems, interactive art installations, modular implants, 3D positioning systems, and various other Open Source projects, as seen in his documentations: http://honnet.eu",
-        "Talk Title": "FiberCircuits: Miniature Flex Circuits Inside Fibers, for Interactive eTextiles",
-        "Talk Description (20-40 words)": "This talk explores the miniaturization of electronic circuits to be woven (or knitted) into textiles. Both about DIY and scalable manufacturing, it will address techniques for high density flex circuits, miniature part tricks, encapsulation, and firmware tips. As a conclusion, a note about the Shenzhen manufactuing echosystem will be included.",
-        "Talk Description (original)": "This talk explore the miniaturization of electronics to be woven into textiles. With both scalability and a DIY approach in mind, learn more about fabrication techniques for high density PCB challenges, miniature component selection, encapsulation for embedding in fabrics, and embedded software tips. ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1QSf40pgqfJ7iEJE5UUni0esPNF5dHQAg",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Charles Lohr",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "CNLohr seeks to break down the barriers of conventional wisdom and common design practices. Whether it’s mapping out wifi in 3D, running Minecraft on a glass microscope slide, or modulating RF signals without dedicated hardware, he seeks to explore what’s possible when layers of abstraction are shed.",
-        "Presenter Bio (original)": "CNLohr seeks to break down the barriers of conventional wisdom and common design practices. Whether it’s mapping out wifi in 3D, running minecraft on a glass microscope slide or modulating RF signals without dedicated hardware, he seeks to explore what’s possible with far less power and sophistication than one would expect.",
-        "Talk Title": "Microcontrollers Are Just Radios in Disguise",
-        "Talk Description (20-40 words)": "This talk explores ways to leverage every cycle of underpowered microcontrollers to get them doing the work of parts ten times their price, including operations normally done with dedicated radio hardware. ",
-        "Talk Description (original)": "This talk explores ways to leverage every cycle of underpowered microcontrollers to get them doing the work of parts ten times their price, including operations normally done with dedicated radio hardware. ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1X-cTg3BGFWXVqwQnZSvdgQN6tUrUbPow",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Christina Cyr",
-        "Pronouns": "She/Her",
-        "Presenter Bio (edited, 20-40 words)": "Christina Cyr specializes in \"Non-Rectangular Phones for Non-Rectangular People\" and holds degrees in physics, biochemistry, and engineering. Her current passions include satellite technology, GNSS, 5G, eco-friendly communication devices, and batteries made from recycled lithium.",
-        "Presenter Bio (original)": "Christina Cyr specializes in \"Non-Rectangular Phones for Non-Rectangular People\". She holds degrees in physics, biochemistry, and engineering, and has taught over 300 people how to make their own smartphone. Her current passions include satellite technology, GNSS, 5G, eco-friendly communication devices, and batteries made from recycled lithium. https://www.linkedin.com/in/cyrchristina/ ",
-        "Talk Title": "Solving the Last Mile With 3D-printed Packaging",
-        "Talk Description (20-40 words)": "This talk explores the complexities of designing product packaging while the product’s design is still evolving. Experience the story of how one maker designed and 3D-printed her own packaging and the lessons she learned along the way. ",
-        "Talk Description (original)": "This talk explores the complexities of designing product packaging while the product’s design is still evolving. Experience the story of how one maker designed and 3D-printed her own packaging and the lessons she learned along the way. ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=11JJczcxiX0ULyqCcKILw_YbqawD8Et0t",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Dave Rowntree",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Dave Rowntree, an electronics engineer with a background in embedded software, IC test, and IC design, manages an electronic prototyping consultancy. Dave is also a foster dad and contributing writer for Hackaday!",
-        "Presenter Bio (original)": "I am an electronics engineer with a background in embedded software, IC test and IC design. I've been running an electronic prototyping consultancy for the last eight years in my spare time, whilst fostering children. I also am a contributing writer for Hackaday :)\n\nmy personal website is down for maintenance, I hope to get it back up soon. \n> davidrowntree.co.uk\n\n[I'm still locating a decent mugshot, but I need to create a new one for my revised website anyway]",
-        "Talk Title": "From Consultant to Prototyper on a Shoestring Budget",
-        "Talk Description (20-40 words)": "This talk explores the journey of going from an electronics prototyper to a complete systems prototyper as part of a project that includes putting an airbag into a basketball shoe. Find out how the project came to be and how it’s progressing! ",
-        "Talk Description (original)": "This talk explores the journey of going from an electronics prototyper to a complete systems prototyper as part of a project that includes putting an airbag into a basketball shoe. Find out how the project came to be and how it’s progressing! ",
-        "Notes ": "Missing headshot, emailed",
-        "Headshot": " https://drive.google.com/file/d/1R1ZTKJsuffDtHhje4k0llSyzeEAOhsXy/view?usp=drive_link",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "FALSE",
-        "Time": "20 minutes ",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Dev Kennedy",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Dev Kennedy began his journey into smart glasses nearly ten years ago when the vision of the concept outpaced available technology. He’s spent the last decade developing the necessary building blocks to make it a reality and is excited to show the world how far it has come. ",
-        "Presenter Bio (original)": "Dev Kennedy began his journey into smart-glasses, nearly 10 years ago. This is extremely rare because most technologies back then for heading out to displays were not commercially available. It's taken nearly a decade to develop the necessary building blocks to build the future of these devices. Can't wait to share the details with everyone! Follow along at: twitter.com/RealityMetadata",
-        "Talk Title": "Photonics/Optical Stack for Smart-Glasses ",
-        "Talk Description (20-40 words)": "This talk discusses the intricacies of smart glasses and the gamut of hardware options for displaying light, getting the photonics right, and building a head-mounted display. ",
-        "Talk Description (original)": "This talk discusses the intricacies of smart glasses and the gamut of hardware options for displaying light, getting the photonics right, and building a head-mounted display. ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1AGctH_WzcuuLB-ZyRuSPxQoh4ZIpt4ww",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Eduardo Contreras",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Eduardo Contreras, an electronics engineer, is passionate about technological development and science. Eduardo is the co-founder and CTO of the Electronic Cats company where he develops embedded systems.",
-        "Presenter Bio (original)": "Electronics Engineer, passionate about technological development\nand science, co-founder and CTO of the Electronic Cats company where he has developed different embedded systems",
-        "Talk Title": "Cats Turned Plumbers: Embedded Linux Adventures",
-        "Talk Description (20-40 words)": "This talk explores the journey of deploying embedded Linux systems and integrating drivers on Linux kernels, from the hardware to the kernel.",
-        "Talk Description (original)": "A bit of our journey deploying embedded linux systems, and integrating drivers on the linux kernels, from the hardware, to the kernel ",
-        "Notes ": "Looks like the description wasn't cut off mid-sentence.",
-        "Headshot": "https://drive.google.com/file/d/17eN02Ilm3ShhiEu0I3g6Nj9agMi_aMCA/view?usp=drive_link",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "FALSE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Erin Kennedy",
-        "Pronouns": "She/They",
-        "Presenter Bio (edited, 20-40 words)": "Erin “RobotZwrrl” Kennedy is an eccentric robot maker and analogue astronaut who develops robots to address environmental challenges. She recently collaborated with the Transatlantic Mars Crew on an analogue astronaut mission to test her wind-propelled robot, Atmosphinder. ",
-        "Presenter Bio (original)": "Erin “RobotZwrrl” Kennedy is an eccentric robot maker and analogue astronaut. She develops robots to address environmental challenges in creative, futuristic ways. Recently, she collaborated with the Transatlantic Mars Crew on an analogue astronaut mission at the Mars Desert Research Station to test her wind propelled robot, Atmosphinder. She unconventionally learned to build robots online and through mentorship, leading to studies at International Space University. See her work at: http://robotzwrrl.xyz.",
-        "Talk Title": "Human-Robot Interaction at the Mars Desert Research Station with Atmosphinder",
-        "Talk Description (20-40 words)": "This talk will delve into the design and electronics of Atmosphinder, a robot prototype destined for the south polar region of Mars. Learn more about testing methodology during extra-vehicular activities (EVAs), the collaboration with the Mars crew, key lessons learned.",
-        "Talk Description (original)": "Interacting with a robot in fully donned spacesuits provides valuable insights into the challenges and opportunities of human-robot interaction. At the Mars Desert Research Station, a crew of analogue astronauts lived and worked together for a two week mission performing experiments. Among them was Atmosphinder, a robot prototype destined for the south polar region of Mars to investigate the geomorphic processes of seasonal eruptions. With its singular wheel and sails extending from the side faces to harness the wind, Atmosphinder completed a 100 meter unassisted roll by the end of the mission. In this talk, I will delve into the design and electronics of Atmosphinder, the testing methodology during extra-vehicular activities (EVAs), the collaboration with the Mars crew, and highlight the key lessons learned regarding the future of human-robot interaction while in spacesuits. This experience was more than a mock exercise — it was a chapter in the grand, evolving epic of humanity’s journey to Mars.",
-        "Notes ": " Erin is unable to attend",
-        "Headshot": "https://drive.google.com/open?id=1009H97h9lAP6QBUxWOAbNWDbmvi8VxNP",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "James Rowley & Mark Omo",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Mark Omo, Director of Cat Herding at Marcus Engineering, works primarily in embedded security, electronics, and software. James Rowley, Senior Engineer at Marcus Engineering, works primarily in embedded security and software development. James and Mark both have a background in regulated device design.",
-        "Presenter Bio (original)": "Mark is the Director of Cat Herding at Marcus Engineering and works primarily in embedded security, electronics and software. James is a Senior Engineer at Marcus Engineering and works primarily in embedded security and software development. James and Mark have a background in regulated device design in the Consumer, Medical, Industrial, and Aerospace market segments.",
-        "Talk Title": "Using an Oscilloscope to Peek Below the Noise Floor: the DSP Magic of Lock-In Amplifiers",
-        "Talk Description (20-40 words)": "This talk explores the DSP magic that allows lock-in amplifiers to detect signals hidden below the noise floor. Learn how to use your oscilloscope as a lock-in amplifier, enabling a low-cost entry point to these niche instruments. ",
-        "Talk Description (original)": "In this talk, we will explore the DSP magic that allows lock-in amplifiers to detect signals hidden below the noise floor. By making a change to the measurement setup, these devices can isolate and measure faint signals amidst noise a hundred dB higher. Lock-in amplifiers are used in various applications, from sensitive photonics research to next-generation battery research and quantum computing.\nWe'll also show you how to use your oscilloscope as a lock-in amplifier, enabling a low-cost entry point to these niche instruments. Join us to learn more about these techniques and how they can improve your ability to measure faint signals.",
-        "Notes ": "Need Mark's (co-speaker) full name\nMark Omo\nTalk needs to be on Saturday due to travel",
-        "Headshot": "https://drive.google.com/open?id=1so3LiW4y21iNWCIGleoVhKBWZuI3KwtN",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "FALSE",
-        "Time": "",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Janelle Wellons",
-        "Pronouns": "She/Her ",
-        "Presenter Bio (edited, 20-40 words)": "Janelle Wellons is a Senior Mission Operations Engineer at ispace, inc., leading routine and critical space operations from the HAKUTO-R Mission Control Center as a Flight Director for the companies’ lunar lander missions. She previously worked at NASA Jet Propulsion Laboratory, where she was awarded the Bruce Murray Award for inspiring students to engage in STEM.",
-        "Presenter Bio (original)": "\n    When Janelle Wellons graduated from the Massachusetts Institute of Technology with a B.S. in Aerospace Engineering, she had no idea that it would spark the beginning of a 7 year career operating science instruments and spacecraft at the Moon, Saturn, and our own planet Earth. She is currently a Senior Mission Operations Engineer at ispace, inc., leading routine and critical space operations from the HAKUTO-R Mission Control Center as a Flight Director for the companies’ lunar lander missions.\n\n\n    Previously, Janelle worked at the NASA Jet Propulsion Laboratory on the Earth observing MAIA, Sentinel-6, and SWOT missions as well as the Cassini mission to Saturn and Lunar Reconnaissance Orbiter. Speaking to students about pursuing careers in space has been a constant throughout her career and she has been grateful to share her message through features by PBS SciGirls, Nike, Lego, and more. At JPL she was awarded the Bruce Murray Award for “inspiring students to engage in STEM, quenching their thirst for knowledge, and sparking a curiosity greater than the stars in the sky.”\n\n\n    When she isn't on-call to operate robots in space, you can find her exploring her new home in Japan and doing outreach for communities traditionally underrepresented in STEM. ",
-        "Talk Title": "Behind the Scenes of Mission Control",
-        "Talk Description (20-40 words)": "After 7 years operating science instruments and spacecraft at the Moon, Saturn, and our own planet Earth, Janelle will be uncovering the pillars of spaceflight operations. During this talk, she will take you behind the scenes of mission control from the perspective of a Flight Director to share how we navigate the stars, survive the uncertainty of space, and make a difference for humanity.",
-        "Talk Description (original)": "",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/file/d/16YUpz1VAeoC6CD_B0g7MtIqwW4Ov4Fjz/view?usp=drivesdk",
-        "copy emailed for approval": ""
-    },
-    {
-        "Final Copy Approved": "",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Jonathan Duffy",
-        "Pronouns": "Prefer not to answer (?)",
-        "Presenter Bio (edited, 20-40 words)": "-",
-        "Presenter Bio (original)": "Electrical engineer / research scientist by day, part time volleyball coach and bar security guard by night (well, late evening, got to keep a sensible bedtime in my old age!).  Like a lot of people here I've been doing electronics as a hobby since I was a kid, worked at nasa, spacex and MIT in college, and Northrop Grumman now.  A few of my bigger projects have been a CPU from gates using wire wrapping in high school, novel drone configurations and an acoustic phased array in college, and more recently, an open source multimeter.  ",
-        "Talk Title": "Multimeter system design ",
-        "Talk Description (20-40 words)": "",
-        "Talk Description (original)": "We've all used multimeters for years, often decades, it's the first tool we reach for in almost any situation, but have you ever REALLY looked into what goes into one?  In making an open-source multimeter, I've had to dive into the how and why multimeters work and are the way they are - like why do almost all still use giant rotary switches like analog meters from fourty years ago?  I will explore how the basic functions of a multimeter are set up, autoranging, input protection, and the interplay between the different front end pieces.  In this process, we'll walk through designing such a front end - the one used in the HyrdaMeter.  ",
-        "Notes ": "email bounced back",
-        "Headshot": "https://drive.google.com/open?id=1hcE7oVDGkraVIDtLtHDK26QPXBc5QUP5",
-        "copy emailed for approval": "No email"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Jim Scarletta",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Jim Scarletta holds a degree in Electronic Engineering from Cal Poly, San Luis Obispo, and has over 30 years of professional engineering and automation experience. Jim is a contractor for wolfSSL focusing on ESP32 embedded development.",
-        "Presenter Bio (original)": "I have a degree in Electronic Engineering from Cal Poly, San Luis Obispo. I have over 30 years of professional engineering and automation experience. I'm currently a contractor for wolfSSL focusing on ESP32 embedded development.",
-        "Talk Title": "Repurposing ESP32 Based Commercial Products ",
-        "Talk Description (20-40 words)": "This talk discusses flashing custom software onto existing commercial ESP32-based products, development, and debugging using open-source Tigard JTAG hardware with VisualGDB in Visual Studio. It will also cover implementing more secure cryptographic functions with commercial-grade wolfSSL examples.",
-        "Talk Description (original)": "Turn any ESP32 into an Apply HomeKit device. Discuss flashing custom software onto existing commercial ESP32-based products. Finding JTAG pins. Development and debugging using open source Tigard JTAG hardware with VisualGDB in Visual Studio. Implement more secure cryptographic functions (e.g. post quantum TLS 1.3) with commercial-grade wolfSSL examples. Warn of dangers with modifications and use of high voltage devices.",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1DRIifEnHIo6W_y6WpAH3_21A6gGS7LzT",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Jorvon Moss (Odd-Jayy) and Shawn Hymel",
-        "Pronouns": "He/him for Jayy. He/him for Shawn.",
-        "Presenter Bio (edited, 20-40 words)": "Jorvon Moss, AKA “Odd Jayy,” is an accomplished Maker best known for his Robotic Oddities. He has a background in art, a BFA in Illustration, and self-taught electronics skills. Shawn Hymel is a consulting engineer and instructor for edge AI and embedded systems.",
-        "Presenter Bio (original)": "Commonly known as Odd-Jayy (instagram.com/odd_jayy), Jorvon Moss is an accomplished Maker best known for his Robotic Oddities. Jayy has a background in art, a BFA in Illustration, and self-taught electronics skills.\n\nShawn (masto.ai/@shawnhymel) is a consulting engineer and instructor for edge AI and embedded systems that inspire and teach developers of all skill levels. He can be found giving talks, running workshops, and swing dancing in his free time.",
-        "Talk Title": "Giving Robotic Friends a Voice: Integrating Local LLMs and Speech Systems Into a Companion Bot",
-        "Talk Description (20-40 words)": "This talk will showcase a collaborative project that demonstrates full voice interaction on a Digit companion robot and how a large language model (LLM) made this possible. ",
-        "Talk Description (original)": "Companion bots in media (e.g. Baymax, R2-D2, K9) often include both high-functioning AI and interactivity with humans. A common form of interaction is voice: the bots can understand human speech and can respond with either synthetic speech or lovable beeps. \n\nJayy will demonstrate full voice interaction on his Digit companion bot and discuss how this was made possible through the use of a large language model (LLM). He will show how physical movement can be triggered by this voice system to breathe life into the bot’s actions and how such a powerful AI was made portable. This project is a collaboration between Jayy and Shawn, who helped develop the voice interaction system.\n\nLarge language models have ushered in a new era of personal chat assistants, but they are notoriously computationally expensive. Popular models like GPT-4o and Claude 3 Opus have trillions of parameters, which require powerful racks of GPUs to perform inference. Researchers have developed small language models (SLMs) with only a few billion parameters to run locally on personal computers and mobile devices.\n\nShawn will discuss running Meta’s Llama 3 (8B) model on NVIDIA Jetson Orin hardware to achieve response times in a few seconds. He will also show the hopper-chat system, which wraps the LLM with speech-to-text and text-to-speech modules to construct a full, AI-powered voice assistant.",
-        "Notes ": "Waiting on confirmation from Jorvon",
-        "Headshot": "https://drive.google.com/open?id=1MIOrSih42kn0jrttmxGuuYpD6_Lvvvl8",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Joseph Long",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Joe Long has been tinkering, designing, and hacking electronic systems for about forty years. He is the founder of HackerBoxes.com, the monthly subscription box service for electronics, cybersecurity, and hacker culture. He enjoys teaching electrical engineering and computer science topics to all.",
-        "Presenter Bio (original)": "Joe Long has been tinkering, designing, and hacking electronic systems for about forty years.  He is the founder of HackerBoxes.com - the monthly subscription box service for electronics, cybersecurity, and hacker culture. He has taught electrical engineering and computer science topics for youth audiences, adult hobbyists, online, and in university programs.",
-        "Talk Title": "In Living Color: A New World of Full-Color PCBs",
-        "Talk Description (20-40 words)": "This talk will discuss new ways to make full-color PCBs. Gone are the days when printed circuit boards were either boring, bare beige, or coated with a green solder mask. The time for more creative power has arrived. ",
-        "Talk Description (original)": "There was a time when printed circuit boards were either boring, bare beige or coated with a \"luxurious\" green solder mask.  Since then, solder mask materials have expanded to include a handful of color option, but generally only one per board.  Makers have cooked up various techniques within the limitations of one solder mask color, the copper layer beneath, and white or black silkscreen markings to create amazing visual effects on PCBs.  However, we've longed for more creative power.  The time for that power has finally arrived.  In 2024, mainstream board houses started offering full-color printing on PCBs as part of standard production orders.\n\nHaving worked through the additional, vendor specific, steps for submitting full-color PCBs, and manufacturing several different designs, I've developed a number of design tips and tricks to share.  These techniques help to really leverage the required tools and get the most out of this new medium.  We can now use color to richly annotate PCB traces, show photorealistic footprints for modules, inform, educate, entertain, and so much more.  Making full-color PCBs is a lot of fun and probably easier than you might think.",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1Icrz6kq_SYdMyCWUDs8b6KW7OfiUGO6q",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Joshua Wise",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Joshua Wise, as half of Accelerated Tech, Inc., is an experienced all-purpose computer software and hardware engineer. He is somewhat better at racing Advent of Code than he is at racing cyclocross, despite causing about an equal number of crashes in each.",
-        "Presenter Bio (original)": "Joshua is an all-purpose computer software and hardware engineer, serving as half of Accelerated Tech, Inc. Since everybody knows that \"a good digital logic designer can write Verilog in any language\", his professional experience as an electrical engineer makes for a handy excuse when faced with a chunk of Python that he does not wish to write, but unfortunately for him, he has made an appearance on the Advent of Code leaderboard in 2018 and 2019. In a past life, he worked on the image signal processor architecture team for NVIDIA Tegra. When he's not at his computer, he can often be found crashing his bicycle on a cyclocross course. He promises to take your project more seriously than he wrote this bio if you decide to contract with him.",
-        "Talk Title": "X1Plus: an unusual custom firmware for a consumer 3D printer",
-        "Talk Description (20-40 words)": "In this talk, we’ll laugh together about some classic IoT exploits, puzzle over patching a compiled monolithic firmware, and even take the opportunity to be a little hopeful about whether vendors will ever get the message about user freedoms.",
-        "Talk Description (original)": "X1Plus is the first known custom firmware for the Bambu Lab X1 Carbon 3D printer. In some ways, X1Plus is a very standard custom firmware: it jumps into a custom kernel, launches a patched userspace, and provides a handful of interesting features to users. And in some ways, X1Plus takes a relatively well-trodden path of exploiting relatively usual cheap IoT device security vulnerabilities that have been passed around from hand to hand for a while.\n\nX1Plus is different in a few other interesting ways, though. For one, we decided that we wanted to ultimately open the project to public contribution, which meant that we would need to be very careful to avoid redistributing the OEM's IP as part of the build. And for another, just as we had planned to release a version with an exploit-driven installer, the OEM suddenly decided to collaborate with us! (This came as a shock for all of us; in decades of liberating little Linux devices, this was a new one for everyone on the team.)\n\nSince we the project is finally in the open, though, another difference is that we can talk openly about the path that we took to get here. In this talk, we'll all get to laugh together a little bit about classic silly IoT security errors, we'll paint a picture of the architecture of a firmware patchset designed for ordinary users, and we'll enjoy a little bit of hope at the concept of at least one vendor who found it more interesting to collaborate with their users than to fight them.",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1U5GVsDJEia5x9k_dyTlJQr7D5LmfewW7",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "",
-        "Time": "",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Juan Diego Zambrano Torres, Ivan Hernandez, and Abdelrahman Tarek Zakaria Abdelmaaboud Farag",
-        "Pronouns": "",
-        "Presenter Bio (edited, 20-40 words)": "Juan Diego Zambrano Torres, Ivan Hernandez, and Abdelrahman Tarek Zakaria Abdelmaaboud Faragare are all automation engineering students at Politecnico Di Milano. They all participated in an assistive technology hackathon sponsored by DesignLab and Digikey this year.",
-        "Presenter Bio (original)": "",
-        "Talk Title": "Immersive Motion Rehabilitation Device",
-        "Talk Description (20-40 words)": "This talk introduces a wearable motion monitoring device using low-energy Bluetooth (BLE). It features an interactive game-based interface for children and generates detailed medical reports, providing therapists with valuable insights for effective rehabilitation.",
-        "Talk Description (original)": "",
-        "Notes ": "",
-        "Headshot": "",
-        "copy emailed for approval": ""
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Justin McAllister & Nick Foster",
-        "Pronouns": "He/Him, He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Justin McAllister is a radio enthusiast, electrical engineer, and startup founder who designed uncrewed aerial systems for AeroVironment and co-founded MicaSense. Nick Foster is an electrical engineer specializing in RF, software-defined radios (SDRs), mixed-signal hardware, and developed the first operational ultra-low-latency shortwave radio network.",
-        "Presenter Bio (original)": "Justin is a radio enthusiast, electrical engineer, and startup founder.  Justin spent two decades in the drone industry - first at AeroVironment designing uncrewed aerial systems and then co-founding MicaSense where he developed multispectral cameras and analysis software for agricultural drones.  Along the way he has managed and mitigated radio interference both to and caused by his hardware systems. Today Justin consults in the robotics and radio spaces, competes in radiosport, and enjoys combining his hobbies with his love for the outdoors by participating in DXPeditions and amateur radio activities like SOTA and POTA. Mastodon: @k5em@mastodon.radio\n\nNick is an electrical engineer specializing in RF, software-defined radios (SDRs), mixed-signal hardware, and embedded design. He developed the first operational ultra-low-latency shortwave radio network, demonstrating his expertise in both hardware and software aspects of SDRs. When not working on innovative RF and EE solutions, Nick enjoys exploring the wilderness on his motorcycle and traveling in his fully equipped van. X: @bistromath",
-        "Talk Title": "Finding Beamo - from interference to numbers stations, how to track down radio transmissions",
-        "Talk Description (20-40 words)": "This talk provides a comprehensive guide to identifying and locating radio transmitters. Learn about practical techniques, common tools, and methodologies from decades of combined experience finding, squashing, and mitigating against radio frequency interference. ",
-        "Talk Description (original)": "In a world increasingly reliant on wireless communication, the ability to track down and understand the sources of radio transmissions has never been more critical. From identifying interference in urban environments to the enigmatic world of numbers stations, this talk will provide a comprehensive guide to identifying and locating radio transmitters across the radio spectrum.\n\n\"Finding Beamo\" will take the audience on a journey through the fascinating and often mysterious world of locating radio transmissions. The talk will cover practical techniques for identifying the type of transmission, locating radio transmitters, and exploring the tools and methodologies used by professionals for radio direction finding. We'll share our own quips and stories from decades of combined experience finding, squashing, and mitigating against radio frequency interference. ",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1IhkiqV06s7OA5dK8V1lHtDpo9i7WffLT",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Katherine Connell",
-        "Pronouns": "She/Her",
-        "Presenter Bio (edited, 20-40 words)": "Katherine \"Smalls\" Connell is a self taught maker who grew up in Silicon Valley helping her dad put together graphic cards. She believes that the maker community is a place to learn things, break things, and do the impossible.",
-        "Presenter Bio (original)": "Katherine \"Smalls\" Connell is a self taught maker who grew up in Silicon Valley helping her dad put together graphic cards to sell at Fry's Electronics in the early 80s. She believes that that maker community is a place to learn things, break things, and do the impossible. Her projects primarily focus on LEDs and robotics with an emphasis on trying unconventional techniques to create new things. You can check out her tutorials at: https://hackaday.io/projects/hacker/1365868 and follow her on Instagram at: https://www.instagram.com/smallswonderworks/",
-        "Talk Title": "Rethinking Body Art With LEDs",
-        "Talk Description (20-40 words)": "This talk chronicles the journey of “Sprite Lights,” which are 1.5mm thick LED body art pieces that act like temporary light-up tattoos. From hundreds of prototypes to smelting metal in a driveway to making flexible circuits on a griddle.",
-        "Talk Description (original)": "Sprite Lights are 1.5mm thick LED body art, think a light up temporary tattoo. Join Katherine \"Smalls\" Connell to hear about the 6-year journey to create the impossible as a self taught maker. From hundreds of rapid prototypes, and smelting metal in her driveway to reflowing home made flexible circuits on a griddle, Sprite Lights is a testament that when you're willing to try anything, you can create everything. ",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1NJjgwO3u5SaMYdGjHa2p50d7T1w3SRjD",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Kino DeVita & Cat Morse",
-        "Pronouns": "They/Them (Kino)\n\nShe/Her (Cat)",
-        "Presenter Bio (edited, 20-40 words)": "Kino is an artist, musician, and former language teacher turned electronics nerd through their love of synthesizers and electronic instruments. Cat Morse is a designer and maker compelled by the beauty of objects, functionality, and human interaction.",
-        "Presenter Bio (original)": "",
-        "Talk Title": "Celebrating the World of Display Technology",
-        "Talk Description (20-40 words)": "In this two-part presentation, Cat Morse will take the audience through the story of the PCC Time Machine, a retro-tech clock, and Kino DeVita will talk about curating and designing the first-ever community-sourced exhibit dedicated to electronic display technology.",
-        "Talk Description (original)": "",
-        "Notes ": "Bradley to review edits",
-        "Headshot": "",
-        "copy emailed for approval": ""
-    },
-    {
-        "Final Copy Approved": "FALSE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Madison Maxey ",
-        "Pronouns": "She/Her ",
-        "Presenter Bio (edited, 20-40 words)": "Madison Maxey spends most of her time working on soft, flexible electronics as CEO and founder of Loomia. She studied materials science and engineering at Stanford University and is the primary inventor on 8 granted patents. ",
-        "Presenter Bio (original)": "",
-        "Talk Title": "E-Textiles for Engineers: A deep dive into performance and applications",
-        "Talk Description (20-40 words)": "Think that electronic textiles are only for clothing? Thank again! This talk explores the technical use cases and pros and cons of using e-textiles over other flexible electronic technologies in robotics, automotive and more. From knit e-textile to good ol' regular PCBS, this talk is all about technology comparison and highlighting where electronic textiles can help solve your biggest electromechanical challenges.",
-        "Talk Description (original)": "",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/file/d/1-L0qAPjbe2iThy_UbgCwtEa8BBlKgzNM/view?usp=drive_link",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Mehrdad Majzoobi",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Mehrdad Majzoobi, the creator of Ubo Pod, is an open-source enthusiast and has spent the last decade working on consumer hardware and software projects. Mehrdad holds a PhD degree in electrical and computer engineering with research in hardware security topics.",
-        "Presenter Bio (original)": "Mehrdad is the creator of Ubo Pod (getubo.com), the ultimate Raspberry Pi based open source home pod made for developers. He is an open source enthusiast and has spent the last decade working on several consumer hardware and software projects. Mehrdad holds a PhD degree in electrical and computer engineering with previous research on various hardware security topics. ",
-        "Talk Title": "The Secrets of Agile Manufacturing",
-        "Talk Description (20-40 words)": "This talk discusses the methods used to design, build, and manufacture the Ubo open source home pod. In particular, it focuses on techniques that can be helpful in small volume production and incremental builds that lower cost, and increase flexibility.",
-        "Talk Description (original)": "In this talk, I would like to share some of the methods I used to design, build, and manufacture Ubo open source home pod. In particular, I am going to focus on techniques that can be helpful in small volume production and incremental builds that reduce cost, increases flexibility, and make mistake less costly. I cover various aspects of design and manufacturing of electronics and mechanical parts.",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1HsB-yDxQJZAH1xgRhMb81XdemDXEpra8",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Mohit Bhoite",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Mohit Bhoite, a senior hardware engineer at Particle, holds a master’s degree in robotics. He designs and builds IoT products and is an avid maker who dedicates his time to building free-formed electronic circuit sculptures. ",
-        "Presenter Bio (original)": "https://www.bhoite.com/about/",
-        "Talk Title": "Building space themed circuit sculptures",
-        "Talk Description (20-40 words)": "In this talk, hardware engineer and circuit sculptor Mohit Bhoite explores the art of building space-themed free-formed electronic circuit sculptures. Join this talk to learn how anyone with the right tools can get involved in this art form.",
-        "Talk Description (original)": "Hardware engineer and circuit sculptor Mohit Bhoite will explore the art of building space-themed free-formed electronic circuit sculptures. Join this talk to learn how anyone with the right tools can get involved in this art form.",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1ATZBtWfANc7tVx2-ooIXrk5kMt0MrgvE",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Nanik Adnani",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Nanik Adnani, a maker and analog designer, started building things as a kid who liked to sew and knit. Today, Nanik studies and designs analog integrated circuits and works on a variety of projects, everything from discrete transistors to finFETs.",
-        "Presenter Bio (original)": "Hi! My name is Nanik – I’m a long time maker and a new analog designer. I started building things as a kid who liked knitting and sewing, eventually adding some electronics into the mix. Today I study and design analog integrated circuits and have had the privilege of working on a variety of analog projects including everything from discrete transistors to finFETs. You can read more about my work over on my website: www.nanik.ca.",
-        "Talk Title": "A Hacker’s Guide to Analog Design in a Digital World",
-        "Talk Description (20-40 words)": "This talk provides an overview of the analog circuits found in everyday devices and in many maker projects. Learn why analog design isn’t as hard as you think, and how a few simple concepts could drastically improve your next project.",
-        "Talk Description (original)": "When someone says analog design – what do you think of? If I had to guess I would say you don’t associate it with modern technology. And yet – analog circuits and the designers that build them play a critical role in every modern electronic device, especially the digital ones. In this talk I will provide an overview of the incredible analog circuits in our pockets, and often already in our projects. Once you’re convinced – I’ll show that analog design isn’t as hard as you think and how a few simple concepts can significantly improve your next project, while providing examples with some of mine.",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1Ym9s5woWuhEcn9WCqJxJ3sAX1R0ekVAw",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Priyanka Makin",
-        "Pronouns": "She/Her",
-        "Presenter Bio (edited, 20-40 words)": "Priyanka Makin is a recent graduate of NYU’s Interactive Telecommunications Program, a SparkFun alum, an electrical engineer, and a multidisciplinary artist. She’s a habitual tinkerer and crafter whose work includes kinetic sculpture, custom circuit boards, audio devices, and sustainable materials. ",
-        "Presenter Bio (original)": "Priyanka Makin is a recent grad from NYU’s Interactive Telecommunications Program, SparkFun alum, and an electrical engineer and multidisciplinary artist. She’s a habitual tinkerer and crafter and her work dips into kinetic sculpture, custom circuit boards, audio devices, and sustainable materials. She prioritizes thorough documentation of her projects to open source her designs.",
-        "Talk Title": "Tech to Hack Embodiment",
-        "Talk Description (20-40 words)": "This talk discusses the “Body of Work” series, which is a collection of tech-powered body part sculptures meant to explore the connection between a person and their body. Learn more about the story behind this unique intersection of technology and art.",
-        "Talk Description (original)": "Tech constantly takes us out of the present moment and beckons us into the internet wormhole, but can we use technology to explore our emotions and root us in the now or even our physical bodies? At supercon, I would love to talk about my Body of Work series and how I used technology to interrogate my own embodiment. \n\nMy Body of Work is a series of tech-powered body part sculptures that relate to my own relationship with my body and come together to make an unconventional self-portrait. I’d like to start my talk with a bit of my research on the origins of artificial life, what embodiment is, and why acknowledging our bodies is important.\n\nThen I would talk about how I conceptualized and created my body part sculptures. The sculptures are:\nA Nervous System (Brain) - an interactive, custom PCB sculpture in the shape of a brain\nA Bun in The Washing Machine (Womb) - hand-fabricated, hyper-feminine mini washing machine sculpture with stepper motor system\nThoughts for Food (Stomach) - hand-made pop up book which is a journey to my stomach\ninterFACE (Face) - digital synthesizer step sequencer module which plays back different samples that I recorded from my own body: swallow, slurp, snort, snot, etc.\n\nI shared this work with the public at some exhibitions around NYC. After interacting with my installation, I asked viewers to touch base with their own bodies and collected the anonymous data.The overwhelming feedback I received was that people feel like they don’t think about their bodies enough (which is exactly how I feel!). Can this “embodied technology” be helpful or therapeutic to others?\n\nI would wrap up my talk with some concluding thoughts on using technology to create art, express emotions, and reconnect with the body; all the things that I learned through the process. I am still thinking about if this research could be adapted to educate on the power of positive body image or mind-body connection and some kind of workshop to guide others to create their custom body part mechanisms.",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1uGFuvOuqRNz1A1NSt0gTUcmYf_IFiaqN",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Randy Glenn",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Randy Glenn, an Embedded Systems Engineer, works on firmware for consumer electronics in home automation. He can also be found working on CAN-based pinball systems, lighting systems for halloween, old computers from the 1990s, and other odd microcontroller projects.",
-        "Presenter Bio (original)": "Randy Glenn is an Embedded Systems Engineer from Toronto, Ontario. In his day job, he works on firmware for consumer electronics in home automation; by evening and weekend, he can be found working on CAN-based pinball systems, lighting systems for halloween, old computers from the 1990s, and other odd microcontroller projects.",
-        "Talk Title": "Yes, you CAN use the Controller Area Network outside of cars",
-        "Talk Description (20-40 words)": "This talk discusses Controller Area Networks (CAN) used in cars, trains, buses, planes, and spacecraft, but are also useful for all sorts of cases where systems need to communicate. Discover how you can use this technology to transfer data between microcontrollers and larger computers.",
-        "Talk Description (original)": "The Controller Area Network (CAN) is used in cars, trains, buses, planes, and spacecraft - but it's useful for all sorts of cases where systems need to communicate. I'll talk about how you can use this technology to transfer data between microcontrollers and larger computers, and will present an example application that you can use as a starting point.",
-        "Notes ": "",
-        "Headshot": "https://drive.google.com/open?id=1KoQlJVvutDA3ENBXEfZgTWmVSId2Kiyh",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "FALSE",
-        "Time": "Panel",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Samy Kamkar & Allie Katz",
-        "Pronouns": "He/Him (Samy)\n\nThey/Them (Allie) ",
-        "Presenter Bio (edited, 20-40 words)": "Samy Kamkar is an independent security researcher engineering tools to highlight security implications of everyday technologies. His work's been cited by the NSA, triggered hearings on Capitol Hill, and has advanced security from the device in your pocket to the ones surveilling you from the sky.\n\nAllie Katz is an international nonbinary creative technologist, designer, inventor and occasional YouTuber. They're notorious for diving head first into new hardware, and putting entirely too many LEDs in things.",
-        "Presenter Bio (original)": "",
-        "Talk Title": "Unlocking Designs with Reverse Engineering\n[Panel]",
-        "Talk Description (20-40 words)": "",
-        "Talk Description (original)": "",
-        "Notes ": "",
-        "Headshot": "Allie - https://drive.google.com/file/d/1MdP4i8RqP-700n91ElreuLvGc3xPvtfC/view?usp=sharing\n\n\nSamy - https://drive.google.com/file/d/1khEcxgtnPQdVZAjldAzgWIs3NYQcVIfA/view?usp=drive_link",
-        "copy emailed for approval": " "
-    },
-    {
-        "Final Copy Approved": "FALSE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Sarah Vollmer",
-        "Pronouns": "She/Her They/Them",
-        "Presenter Bio (edited, 20-40 words)": "Sarah Vollmer is a PhD researcher at York University who focuses on Digital Media and Human Computer Interaction. Her work revolves around enhancing live performances with on-body haptics and improving AR technology with waveguide optics.",
-        "Presenter Bio (original)": "https://www.researchgate.net/profile/S-Vollmer/research\nhttps://github.com/MissCrispenCakes/\n\nSarah Vollmer is a PhD researcher at York University, focusing on Digital Media and Human Computer Interaction. Her focus revolves around enhancing live performances with on-body haptics and improving AR technology with waveguide optics. She explores the connection between physical expressions and mind philosophy, delving into different ways of understanding our world. Vollmer is particularly interested in how body movements can be enhanced in virtual environments. Her work is guided by the principle \"Segui il tuo corso e lascia dir le genti.\" ",
-        "Talk Title": "Turning (a lot) of talk into action - friends, foes, and forging ahead. ",
-        "Talk Description (20-40 words)": "This talk discusses the journey one maker took through the world of haptics, starting with their first-ever Supercon in 2019. Find out how one talk led to numerous other projects, papers, and large scale digital media exhibitions.",
-        "Talk Description (original)": "This talk is a journey of experiences, hacks, product developments, companies started, connections and collaborations, and international exhibitions that can all be traced back to my first ever Supercon (2019) and the talk I gave then - on haptics. I will focus on how hackaday and the people and the connections I’ve made there that started with that haptics talk and has led to so many interesting projects, new builds, papers, exhibitions, courses. A survey of the last few years and what became of this - how I’ve connected with people through back alley talks at hackaday and then gone on to continue designing and building collaborative projects (for example most recently with Joey Castillo and The OpenBook we customized and integrated into a large national exhibition). How I also pressed on with haptics and became an external company vendor to an academic institution - contracted for custom builds to research labs. In addition, I will also present on the various large scale digital media exhibitions and international museum and gallery exhibitions we have put on in the past few years, including ones incorporating past hackaday badges and participants live interactions while at past supercons piped into the exhibitions themselves.",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1_9Aul50ydUJy8h4RfTDefadwhbvzOJGK",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "Keynote",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Shrouk El-Attar",
-        "Pronouns": "She/Her or They/Them",
-        "Presenter Bio (edited, 20-40 words)": "Shrouk El-Attar is a renowned electronics engineering consultant and founder of Shrouk El-Attar Consultancy Ltd. Her extensive experience encompasses groundbreaking developments in medical wearables, including innovative projects like COVID-19 emergency ventilators and advanced bionic arms. Recognized as one of the BBC's 100 Most Influential Women and honoured as one of the top 6 Young Women Engineers in the UK, Shrouk has contributed significantly to organisations like Intel and NASA, notably in the Artemis mission bringing humanity back to the moon.",
-        "Presenter Bio (original)": "Shrouk El-Attar is a renowned electronics engineering consultant and founder of Shrouk El-Attar Consultancy Ltd. Her extensive experience encompasses groundbreaking developments in medical wearables, including innovative projects like COVID-19 emergency ventilators and advanced bionic arms. \n\nRecognized as one of the BBC's 100 Most Influential Women and honoured as one of the top 6 Young Women Engineers in the UK, Shrouk has contributed significantly to organisations like Intel and NASA, notably in the Artemis mission bringing humanity back to the moon.\n\nHer impressive journey from a refugee to an acclaimed engineer is marked by her advocacy in Engineers Without Borders UK and positions such as Executive Board Member at the Association for Black and Ethnic Minority Engineers.",
-        "Talk Title": "Watt's Up with Wearables: Navigating the Circuit of IEC 60601 Compliance",
-        "Talk Description (20-40 words)": "This talk explores the regulatory challenges of bringing medical wearable devices to market, focusing on IEC 60601 compliance. Shrouk will talk through the practical guidance for navigating safety and efficacy standards in the development of medical electronic wearables.",
-        "Talk Description (original)": "Was for a workshop:\nThe journey from concept to market for medical wearable devices is laden with intricate regulatory challenges, especially concerning compliance with the IEC 60601 standard. This workshop is designed to help navigate the maze of regulations and standards that govern the safety and efficacy of medical electronic wearables. The workshop aims to equip attendees with the necessary knowledge and tools to successfully navigate the complexities of IEC 60601 compliance using practical examples.\n\nKey Points to Be Covered:\n- Introduction to Medical Wearables and IEC 60601 Compliance\n- Collaborative Mock Design of a Smart Health Monitoring Wristband\n- Risk Management and Safety Analysis in Line with ISO 14971\n- Practical Insights into Electrical, Mechanical, and Software Safety Requirements\n- Navigating Electromagnetic Compatibility (EMC) in Wearable Devices\n- Real-time Mock Compliance Review of the Designed Wristband\n\nWhat You Will Learn:\n- End-to-end process of designing a compliant Smart Health Monitoring Wristband\n- Practical application of IEC 60601 standards in wearable technology\n- Risk assessment and mitigation strategies specific to medical wearables\n- Navigating regulatory submissions with a focus on FDA 510(K) and EU MDR",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1J73q2vHxBETrb1SR7KPWc4dAg78Cs9FT",
-        "copy emailed for approval": "FALSE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "",
-        "Presenter Name": "Wayne Pavalko",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Wayne Pavalko is a passionate electronics and hardware tinkerer. After doing a Hackaday-inspired experiment with ocean hardware, he found himself supporting the maritime research community with custom technology.",
-        "Presenter Bio (original)": "Wayne is a passionate electronics and hardware tinkerer. After doing some Hackaday-inspired experiments with ocean hardware, he found himself supporting the ocean research community with custom tech. Wayne resides in Maryland, but is most happy at the bench, hiking, or traveling the world with his family.",
-        "Talk Title": "Adventures in Ocean Tech: The Maker Buoy Journey",
-        "Talk Description (20-40 words)": "This talk discusses Wayne's adventures in ocean technology, from a single Arduino-based drifting buoy to deploying hundreds of ocean sensors around the world. Discover the hardware and software, lessons-learned, and the network of collaborators necessary to turn a hobby into an ocean technology side-hustle.",
-        "Talk Description (original)": "This talk discusses my adventures in ocean technology from a single Arduino-based drifting buoy to deploying hundreds of ocean sensors around the world. I'll discuss how it all started, the hardware and software lessons-learned, and the network of collaborators necessary to turn a hobby into an ocean technology side-hustle.",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=16xJ96j_Li-9bximNgFgIEPInH1A-lDkV",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "20 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Wenting Zhang",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Wenting Zhang is an SoC/ digital RTL designer, embedded system application engineer, and open-source maker. He's especially interested in display technologies, and has been building various different projects loosely around the topic of displays.",
-        "Presenter Bio (original)": "Wenting Zhang is an SoC/ digital RTL designer, embedded system application engineer, and open-source maker. He's especially interested in display technologies, and has been building various different projects loosely around the topic of displays.",
-        "Talk Title": "Making E-Ink Go Fast",
-        "Talk Description (20-40 words)": "The talk will go through the design of the Caster project, which enables high refresh rate and low latency display on off-the-shelf E-Ink screen panels. Find out how this open-source, low-latency display continues to evolve. ",
-        "Talk Description (original)": "The talk will go through the design of the Caster project and the background information on the Eink technology. Caster enables high refresh rate and low latency display on off-the-shelf E-Ink screen panels. Caster is an open-source low-latency electrophoretics display (like E-Ink) controller design, offering support for wide range of screens, flexible screen update control, and multiple dithering options. Zhang also recently turned it into a fully-fledged portable E-Ink monitor with Type-C and HDMI input which will be discussed as well.",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1b7-0pVNvjjp_EWkVJUB5cK3vZZNeohZa",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Yohan Hadji",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Yohan Hadji is a student at the Swiss Federal Institute of Technology in Lausanne (EPFL), and since 2019, he has been working on stratospheric gliders to make radiosondes reusable under the R2HOME project.",
-        "Presenter Bio (original)": "Yohan was born in 2004 in Grenoble (France), he's currently a student at the Swiss Federal Institute of Technology in Lausanne (EPFL). Since 2019 he's been working on stratospheric gliders to make radiosondes reusable under the R2HOME project.",
-        "Talk Title": "Ultralight Glider Returns Home from the Stratosphere ",
-        "Talk Description (20-40 words)": "This talk discusses the challenges of getting a 250-gram sub to autonomously return home after being released from a stratospheric balloon at 100,000 feet. ",
-        "Talk Description (original)": "This talk will give you an overview of all the technical challenges to solve to get a sub 250g to autonomously return to home after releasing from a stratospheric balloon at 100'000ft altitude.",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=10WjHbZ8F-zdGWLCLKCOymuhhEjuhOHTP",
-        "copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "40 minutes",
-        "Schedule Time": "",
-        "Location": "",
-        "Announced?": "Y",
-        "Presenter Name": "Zach Fredin",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Zach Fredin is the senior shop and electronics education technician at The Possible Zone, a Boston non-profit that hosts STEAM education programs. He studied at MIT's Center for Bits and Atoms, and previously founded a neuroscience education hardware startup.",
-        "Presenter Bio (original)": "Zach is currently the senior shop and electronics education technician at The Possible Zone, a non-profit in Boston which hosts after school STEAM education programs for high school students in under-resourced communities. Prior to that, he worked on tokamak instrumentation at Commonwealth Fusion Systems. Prior to that, he studied digital materials, NMR spectroscopy, laser micromachining, and assembled computational structures at the Center for Bits and Atoms at MIT. Prior to that, he founded and helped run an open-source neuroscience education company called NeuroTinker which grew out of a talk he gave at the first Supercon. More: https://zachfred.in",
-        "Talk Title": "The Circuit Graver",
-        "Talk Description (20-40 words)": "This talk showcases the progress made on a novel fabrication workflow developed over the last several years which demonstrates the feasibility of fabricating 4/4 PCBs at home. Find out how this method can help mitigate delays during design and testing.",
-        "Talk Description (original)": "We all must strive to minimize iteration time. Designing and testing an idea in a single sitting spawns great things! It's why we visit fab labs and love laser cutters and push the 3D printers in the corners of our apartments to the absolute limit. But circuit tools haven't kept up; once you're done mashing together breakout boards, your choices of milling, conductive-pasting, or home etching all leave a bit to be desired; they're often messy, delicate, and lack the precision to reach the funnest parts in the catalog. Ugh, I need to go smaller than SOICs, and I don't want to wait a week for commercial boards! \n\nHere, I present and freely share significant progress on a novel method I've been poking at over the last few years which demonstrates the feasibility of fabricating 4/4 PCBs at home!  ",
-        "Notes ": " ",
-        "Headshot": "https://drive.google.com/open?id=1TuebWetkQZcS_WHflqAP3LKMGM3zPFNT",
-        "copy emailed for approval": "TRUE"
-    }
-], 
-    "workshops": [
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "",
-        "Location": "",
-        "Presenter Name": "Adam McCombs + Isabel Burgos",
-        "Pronouns": "they/them (Adam)\nShe/Her (Isabel)",
-        "Presenter Bio (edited, 20-40 words)": "Adam McCombs and Isabel Burgos develop open source hardware for electron and ion microscopes. They have over 10 years of combined experience moving, hacking, rebuilding, and repairing electron microscopes of every vintage and every make.",
-        "Presenter Bio (original)": "Just a note, this workshop would be present by myself Adam McCombs the other half of Nanographs Isabel Burgos. Email me for Isable's headshot or if we need a combined one.\n\nAdam and Isabel develop open source hardware for electron and ion microscopes. Combined they have over 10 years of experience moving, hacking, rebuilding, and repairing electron microscopes of every vintage and every make. In their NW Portland workshop & lab they can be found building boards, capturing nanographs, and keeping their fleet of microscopes online.",
-        "Workshop Title": "Hands on with an Electron Microscope",
-        "Workshop Description (edited, 20-40 words)": "This workshop will teach you how to become an electron microscope knob turner, starting with basic principles and which fields you are actually manipulating in the column. We will also cover sample preparation and considerations, so bring something you want to examine!",
-        "Workshop Description (original)": "Ever wanted to know what it's like to explore the nano world? We are brining an electron microscope so you can find out!\n\nThis workshop will teach you how to become an electron microscope knob turner, starting with the first principles and what fields you are actually manipulating in the column. We will also cover sample preparation and considerations, so bring something you want to look at and we will help you figure out if/how it is possible.",
-        "Notes": "",
-        "Headshot": "https://drive.google.com/open?id=1hePZHavGEf-K8YD6loohipknc1HHJS1H\n\n______\n\nhttps://drive.google.com/?authuser=2&usp=gm-s#my-drive?action=locate&id=1mR_RRAylz-6_1HxNL9Jpx_98xjMurEXq&parent=1Rvn3vDw9fhwyC9TZpGNx1vCV9iJI6GGROORgtIqeMD5DKd5l2Nobs1j3XvWTjIpOf2yVKWKo",
-        "final copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "",
-        "Location": "",
-        "Presenter Name": "Anool Mahidharia",
-        "Pronouns": "he/him",
-        "Presenter Bio (edited, 20-40 words)": "Anool is an Electrical Engineer, working in the field of Test & Measurement at Lumetronics, and a contributing writer at Hackaday. He is the co-founder of both WyoLum Emergents and Makers’ Asylum, one of the first community-driven maker spaces in India.",
-        "Presenter Bio (original)": "Anool is an Electrical Engineer, working in the field of Test & Measurement at Lumetronics. His interests are open source hardware design, cycling, hacking, Origami, astronomy, photography and generally tinkering around. He is one of the founder duo of WyoLum Emergents – a global group of open hardware enthusiasts building open source projects. Anool is co-founder of Makers’ Asylum – one of India’s first community driven Maker Spaces. He is also a contributing writer for Hackaday. Anool lives in Mumbai, India.",
-        "Workshop Title": "Blinky Con Badge requires no soldering!",
-        "Workshop Description (edited, 20-40 words)": "Conference badges have become incredibly complex over the years. This workshop will turn the clock back to a simpler time by showcasing a design that can be assembled quickly with simple components and zero soldering.",
-        "Workshop Description (original)": "Let’s admit it - conference badges have become insanely complex over the years. I should know - having helped build a few over the years. In hindsight, the 2013 Open Hardware Summit e-Paper badge I helped design seemed way ahead of its time. And things have only gotten out of hand since. So let’s roll the clock back, and build a super simple conference badge that can be assembled in a jiffy, does not require soldering, doesn’t use a micro-controller and is fun to build and wear. The badge makes use of the edge lighting capability of 3 mm acrylic. All we’ll need are a couple of LEDs, a coin cell battery, and a piece of brass wire. Along the way, I will give a quick walk through on how this was designed using FreeCAD. It will be fun ! ",
-        "Notes": "Will need a tabletop demo camera and a large monitor/TV, and a microphone.\nNeed to coordinate with Anool once people signup for the workshop about SVG templates",
-        "Headshot": "https://drive.google.com/open?id=1BjBHQToZHMPMkL_Sg54UGRv6lVp2fH3Y",
-        "final copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "TRUE",
-        "Time": "",
-        "Location": "",
-        "Presenter Name": "Jazmin Hernandez",
-        "Pronouns": "she/her",
-        "Presenter Bio (edited, 20-40 words)": "Jazmin Hernandez is an electronic engineer and language learner currently developing projects that bring students and enthusiasts closer to technology, electronics, and the overall maker community.",
-        "Presenter Bio (original)": "Young Electronic Cats Support Area Leader, almost 3 years of experience and counting!\nElectronic Engineer, language learner and currently developing projects and events between different areas of study to bring students and enthusiasts closer to technology, electronics, and the maker community. ",
-        "Workshop Title": "It Matter(s)! Learn to use the Arduino Matter",
-        "Workshop Description (edited, 20-40 words)": "This workshop will teach attendees how to use the Arduino Nano Matter in conjunction with the IoT cloud. It will also cover the basics of Matter protocol and how to connect devices. Beginners are welcome, there’s no prior experience required!",
-        "Workshop Description (original)": "In this workshop, you will learn how to use the Arduino Nano Matter along with the IoT Cloud, also learn the basics of Matter protocol and how to connect your devices. Do not worry, no experience required, and you will have a great time learning. ",
-        "Notes": " Attendees will need to bring their own laptops",
-        "Headshot": "https://drive.google.com/open?id=1rKafJxg15UyeVkPj-rz_mdq3fC9hF9U_",
-        "final copy emailed for approval": "TRUE"
-    },
-    {
-        "Final Copy Approved": "",
-        "Time": "",
-        "Location": "",
-        "Presenter Name": "Matt Venn",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Matt Venn is a science and technology communicator and electronics engineer. He has been involved with open-source silicon for the last four years and sent over 20 chips for manufacturing. ",
-        "Presenter Bio (original)": "",
-        "Workshop Title": "Tiny Tapeout",
-        "Workshop Description (edited, 20-40 words)": "In this workshop, you will get the opportunity to design and manufacture your own design on an ASIC!\n\nYou will learn:\n  -  The basics of digital logic,\n  -  The basics of how semiconductors are designed and made\n  -  How to use an online digital design tool to build and simulate a simple design,\n   - How to create the GDS files for manufacture on the open-source Sky130 PDK.\n\nNotes: \nParticipants will have the option to submit their designs to be manufactured on the next shuttle as part of the Tiny Tapeout project.\n\nParticipants will need a laptop. Mouse and headphones are strongly advised. Nothing\nneeds to be downloaded, but good internet is required.",
-        "Workshop Description (original)": "",
-        "Notes": "copy from last year's workshop",
-        "Headshot": "https://drive.google.com/file/d/12sAtz-4OsQ5Ku0_T7pYDtmQOsn20_Pdj/view?usp=drive_link",
-        "final copy emailed for approval": ""
-    },
-    {
-        "Final Copy Approved": "",
-        "Time": "",
-        "Location": "",
-        "Presenter Name": "Shawn Hymel",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Shawn Hymel is a consulting engineer and instructor for edge AI and embedded systems that inspire and teach developers of all skill levels. He can be found giving talks, running workshops, and swing dancing in his free time.",
-        "Presenter Bio (original)": "",
-        "Workshop Title": "Introduction to Zephyr: Demystifying Device Drivers",
-        "Workshop Description (edited, 20-40 words)": "This workshop is designed for embedded engineers who are new to the Zephyr OS and are interested in exploring how it can be used for building next-generation embedded applications. Participants will gain hands-on experience with Zephyr OS, including initial setup, toggling pins with existing libraries, and creating custom device drivers.",
-        "Workshop Description (original)": "The Zephyr Project is rapidly emerging as a leading real-time operating system (RTOS) for IoT devices due to its scalability, connectivity, and security features. This workshop is designed for embedded engineers who are new to the Zephyr OS and are interested in exploring how it can be used for building next-generation embedded applications. In two hours, participants will gain hands-on experience with Zephyr OS, including initial setup, toggling pins with existing libraries, and creating custom device drivers.",
-        "Notes": "",
-        "Headshot": "https://drive.google.com/open?id=15E7YHqfIOQpXi0lB0pA35LKlnngcEU0q",
-        "final copy emailed for approval": ""
-    },
-    {
-        "Final Copy Approved": "",
-        "Time": "",
-        "Location": "",
-        "Presenter Name": "Paul Beech",
-        "Pronouns": "He/Him",
-        "Presenter Bio (edited, 20-40 words)": "Workshop Bio: Paul is the co-founder of UK Maker company Pimoroni and spends his days between cat-herding and making neat PCBs art and kits.",
-        "Presenter Bio (original)": "",
-        "Workshop Title": "Mini Robot Jam. Build Hard. Drive Hard.",
-        "Workshop Description (edited, 20-40 words)": "You’ll be given a neat kit of tiny robot parts, and a garage of materials and sensors to build your sweetest ride. Learn how to make the RP2350 at its heart rock ‘n’ roll in MicroPython. Then pit it against obstacles to see how well your code works in real life.",
-        "Workshop Description (original)": "",
-        "Notes": "",
-        "Headshot": "headshot from Hackaday Berlin",
-        "final copy emailed for approval": ""
-    }
-],
-    "schedule": [
+const SCHEDULE = [
     {
         "Day": "Saturday",
         "Location": "LACM/ DesignLab",
@@ -732,7 +8,9 @@ const CONFERENCECONTENT = {
         "Talk Title": "",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "other"
     },
     {
         "Day": "Saturday",
@@ -743,7 +21,9 @@ const CONFERENCECONTENT = {
         "Talk Title": "Opening Remarks",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "other"
     },
     {
         "Day": "Saturday",
@@ -753,8 +33,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "CNLohr seeks to break down the barriers of conventional wisdom and common design practices. Whether it’s mapping out wifi in 3D, running Minecraft on a glass microscope slide, or modulating RF signals without dedicated hardware, he seeks to explore what’s possible when layers of abstraction are shed.",
         "Talk Title": "Microcontrollers Are Just Radios in Disguise",
         "Talk Description (20-40 words)": "This talk explores ways to leverage every cycle of underpowered microcontrollers to get them doing the work of parts ten times their price, including operations normally done with dedicated radio hardware. ",
-        "Headshot": "https://drive.google.com/open?id=1X-cTg3BGFWXVqwQnZSvdgQN6tUrUbPow",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/CNLohr.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -764,8 +46,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Mohit Bhoite, a senior hardware engineer at Particle, holds a master’s degree in robotics. He designs and builds IoT products and is an avid maker who dedicates his time to building free-formed electronic circuit sculptures. ",
         "Talk Title": "Building space themed circuit sculptures",
         "Talk Description (20-40 words)": "In this talk, hardware engineer and circuit sculptor Mohit Bhoite explores the art of building space-themed free-formed electronic circuit sculptures. Join this talk to learn how anyone with the right tools can get involved in this art form.",
-        "Headshot": "https://drive.google.com/open?id=1ATZBtWfANc7tVx2-ooIXrk5kMt0MrgvE",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Mohit_Bhoite.png",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -775,19 +59,23 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Azita Emami is the Andrew and Peggy Cherng Professor of Electrical Engineering and Medical Engineering, and the Director of Center for Sensing to Intelligence (S2I) at Caltech. Her current research interests include integrated circuits and systems, integrated photonics, wearable and implantable devices for neural recording, neural stimulation, sensing, drug delivery and high-speed data communication systems. ",
         "Talk Title": "Intelligent Devices for Brain-Machine-Interfaces and Health Monitoring",
         "Talk Description (20-40 words)": "This talk discusses the design challenges and promises of future wearable and implantable devices. Join us as we take a look at wireless health monitoring with tiny chips, and the hardware-software co-design for Brain-Machine-Interfaces (BMI).",
-        "Headshot": "https://drive.google.com/file/d/1tNkOQr9A3sC26-mlQKF6fkyoxzBIg87a/view?usp=drive_link",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Azita_Emami.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
         "Location": "Alley",
         "Time": "12:00- 1:00 PM",
-        "First and Last Name: ": " LUNCH",
+        "First and Last Name: ": " Lunch",
         "Presenter Bio (edited, 20-40 words)": "",
         "Talk Title": "",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "other"
     },
     {
         "Day": "Saturday",
@@ -797,8 +85,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Angelica Tavella is a design researcher and interaction designer specializing in urban renewable energy and healthy human interactions with technology. Angelica is also a lecturer at the Applied Sciences University of Potsdam and produces experimental electronic music.",
         "Talk Title": "User-Friendly Interfaces for Tomorrow's Energy Management",
         "Talk Description (20-40 words)": "The global shift towards renewable energy sources requires new infrastructure for a more flexible and distributed network. This talk shows source energy metering systems (EMS) can be used to utilize solar power better and gives ideas about how interfaces can become more user-friendly.",
-        "Headshot": "https://drive.google.com/open?id=1pnAGrJn5A7sV7B-Dfjvry5cMcTroWXFE",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Angelica_Tavella.jpeg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -808,8 +98,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Christina Cyr specializes in \"Non-Rectangular Phones for Non-Rectangular People\" and holds degrees in physics, biochemistry, and engineering. Her current passions include satellite technology, GNSS, 5G, eco-friendly communication devices, and batteries made from recycled lithium.",
         "Talk Title": "Solving the Last Mile With 3D-printed Packaging",
         "Talk Description (20-40 words)": "This talk explores the complexities of designing product packaging while the product’s design is still evolving. Experience the story of how one maker designed and 3D-printed her own packaging and the lessons she learned along the way. ",
-        "Headshot": "https://drive.google.com/open?id=11JJczcxiX0ULyqCcKILw_YbqawD8Et0t",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Christina-Cyr.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -819,8 +111,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Eduardo Contreras, an electronics engineer, is passionate about technological development and science. Eduardo is the co-founder and CTO of the Electronic Cats company where he develops embedded systems.",
         "Talk Title": "Cats Turned Plumbers: Embedded Linux Adventures",
         "Talk Description (20-40 words)": "This talk explores the journey of deploying embedded Linux systems and integrating drivers on Linux kernels, from the hardware to the kernel.",
-        "Headshot": "https://drive.google.com/file/d/17eN02Ilm3ShhiEu0I3g6Nj9agMi_aMCA/view?usp=drive_link",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Eduardo_Contreras.png",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -830,8 +124,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Madison Maxey spends most of her time working on soft, flexible electronics as CEO and founder of Loomia. She studied materials science and engineering at Stanford University and is the primary inventor on 8 granted patents. ",
         "Talk Title": "E-Textiles for Engineers: A deep dive into performance and applications",
         "Talk Description (20-40 words)": "Think that electronic textiles are only for clothing? Thank again! This talk explores the technical use cases and pros and cons of using e-textiles over other flexible electronic technologies in robotics, automotive and more. From knit e-textile to good ol' regular PCBS, this talk is all about technology comparison and highlighting where electronic textiles can help solve your biggest electromechanical challenges.",
-        "Headshot": "https://drive.google.com/file/d/1-L0qAPjbe2iThy_UbgCwtEa8BBlKgzNM/view?usp=drive_link",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Madison_Maxey-.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -841,19 +137,23 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Mehrdad Majzoobi, the creator of Ubo Pod, is an open-source enthusiast and has spent the last decade working on consumer hardware and software projects. Mehrdad holds a PhD degree in electrical and computer engineering with research in hardware security topics.",
         "Talk Title": "The Secrets of Agile Manufacturing",
         "Talk Description (20-40 words)": "This talk discusses the methods used to design, build, and manufacture the Ubo open source home pod. In particular, it focuses on techniques that can be helpful in small volume production and incremental builds that lower cost, and increase flexibility.",
-        "Headshot": "https://drive.google.com/open?id=1HsB-yDxQJZAH1xgRhMb81XdemDXEpra8",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Mehrdad_Majzoobi.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
         "Location": "LACM",
         "Time": "4:00-4:40 PM",
-        "First and Last Name: ": "Samy Kamkar & Allie Katz",
-        "Presenter Bio (edited, 20-40 words)": "Samy Kamkar is an independent security researcher engineering tools to highlight security implications of everyday technologies. His work's been cited by the NSA, triggered hearings on Capitol Hill, and has advanced security from the device in your pocket to the ones surveilling you from the sky.\n\nAllie Katz is an international nonbinary creative technologist, designer, inventor and occasional YouTuber. They're notorious for diving head first into new hardware, and putting entirely too many LEDs in things.",
+        "First and Last Name: ": "Allie Katz, Samy Kamkar, and Al Williams",
+        "Presenter Bio (edited, 20-40 words)": "[Moderator] Allie Katz is an international nonbinary creative technologist, designer, inventor and occasional YouTuber. They're notorious for diving head first into new hardware, and putting entirely too many LEDs in things.\n\nSamy Kamkar is an independent security researcher engineering tools to highlight security implications of everyday technologies. His work's been cited by the NSA, triggered hearings on Capitol Hill, and has advanced security from the device in your pocket to the ones surveilling you from the sky.\n\nAl Williams is a Hackaday editor and contributor. While most of his engineering is done in the forward mode, there was a time when he professionally took apart microprocessors under a microscope to determine why they had failed. ",
         "Talk Title": "Unlocking Designs with Reverse Engineering\n[Panel]",
         "Talk Description (20-40 words)": "",
-        "Headshot": "Allie - https://drive.google.com/file/d/1MdP4i8RqP-700n91ElreuLvGc3xPvtfC/view?usp=sharing\n\n\nSamy - https://drive.google.com/file/d/1khEcxgtnPQdVZAjldAzgWIs3NYQcVIfA/view?usp=drive_link",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Allie_Katz.jpg",
+        "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Samy_Kamkar.jpg",
+        "Headshot 2/2": "https://hackaday.com/wp-content/uploads/2015/07/al-williams-headshot.png",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -864,7 +164,9 @@ const CONFERENCECONTENT = {
         "Talk Title": "Giving Robotic Friends a Voice: Integrating Local LLMs and Speech Systems Into a Companion Bot",
         "Talk Description (20-40 words)": "This talk will showcase a collaborative project that demonstrates full voice interaction on a Digit companion robot and how a large language model (LLM) made this possible. ",
         "Headshot": "https://drive.google.com/open?id=1MIOrSih42kn0jrttmxGuuYpD6_Lvvvl8",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -874,8 +176,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Shrouk El-Attar is a renowned electronics engineering consultant and founder of Shrouk El-Attar Consultancy Ltd. Her extensive experience encompasses groundbreaking developments in medical wearables, including innovative projects like COVID-19 emergency ventilators and advanced bionic arms. Recognized as one of the BBC's 100 Most Influential Women and honoured as one of the top 6 Young Women Engineers in the UK, Shrouk has contributed significantly to organisations like Intel and NASA, notably in the Artemis mission bringing humanity back to the moon.",
         "Talk Title": "Watt's Up with Wearables: Navigating the Circuit of IEC 60601 Compliance",
         "Talk Description (20-40 words)": "This talk explores the regulatory challenges of bringing medical wearable devices to market, focusing on IEC 60601 compliance. Shrouk will talk through the practical guidance for navigating safety and efficacy standards in the development of medical electronic wearables.",
-        "Headshot": "https://drive.google.com/open?id=1J73q2vHxBETrb1SR7KPWc4dAg78Cs9FT",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Shrouk_El-Attar.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -886,7 +190,9 @@ const CONFERENCECONTENT = {
         "Talk Title": "State of Hackaday ",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "other"
     },
     {
         "Day": "Saturday",
@@ -896,8 +202,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Justin McAllister is a radio enthusiast, electrical engineer, and startup founder who designed uncrewed aerial systems for AeroVironment and co-founded MicaSense. Nick Foster is an electrical engineer specializing in RF, software-defined radios (SDRs), mixed-signal hardware, and developed the first operational ultra-low-latency shortwave radio network.",
         "Talk Title": "Finding Beamo - from interference to numbers stations, how to track down radio transmissions",
         "Talk Description (20-40 words)": "This talk provides a comprehensive guide to identifying and locating radio transmitters. Learn about practical techniques, common tools, and methodologies from decades of combined experience finding, squashing, and mitigating against radio frequency interference. ",
-        "Headshot": "https://drive.google.com/open?id=1IhkiqV06s7OA5dK8V1lHtDpo9i7WffLT",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Justin_McAllister-Nick_Foster.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -907,8 +215,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Dev Kennedy began his journey into smart glasses nearly ten years ago when the vision of the concept outpaced available technology. He’s spent the last decade developing the necessary building blocks to make it a reality and is excited to show the world how far it has come. ",
         "Talk Title": "Photonics/Optical Stack for Smart-Glasses ",
         "Talk Description (20-40 words)": "This talk discusses the intricacies of smart glasses and the gamut of hardware options for displaying light, getting the photonics right, and building a head-mounted display. ",
-        "Headshot": "https://drive.google.com/open?id=1AGctH_WzcuuLB-ZyRuSPxQoh4ZIpt4ww",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Dev_Kennedy.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -918,8 +228,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Mark Omo, Director of Cat Herding at Marcus Engineering, works primarily in embedded security, electronics, and software. James Rowley, Senior Engineer at Marcus Engineering, works primarily in embedded security and software development. James and Mark both have a background in regulated device design.",
         "Talk Title": "Using an Oscilloscope to Peek Below the Noise Floor: the DSP Magic of Lock-In Amplifiers",
         "Talk Description (20-40 words)": "This talk explores the DSP magic that allows lock-in amplifiers to detect signals hidden below the noise floor. Learn how to use your oscilloscope as a lock-in amplifier, enabling a low-cost entry point to these niche instruments. ",
-        "Headshot": "https://drive.google.com/open?id=1so3LiW4y21iNWCIGleoVhKBWZuI3KwtN",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/James_Rowley.png",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -929,8 +241,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Jim Scarletta holds a degree in Electronic Engineering from Cal Poly, San Luis Obispo, and has over 30 years of professional engineering and automation experience. Jim is a contractor for wolfSSL focusing on ESP32 embedded development.",
         "Talk Title": "Repurposing ESP32 Based Commercial Products ",
         "Talk Description (20-40 words)": "This talk discusses flashing custom software onto existing commercial ESP32-based products, development, and debugging using open-source Tigard JTAG hardware with VisualGDB in Visual Studio. It will also cover implementing more secure cryptographic functions with commercial-grade wolfSSL examples.",
-        "Headshot": "https://drive.google.com/open?id=1DRIifEnHIo6W_y6WpAH3_21A6gGS7LzT",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Jim_Scarletta.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -940,8 +254,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Juan Diego Zambrano Torres, Ivan Hernandez, and Abdelrahman Tarek Zakaria Abdelmaaboud Faragare are all automation engineering students at Politecnico Di Milano. They all participated in an assistive technology hackathon sponsored by DesignLab and Digikey this year.",
         "Talk Title": "Immersive Motion Rehabilitation Device",
         "Talk Description (20-40 words)": "This talk introduces a wearable motion monitoring device using low-energy Bluetooth (BLE). It features an interactive game-based interface for children and generates detailed medical reports, providing therapists with valuable insights for effective rehabilitation.",
-        "Headshot": "",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Juan-Diego-Ivan-and-Abdelrahman.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -951,8 +267,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Blair Subbaraman explores machine automation as a creative medium, and how domain experts, such as artists and scientists, can leverage existing skills in their use of machines. Currently based in Seattle, Blair is a PhD student at the University of Washington and works in the lab at Machine Agency. ",
         "Talk Title": "Sketching with Machines",
         "Talk Description (20-40 words)": "Software for making physical things often overlooks existing skill sets, forcing practitioners to work against built-in assumptions to accomplish their goals. This talk will consider how creative practices can guide the development of digital fabrication systems and communities.",
-        "Headshot": "https://drive.google.com/open?id=1_uO-nadLcW75LzsrfA8rGjG52v6wwr3T",
-        "": " "
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Blair-Subbaraman.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "",
@@ -963,7 +281,9 @@ const CONFERENCECONTENT = {
         "Talk Title": "Repurposing ESP32 Based Commercial Products ",
         "Talk Description (20-40 words)": "This talk discusses flashing custom software onto existing commercial ESP32-based products, development, and debugging using open-source Tigard JTAG hardware with VisualGDB in Visual Studio. It will also cover implementing more secure cryptographic functions with commercial-grade wolfSSL examples.",
         "Headshot": "https://drive.google.com/open?id=1DRIifEnHIo6W_y6WpAH3_21A6gGS7LzT",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": ""
     },
     {
         "Day": "Saturday",
@@ -973,8 +293,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Joe Long has been tinkering, designing, and hacking electronic systems for about forty years. He is the founder of HackerBoxes.com, the monthly subscription box service for electronics, cybersecurity, and hacker culture. He enjoys teaching electrical engineering and computer science topics to all.",
         "Talk Title": "In Living Color: A New World of Full-Color PCBs",
         "Talk Description (20-40 words)": "This talk will discuss new ways to make full-color PCBs. Gone are the days when printed circuit boards were either boring, bare beige, or coated with a green solder mask. The time for more creative power has arrived. ",
-        "Headshot": "https://drive.google.com/open?id=1Icrz6kq_SYdMyCWUDs8b6KW7OfiUGO6q",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Joseph-Long.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -984,8 +306,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Katherine \"Smalls\" Connell is a self taught maker who grew up in Silicon Valley helping her dad put together graphic cards. She believes that the maker community is a place to learn things, break things, and do the impossible.\n\n",
         "Talk Title": "Rethinking Body Art With LEDs",
         "Talk Description (20-40 words)": "This talk chronicles the journey of “Sprite Lights,” which are 1.5mm thick LED body art pieces that act like temporary light-up tattoos. From hundreds of prototypes to smelting metal in a driveway to making flexible circuits on a griddle.",
-        "Headshot": "https://drive.google.com/open?id=1NJjgwO3u5SaMYdGjHa2p50d7T1w3SRjD",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Katherine_Connell.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -995,8 +319,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Randy Glenn, an Embedded Systems Engineer, works on firmware for consumer electronics in home automation. He can also be found working on CAN-based pinball systems, lighting systems for halloween, old computers from the 1990s, and other odd microcontroller projects.",
         "Talk Title": "Yes, you CAN use the Controller Area Network outside of cars",
         "Talk Description (20-40 words)": "This talk discusses Controller Area Networks (CAN) used in cars, trains, buses, planes, and spacecraft, but are also useful for all sorts of cases where systems need to communicate. Discover how you can use this technology to transfer data between microcontrollers and larger computers.",
-        "Headshot": "https://drive.google.com/open?id=1KoQlJVvutDA3ENBXEfZgTWmVSId2Kiyh",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Randy-Glenn.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -1006,8 +332,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Nanik Adnani, a maker and analog designer, started building things as a kid who liked to sew and knit. Today, Nanik studies and designs analog integrated circuits and works on a variety of projects, everything from discrete transistors to finFETs.",
         "Talk Title": "A Hacker’s Guide to Analog Design in a Digital World",
         "Talk Description (20-40 words)": "This talk provides an overview of the analog circuits found in everyday devices and in many maker projects. Learn why analog design isn’t as hard as you think, and how a few simple concepts could drastically improve your next project.",
-        "Headshot": "https://drive.google.com/open?id=1Ym9s5woWuhEcn9WCqJxJ3sAX1R0ekVAw",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Nanik_Adnani.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Saturday",
@@ -1017,8 +345,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Wayne Pavalko is a passionate electronics and hardware tinkerer. After doing a Hackaday-inspired experiment with ocean hardware, he found himself supporting the maritime research community with custom technology.",
         "Talk Title": "Adventures in Ocean Tech: The Maker Buoy Journey",
         "Talk Description (20-40 words)": "This talk discusses Wayne's adventures in ocean technology, from a single Arduino-based drifting buoy to deploying hundreds of ocean sensors around the world. Discover the hardware and software, lessons-learned, and the network of collaborators necessary to turn a hobby into an ocean technology side-hustle.",
-        "Headshot": "https://drive.google.com/open?id=16xJ96j_Li-9bximNgFgIEPInH1A-lDkV",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Wayne_Pavalko.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1029,18 +359,22 @@ const CONFERENCECONTENT = {
         "Talk Title": "",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "other"
     },
     {
         "Day": "Sunday",
         "Location": "Alley",
         "Time": "12:00- 1:00 PM",
-        "First and Last Name: ": " LUNCH",
+        "First and Last Name: ": "Lunch",
         "Presenter Bio (edited, 20-40 words)": "",
         "Talk Title": "",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "other"
     },
     {
         "Day": "Sunday",
@@ -1050,8 +384,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Ayesha Iftiqhar-Wilson is an Electrical Engineer passionate about sustainable technology. She has contributed to diverse climate tech initiatives, such as robotics for sustainable farming and electrification of gas-powered tools and vehicles. She is also a dedicated maker and STEAM outreach creator. ",
         "Talk Title": "Environmentally-Friendly Electronics: Design Principles for Sustainability",
         "Talk Description (20-40 words)": "This talk address the issue of electronic waste by introducing Sustainable Design Engineering (SDE) and Design for Environment (DFE) principles. By exploring SDE and DFE, attendees will gain practical insights into integrating environmental considerations into electronics design, fostering a more sustainable approach. ",
-        "Headshot": "https://drive.google.com/open?id=163Xw_I8as_JVxfUnRdbMKVG9kCOHOV0u",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Ayesha-Iftiqhar-Wilson.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1061,8 +397,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Andy Kong is an independent researcher working in wearable and implantable technology. His current fascination is with self-powering devices and human sensory augmentation. ",
         "Talk Title": "Human Plants: Open-Source Implants You Don't Need To Recharge",
         "Talk Description (20-40 words)": "Hobbyist implants like magnets and RFID chips have remained largely the same in the last decade, with power systems being the primary challenge. Learn how energy harvesting like piezoelectric, solar, capacitive, and RF could represent the next step for implantable devices. ",
-        "Headshot": "https://drive.google.com/open?id=1OhrL2V1of62j6EnyQHWocTKIAXNbhHzQ",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Andy_Kong.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1072,8 +410,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Wenting Zhang is an SoC/ digital RTL designer, embedded system application engineer, and open-source maker. He's especially interested in display technologies, and has been building various different projects loosely around the topic of displays.",
         "Talk Title": "Making E-Ink Go Fast",
         "Talk Description (20-40 words)": "The talk will go through the design of the Caster project, which enables high refresh rate and low latency display on off-the-shelf E-Ink screen panels. Find out how this open-source, low-latency display continues to evolve. ",
-        "Headshot": "https://drive.google.com/open?id=1b7-0pVNvjjp_EWkVJUB5cK3vZZNeohZa",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Wenting_Zhang.jpeg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1083,8 +423,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Priyanka Makin is a recent graduate of NYU’s Interactive Telecommunications Program, a SparkFun alum, an electrical engineer, and a multidisciplinary artist. She’s a habitual tinkerer and crafter whose work includes kinetic sculpture, custom circuit boards, audio devices, and sustainable materials. ",
         "Talk Title": "Tech to Hack Embodiment",
         "Talk Description (20-40 words)": "This talk discusses the “Body of Work” series, which is a collection of tech-powered body part sculptures meant to explore the connection between a person and their body. Learn more about the story behind this unique intersection of technology and art.",
-        "Headshot": "https://drive.google.com/open?id=1uGFuvOuqRNz1A1NSt0gTUcmYf_IFiaqN",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Priyanka_Makin.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1094,8 +436,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Cedric Honnet is a PhD student in Human-Computer Interaction, focused on wearables. Before his PhD, he worked for a decade in embedded systems and scalable manufacturing, but spent half of his time in hackerspaces or research labs, experimenting with open-source projects such as eTextile music controllers or miniature 3D positioning for dance performances.",
         "Talk Title": "FiberCircuits: Miniature Flex Circuits Inside Fibers, for Interactive eTextiles",
         "Talk Description (20-40 words)": "This talk explores the miniaturization of electronic circuits to be woven (or knitted) into textiles. Both about DIY and scalable manufacturing, it will address techniques for high density flex circuits, miniature part tricks, encapsulation, and firmware tips. As a conclusion, a note about the Shenzhen manufactuing echosystem will be included.",
-        "Headshot": "https://drive.google.com/open?id=1QSf40pgqfJ7iEJE5UUni0esPNF5dHQAg",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Cedric-Honnet.png",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1105,8 +449,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Janelle Wellons is a Senior Mission Operations Engineer at ispace, inc., leading routine and critical space operations from the HAKUTO-R Mission Control Center as a Flight Director for the companies’ lunar lander missions. She previously worked at NASA Jet Propulsion Laboratory, where she was awarded the Bruce Murray Award for inspiring students to engage in STEM.",
         "Talk Title": "Behind the Scenes of Mission Control",
         "Talk Description (20-40 words)": "After 7 years operating science instruments and spacecraft at the Moon, Saturn, and our own planet Earth, Janelle will be uncovering the pillars of spaceflight operations. During this talk, she will take you behind the scenes of mission control from the perspective of a Flight Director to share how we navigate the stars, survive the uncertainty of space, and make a difference for humanity.",
-        "Headshot": "https://drive.google.com/file/d/16YUpz1VAeoC6CD_B0g7MtIqwW4Ov4Fjz/view?usp=drivesdk",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Janelle-Wellons.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1117,7 +463,9 @@ const CONFERENCECONTENT = {
         "Talk Title": "",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "other"
     },
     {
         "Day": "Sunday",
@@ -1127,8 +475,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Dave Rowntree, an electronics engineer with a background in embedded software, IC test, and IC design, manages an electronic prototyping consultancy. Dave is also a foster dad and contributing writer for Hackaday!",
         "Talk Title": "From Consultant to Prototyper on a Shoestring Budget",
         "Talk Description (20-40 words)": "This talk explores the journey of going from an electronics prototyper to a complete systems prototyper as part of a project that includes putting an airbag into a basketball shoe. Find out how the project came to be and how it’s progressing! ",
-        "Headshot": " https://drive.google.com/file/d/1R1ZTKJsuffDtHhje4k0llSyzeEAOhsXy/view?usp=drive_link",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Dave_Rowntree.png",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1138,8 +488,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Zach Fredin is the senior shop and electronics education technician at The Possible Zone, a Boston non-profit that hosts STEAM education programs. He studied at MIT's Center for Bits and Atoms, and previously founded a neuroscience education hardware startup.",
         "Talk Title": "The Circuit Graver",
         "Talk Description (20-40 words)": "This talk showcases the progress made on a novel fabrication workflow developed over the last several years which demonstrates the feasibility of fabricating 4/4 PCBs at home. Find out how this method can help mitigate delays during design and testing.",
-        "Headshot": "https://drive.google.com/open?id=1TuebWetkQZcS_WHflqAP3LKMGM3zPFNT",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Zach_Fredin.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1149,8 +501,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Alex Toussaint is passionate about drones and ultrasonic sonar. His current project is a mosquito-killing drone that uses sonar to locate and eliminate mosquitoes, with the goal of making entire cities mosquito-free using a cost-effective solution. ",
         "Talk Title": "How to detect (and kill) mosquitoes with off-the-shelf electronics",
         "Talk Description (20-40 words)": "This talk explores the physics of sonar and small insect detection, focusing on the off-the-shelf electronics that allow us to study them cheaply. Learn more about ultrasonic phased arrays, detection, target recognition, and more! ",
-        "Headshot": "https://drive.google.com/file/d/1IdaGd6hUUD4XH_WFpeJYoaoMnC5i5pf6/view?usp=drive_link",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Alex_Toussaint.jpeg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1160,8 +514,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Sarah Vollmer is a PhD researcher at York University who focuses on Digital Media and Human Computer Interaction. Her work revolves around enhancing live performances with on-body haptics and improving AR technology with waveguide optics.",
         "Talk Title": "Turning (a lot) of talk into action - friends, foes, and forging ahead. ",
         "Talk Description (20-40 words)": "This talk discusses the journey one maker took through the world of haptics, starting with their first-ever Supercon in 2019. Find out how one talk led to numerous other projects, papers, and large scale digital media exhibitions.",
-        "Headshot": "https://drive.google.com/open?id=1_9Aul50ydUJy8h4RfTDefadwhbvzOJGK",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Pink-Pixie-Sarah_Vollmer.jpeg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1171,8 +527,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Yohan Hadji is a student at the Swiss Federal Institute of Technology in Lausanne (EPFL), and since 2019, he has been working on stratospheric gliders to make radiosondes reusable under the R2HOME project.",
         "Talk Title": "Ultralight Glider Returns Home from the Stratosphere ",
         "Talk Description (20-40 words)": "This talk discusses the challenges of getting a 250-gram sub to autonomously return home after being released from a stratospheric balloon at 100,000 feet. ",
-        "Headshot": "https://drive.google.com/open?id=10WjHbZ8F-zdGWLCLKCOymuhhEjuhOHTP",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Yohan_Hadji.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1182,8 +540,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Kino is an artist, musician, and former language teacher turned electronics nerd through their love of synthesizers and electronic instruments. Cat Morse is a designer and maker compelled by the beauty of objects, functionality, and human interaction.",
         "Talk Title": "Celebrating the World of Display Technology",
         "Talk Description (20-40 words)": "In this two-part presentation, Cat Morse will take the audience through the story of the PCC Time Machine, a retro-tech clock, and Kino DeVita will talk about curating and designing the first-ever community-sourced exhibit dedicated to electronic display technology.",
-        "Headshot": "",
-        "": ""
+        "Headshot": "Cat- https://hackaday.com/wp-content/uploads/2024/10/Cat-Morse.jpg\n\nKino- https://hackaday.com/wp-content/uploads/2024/10/Kino-DeVita.jpeg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1193,8 +553,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Joshua Wise, as half of Accelerated Tech, Inc., is an experienced all-purpose computer software and hardware engineer. He is somewhat better at racing Advent of Code than he is at racing cyclocross, despite causing about an equal number of crashes in each.",
         "Talk Title": "X1Plus: an unusual custom firmware for a consumer 3D printer",
         "Talk Description (20-40 words)": "In this talk, we’ll laugh together about some classic IoT exploits, puzzle over patching a compiled monolithic firmware, and even take the opportunity to be a little hopeful about whether vendors will ever get the message about user freedoms.",
-        "Headshot": "https://drive.google.com/open?id=1U5GVsDJEia5x9k_dyTlJQr7D5LmfewW7",
-        "": ""
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Joshua_Wise.png",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "speaker"
     },
     {
         "Day": "Sunday",
@@ -1204,8 +566,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Adam McCombs and Isabel Burgos develop open source hardware for electron and ion microscopes. They have over 10 years of combined experience moving, hacking, rebuilding, and repairing electron microscopes of every vintage and every make.",
         "Talk Title": "Hands on with an Electron Microscope",
         "Talk Description (20-40 words)": "This workshop will teach you how to become an electron microscope knob turner, starting with basic principles and which fields you are actually manipulating in the column. We will also cover sample preparation and considerations, so bring something you want to examine!",
-        "Headshot": "https://drive.google.com/open?id=1hePZHavGEf-K8YD6loohipknc1HHJS1H\n\n______\n\nhttps://drive.google.com/?authuser=2&usp=gm-s#my-drive?action=locate&id=1mR_RRAylz-6_1HxNL9Jpx_98xjMurEXq&parent=1Rvn3vDw9fhwyC9TZpGNx1vCV9iJI6GGROORgtIqeMD5DKd5l2Nobs1j3XvWTjIpOf2yVKWKo",
-        "": "workshop"
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Adam-_McCombs.jpeg\n\n",
+        "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Isabel_Burgos.jpeg",
+        "Headshot 2/2": "",
+        "Type": "workshop"
     },
     {
         "Day": "Saturday",
@@ -1215,8 +579,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Anool is an Electrical Engineer, working in the field of Test & Measurement at Lumetronics, and a contributing writer at Hackaday. He is the co-founder of both WyoLum Emergents and Makers’ Asylum, one of the first community-driven maker spaces in India.",
         "Talk Title": "Blinky Con Badge requires no soldering!",
         "Talk Description (20-40 words)": "Conference badges have become incredibly complex over the years. This workshop will turn the clock back to a simpler time by showcasing a design that can be assembled quickly with simple components and zero soldering.",
-        "Headshot": "https://drive.google.com/open?id=1BjBHQToZHMPMkL_Sg54UGRv6lVp2fH3Y",
-        "": "workshop"
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Anool_Mahidharia.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "workshop"
     },
     {
         "Day": "Saturday",
@@ -1226,8 +592,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Jazmin Hernandez is an electronic engineer and language learner currently developing projects that bring students and enthusiasts closer to technology, electronics, and the overall maker community.",
         "Talk Title": "It Matter(s)! Learn to use the Arduino Matter",
         "Talk Description (20-40 words)": "This workshop will teach attendees how to use the Arduino Nano Matter in conjunction with the IoT cloud. It will also cover the basics of Matter protocol and how to connect devices. Beginners are welcome, there’s no prior experience required!",
-        "Headshot": "https://drive.google.com/open?id=1rKafJxg15UyeVkPj-rz_mdq3fC9hF9U_",
-        "": "workshop"
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Jazmin_Hernandez.jpeg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "workshop"
     },
     {
         "Day": "Friday",
@@ -1237,8 +605,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Matt Venn is a science and technology communicator and electronics engineer. He has been involved with open-source silicon for the last four years and sent over 20 chips for manufacturing. ",
         "Talk Title": "Tiny Tapeout",
         "Talk Description (20-40 words)": "In this workshop, participants will get the opportunity to design and manufacture your own design on an ASIC! Participants will learn the basics of digital logic, the basics of how semiconductors are designed and made, how to use an online digital design tool to build and simulate a simple design, and how to create the GDS files for manufacture on the open-source Sky130 PDK. Participants will have the option to submit their designs to be manufactured on the next shuttle as part of the Tiny Tapeout project.\n",
-        "Headshot": "https://drive.google.com/file/d/12sAtz-4OsQ5Ku0_T7pYDtmQOsn20_Pdj/view?usp=drive_link",
-        "": "workshop"
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Matt_Venn.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "workshop"
     },
     {
         "Day": "Saturday",
@@ -1248,8 +618,10 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Shawn Hymel is a consulting engineer and instructor for edge AI and embedded systems that inspire and teach developers of all skill levels. He can be found giving talks, running workshops, and swing dancing in his free time.",
         "Talk Title": "Introduction to Zephyr: Demystifying Device Drivers",
         "Talk Description (20-40 words)": "This workshop is designed for embedded engineers who are new to the Zephyr OS and are interested in exploring how it can be used for building next-generation embedded applications. Participants will gain hands-on experience with Zephyr OS, including initial setup, toggling pins with existing libraries, and creating custom device drivers.",
-        "Headshot": "https://drive.google.com/open?id=15E7YHqfIOQpXi0lB0pA35LKlnngcEU0q",
-        "": "workshop"
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Shawn_Hymel.jpg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "workshop"
     },
     {
         "Day": "Saturday",
@@ -1259,19 +631,22 @@ const CONFERENCECONTENT = {
         "Presenter Bio (edited, 20-40 words)": "Paul is the co-founder of UK Maker company Pimoroni and spends his days between cat-herding and making neat PCBs art and kits.",
         "Talk Title": "Mini Robot Jam. Build Hard. Drive Hard.",
         "Talk Description (20-40 words)": "You’ll be given a neat kit of tiny robot parts, and a garage of materials and sensors to build your sweetest ride. Learn how to make the RP2350 at its heart rock ‘n’ roll in MicroPython. Then pit it against obstacles to see how well your code works in real life.",
-        "Headshot": "https://drive.google.com/file/d/1euYFE7qRpZnF6K63NYvR0KHuVaAcwfVX/view?usp=sharing",
-        "": "workshop"
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Paul_Beech.jpeg",
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "workshop"
     },
     {
         "Day": "",
         "Location": "",
-        "Time": "",
+        "Time": "Daily",
         "First and Last Name: ": "Krux",
         "Presenter Bio (edited, 20-40 words)": "An experiential scavenger hunt.",
         "Talk Title": "Side Quests ",
         "Talk Description (20-40 words)": "",
         "Headshot": "",
-        "": ""
+        "Headshot 1/2": "",
+        "Headshot 2/2": "",
+        "Type": "Other"
     }
 ]
-}

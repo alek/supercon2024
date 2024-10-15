@@ -121,6 +121,7 @@ header a:hover {
     /*text-align: center;*/
     margin: 0 auto; 
     /*margin-top: -150px;*/
+    margin-bottom: 5em;
 }
 
 a {
@@ -208,10 +209,28 @@ strong {
     background-color: #0056b3;
 }
 
+/* Style for headshots container */
+.headshot-container {
+    display: flex;        /* Use flexbox to align headshots in a row */
+    gap: 10px;            /* Adds space between headshots */
+    margin-bottom: 10px;  /* Space between the headshots and next content */
+}
+
+/* Style for each headshot image */
+.headshot-img {
+    width: 100px;            /* Adjust the size as needed */
+    height: 100px;           /* Ensure height matches the width for the circle */
+    border-radius: 50%;      /* Make the image circular */
+    object-fit: cover;       /* Ensure the image fills the circle without distortion */
+    filter: grayscale(100%); /* Apply black & white effect */
+    display: inline-block;   /* Ensure images are inline within the flex container */
+    margin-top: 1em;
+}
+
+
 footer {
     background-color: #E5E6D5;
     height: 5em;
-    margin-top: 5em;
     padding-top: 1em;
     color: black;
 }

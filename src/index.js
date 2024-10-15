@@ -858,13 +858,6 @@ if (canvas && svgContainer) {
     }
 }
 
-// const prettyContent = JSON.stringify(CONFERENCECONTENT, null, 4);
-// const speakersElement = document.getElementById("speakers");
-// if (speakersElement) {
-//     speakersElement.textContent = prettyContent;
-// }
-
-
 // Function to render the talks in HTML
 function renderTalks(talks, target) {
     const container = document.getElementById(target);
@@ -876,14 +869,36 @@ function renderTalks(talks, target) {
         const talkDiv = document.createElement('div');
         talkDiv.classList.add('talk');
 
+        // Create a container for headshots, to display them inline
+        if (talk['Headshots'] && talk['Headshots'].length > 0) {
+            const headshotContainer = document.createElement('div');
+            headshotContainer.classList.add('headshot-container');
+            
+            talk['Headshots'].forEach(headshotUrl => {
+                if (headshotUrl) {
+                    const headshotImg = document.createElement('img');
+                    headshotImg.src = `${headshotUrl}?w=150`;  // Append ?w=150 to the URL
+                    headshotImg.alt = `${talk['Presenter Name']} Headshot`;
+                    headshotImg.classList.add('headshot-img');
+                    headshotContainer.appendChild(headshotImg);
+                }
+            });
+
+            // Add the headshot container below the title
+            talkDiv.appendChild(headshotContainer);
+        }
+
         // Add the presenter name
         const name = document.createElement('h2');
         name.textContent = `${talk['Presenter Name']}`;
         talkDiv.appendChild(name);
 
-        const pronouns = document.createElement('h4');
-        pronouns.textContent = `${talk['Pronouns']}`;
-        talkDiv.appendChild(pronouns);
+        // Add pronouns if available
+        if (talk['Pronouns']) {
+            const pronouns = document.createElement('h4');
+            pronouns.textContent = `${talk['Pronouns']}`;
+            talkDiv.appendChild(pronouns);
+        }
 
         // Add the talk title
         const title = document.createElement('h3');
@@ -900,20 +915,17 @@ function renderTalks(talks, target) {
         bio.innerHTML = `<strong>Bio:</strong> ${talk['Presenter Bio (edited, 20-40 words)']}`;
         talkDiv.appendChild(bio);
 
-        // Add a link to the headshot if available
-        // if (talk['Headshot']) {
-        //     const headshotLink = document.createElement('a');
-        //     headshotLink.href = talk['Headshot'];
-        //     headshotLink.textContent = 'View Headshot';
-        //     headshotLink.target = '_blank';
-        //     headshotLink.classList.add('headshot-link');
-        //     talkDiv.appendChild(headshotLink);
-        // }
+        // Add the day, time, and location information
+        const scheduleInfo = document.createElement('p');
+        scheduleInfo.innerHTML = `${talk['Day']} ${talk['Time']} @ ${talk['Location']}`;
+        talkDiv.appendChild(scheduleInfo);
 
         // Append the talkDiv to the container
         container.appendChild(talkDiv);
     });
 }
+
+
 
 // Function to resize the elements
 function resizeCatenaryElements() {
@@ -937,6 +949,70 @@ function resizeCatenaryElements() {
 // window.addEventListener('load', resizeCatenaryElements);
 // window.addEventListener('resize', resizeCatenaryElements);
 
-renderTalks(CONFERENCECONTENT.talks, 'speakers');
-renderTalks(CONFERENCECONTENT.workshops, 'workshops');
-renderTalks(CONFERENCECONTENT.talks, 'schedule');
+// renderTalks(CONFERENCECONTENT.talks, 'speakers');
+// renderTalks(CONFERENCECONTENT.workshops, 'workshops');
+// renderTalks(CONFERENCECONTENT.talks, 'schedule');
+
+function getSpeakerTalks(schedule) {
+    return schedule
+        .filter(entry => entry.Type === "speaker")
+        .map(speaker => {
+            // Collect headshots
+            let headshots = [];
+            if (speaker.Headshot) headshots.push(speaker.Headshot);
+            if (speaker["Headshot 1/2"]) headshots.push(speaker["Headshot 1/2"]);
+            if (speaker["Headshot 2/2"]) headshots.push(speaker["Headshot 2/2"]);
+
+            return {
+                "Final Copy Approved": "TRUE", // Assuming this is always "TRUE" for this case
+                "Day": speaker.Day || "",
+                "Time": speaker.Time || "",
+                "Location": speaker.Location || "",
+                "Announced?": "",               // Empty field, you can adjust this based on other data
+                "Presenter Name": speaker["First and Last Name: "] || "",
+                "Pronouns": "",                 // This information is missing from the original data, add manually if available
+                "Presenter Bio (edited, 20-40 words)": speaker["Presenter Bio (edited, 20-40 words)"] || "",
+                "Presenter Bio (original)": "", // Assuming original bio not available from the current data
+                "Talk Title": speaker["Talk Title"] || "",
+                "Talk Description (20-40 words)": speaker["Talk Description (20-40 words)"] || "",
+                "Talk Description (original)": speaker["Talk Description (20-40 words)"] || "", // Assuming original and edited are the same here
+                "Notes ": "",                   // Placeholder for any notes
+                "Headshots": headshots,         // Array of available headshots
+                "copy emailed for approval": "TRUE" // Assuming always TRUE for this case
+            };
+        });
+}
+
+function getWorkshopEntries(schedule) {
+    return schedule
+        .filter(entry => entry.Type === "workshop")
+        .map(workshop => {
+            // Collect headshots
+            let headshots = [];
+            if (workshop.Headshot) headshots.push(workshop.Headshot);
+            if (workshop["Headshot 1/2"]) headshots.push(workshop["Headshot 1/2"]);
+            if (workshop["Headshot 2/2"]) headshots.push(workshop["Headshot 2/2"]);
+
+            return {
+                "Final Copy Approved": "TRUE", // Assuming this is always "TRUE" for this case
+                "Day": workshop.Day || "",
+                "Time": workshop.Time || "",
+                "Location": workshop.Location || "",
+                "Presenter Name": workshop["First and Last Name: "] || "",
+                "Pronouns": "",                 // Pronouns are not provided, so leaving empty
+                "Presenter Bio (edited, 20-40 words)": workshop["Presenter Bio (edited, 20-40 words)"] || "",
+                "Presenter Bio (original)": "", // Assuming original bio is not provided in the data
+                "Workshop Title": workshop["Talk Title"] || "",
+                "Workshop Description (edited, 20-40 words)": workshop["Talk Description (20-40 words)"] || "",
+                "Workshop Description (original)": workshop["Talk Description (20-40 words)"] || "", // Assuming original and edited are the same here
+                "Notes": "",                    // Placeholder for any notes
+                "Headshots": headshots,          // Array of available headshots
+                "final copy emailed for approval": "TRUE" // Assuming this is always "TRUE"
+            };
+        });
+}
+
+
+renderTalks(getSpeakerTalks(SCHEDULE), 'speakers');
+renderTalks(getWorkshopEntries(SCHEDULE), 'workshops');
+
