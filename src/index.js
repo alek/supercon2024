@@ -185,7 +185,6 @@ if (canvas) {
     canvas.addEventListener('mousedown', (event) => {
         let { offsetX: x, offsetY: y } = getEventPosition(event);
         let type;
-
         ({ x, y, type } = snapToGrid(x, y));
 
         if (type == "plug" && points.length < 2) {
@@ -203,29 +202,6 @@ if (canvas) {
     });
 }
 
-// canvas.addEventListener('touchstart', (event) => {
-//     event.preventDefault(); // Prevent default behavior like scrolling    
-//     document.getElementById('debug').textContent = 'touch start';
-//     let { offsetX: x, offsetY: y } = getEventPosition(event);
-//     let type;
-
-//     ({ x, y, type } = snapToGrid(x, y));
-
-//     if (type == "plug" && points.length < 2) {
-//         document.getElementById('debug').textContent = 'HIT A PLUG';
-//         points.push({ x, y });
-
-//         points.forEach(point => {
-//             if (Math.hypot(point.x - x, point.y - y) < 10) {
-//                 draggingPoint = point;
-//             }
-//         });
-
-//         draw();        
-//     }
-// });
-
-
 if (canvas) {
     canvas.addEventListener('mousemove', (event) => {
         event.preventDefault(); // Prevent default behavior like scrolling    
@@ -241,21 +217,6 @@ if (canvas) {
         }
     });
 }
-
-// canvas.addEventListener('touchmove', (event) => {
-//     event.preventDefault(); // Prevent default behavior like scrolling
-//     document.getElementById('debug').textContent = JSON.stringify(getEventPosition(event));
-//     let { offsetX: x, offsetY: y } = getEventPosition(event);
-
-//     if (draggingPoint) {
-//         ({ x, y } = snapToGrid(x, y));
-//         draggingPoint.x = x;
-//         draggingPoint.y = y;
-//         draw();
-//     } else if (points.length === 1) {
-//         drawTemporaryCatenary(x, y);
-//     }
-// });
 
 // convert canvas point to grid coordinates
 function getGridCoordinates(points) {
@@ -795,9 +756,16 @@ function flip(p=0.3) {
 // Immediately render the dot matrix display once
 if (document.getElementById('displaySvg')) {
 
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 850) {
         let svgElement = document.getElementById('displaySvg');
         svgElement.setAttribute('width', window.innerWidth*0.8);
+
+        let catenarySvg = document.getElementById('catenarySvg');
+        catenarySvg.setAttribute('width', window.innerWidth*0.8);
+
+        let catenaryCanvas = document.getElementById('catenaryCanvas');
+        catenaryCanvas.setAttribute('width', window.innerWidth*0.8);
+
     }
 
     renderDotMatrix('displaySvg', 4, window.innerWidth < 600 ? Math.ceil(window.innerWidth/25) : 32, 10, 10);
