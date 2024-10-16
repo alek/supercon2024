@@ -150,7 +150,7 @@ const SCHEDULE = [
         "Presenter Bio (edited, 20-40 words)": "[Moderator] Allie Katz is an international nonbinary creative technologist, designer, inventor and occasional YouTuber. They're notorious for diving head first into new hardware, and putting entirely too many LEDs in things.\n\nSamy Kamkar is an independent security researcher engineering tools to highlight security implications of everyday technologies. His work's been cited by the NSA, triggered hearings on Capitol Hill, and has advanced security from the device in your pocket to the ones surveilling you from the sky.\n\nAl Williams is a Hackaday editor and contributor. While most of his engineering is done in the forward mode, there was a time when he professionally took apart microprocessors under a microscope to determine why they had failed. ",
         "Talk Title": "Unlocking Designs with Reverse Engineering\n[Panel]",
         "Talk Description (20-40 words)": "",
-        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Allie_Katz.jpg",
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Allie-Katz.png",
         "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Samy_Kamkar.jpg",
         "Headshot 2/2": "https://hackaday.com/wp-content/uploads/2015/07/al-williams-headshot.png",
         "Type": "speaker"
@@ -384,7 +384,7 @@ const SCHEDULE = [
         "Presenter Bio (edited, 20-40 words)": "Ayesha Iftiqhar-Wilson is an Electrical Engineer passionate about sustainable technology. She has contributed to diverse climate tech initiatives, such as robotics for sustainable farming and electrification of gas-powered tools and vehicles. She is also a dedicated maker and STEAM outreach creator. ",
         "Talk Title": "Environmentally-Friendly Electronics: Design Principles for Sustainability",
         "Talk Description (20-40 words)": "This talk address the issue of electronic waste by introducing Sustainable Design Engineering (SDE) and Design for Environment (DFE) principles. By exploring SDE and DFE, attendees will gain practical insights into integrating environmental considerations into electronics design, fostering a more sustainable approach. ",
-        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Ayesha-Iftiqhar-Wilson.jpg",
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Ayesha-Iftiqhar-Wilson.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
         "Type": "speaker"
@@ -423,7 +423,7 @@ const SCHEDULE = [
         "Presenter Bio (edited, 20-40 words)": "Priyanka Makin is a recent graduate of NYU’s Interactive Telecommunications Program, a SparkFun alum, an electrical engineer, and a multidisciplinary artist. She’s a habitual tinkerer and crafter whose work includes kinetic sculpture, custom circuit boards, audio devices, and sustainable materials. ",
         "Talk Title": "Tech to Hack Embodiment",
         "Talk Description (20-40 words)": "This talk discusses the “Body of Work” series, which is a collection of tech-powered body part sculptures meant to explore the connection between a person and their body. Learn more about the story behind this unique intersection of technology and art.",
-        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Priyanka_Makin.jpg",
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Priyanka_Makin.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
         "Type": "speaker"
