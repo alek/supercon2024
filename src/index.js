@@ -785,7 +785,7 @@ if (canvas && svgContainer) {
     let increment = 12;
     let maxWidth = svgWidth;
     if (window.innerWidth < 850) {
-        maxWidth = window.innerWidth*0.8;
+        maxWidth = window.innerWidth*0.9;
     }
     for (let y = GRID_SIZE * 2; y < svgHeight*0.6; y += GRID_SIZE * 3) {
         for (let x = GRID_SIZE * 2; x < maxWidth - 6 * GRID_SIZE; x += GRID_SIZE * increment) {
@@ -814,14 +814,18 @@ if (canvas && svgContainer) {
                     increment++;
                 }
 
-                if (flip() && GRID_SIZE + increment < maxWidth) {
-                    drawSwitch(x + GRID_SIZE * increment, y, 'on');
-                    increment++;
-                }
+                if (window.innerWidth > 500) {
 
-                if (flip() && GRID_SIZE + increment < maxWidth) {
-                    drawSwitch(x + GRID_SIZE * increment, y, 'off');
-                    increment++;
+                    if (flip() && GRID_SIZE + increment < maxWidth) {
+                        drawSwitch(x + GRID_SIZE * increment, y, 'on');
+                        increment++;
+                    }
+
+                    if (flip() && GRID_SIZE + increment < maxWidth) {
+                        drawSwitch(x + GRID_SIZE * increment, y, 'off');
+                        increment++;
+                    }
+
                 }
 
                 if (increment > 2) {
@@ -976,7 +980,7 @@ function getWorkshopEntries(schedule) {
                 "Presenter Bio (original)": "", // Assuming original bio is not provided in the data
                 "Workshop Title": workshop["Talk Title"] || "",
                 "Workshop Description (edited, 20-40 words)": workshop["Talk Description (20-40 words)"] || "",
-                "Workshop Description (original)": workshop["Talk Description (20-40 words)"] || "", // Assuming original and edited are the same here
+                "Talk Description (20-40 words)": workshop["Talk Description (20-40 words)"] || "", // Assuming original and edited are the same here
                 "Notes": "",                    // Placeholder for any notes
                 "Headshots": headshots,          // Array of available headshots
                 "final copy emailed for approval": "TRUE" // Assuming this is always "TRUE"
