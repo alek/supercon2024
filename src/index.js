@@ -978,7 +978,7 @@ function getWorkshopEntries(schedule) {
                 "Pronouns": "",                 // Pronouns are not provided, so leaving empty
                 "Presenter Bio (edited, 20-40 words)": workshop["Presenter Bio (edited, 20-40 words)"] || "",
                 "Presenter Bio (original)": "", // Assuming original bio is not provided in the data
-                "Workshop Title": workshop["Talk Title"] || "",
+                "Talk Title": workshop["Talk Title"] || "",
                 "Workshop Description (edited, 20-40 words)": workshop["Talk Description (20-40 words)"] || "",
                 "Talk Description (20-40 words)": workshop["Talk Description (20-40 words)"] || "", // Assuming original and edited are the same here
                 "Notes": "",                    // Placeholder for any notes
