@@ -300,6 +300,11 @@ strong {
     font-family: 'Roboto Mono', monospace;
 }
 
+.sponsors {
+    display: flex;
+    gap:  2em;
+}
+
 footer {
     background-color: #E5E6D5;
     height: 5em;
