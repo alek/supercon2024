@@ -10,6 +10,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -23,6 +24,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -36,6 +38,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -49,6 +52,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": ""
     },
     {
@@ -62,6 +66,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -75,6 +80,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -88,6 +94,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/CNLohr.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -101,6 +108,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Randy-Glenn.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -114,6 +122,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Shawn_Hymel.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "workshop"
     },
     {
@@ -127,6 +136,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Nanik_Adnani.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -140,6 +150,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Mohit_Bhoite.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -153,6 +164,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Dev_Kennedy.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -166,6 +178,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Azita_Emami.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -179,6 +192,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/James_Rowley.png",
         "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Mark_Omo.jpg",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -192,6 +206,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -205,6 +220,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Jazmin_Hernandez.jpeg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "workshop"
     },
     {
@@ -218,6 +234,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Angelica_Tavella.jpeg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -231,6 +248,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Jim_Scarletta.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -244,6 +262,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Paul_Beech.jpeg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "workshop"
     },
     {
@@ -257,6 +276,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Christina-Cyr.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -270,6 +290,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Juan-Diego-Ivan-and-Abdelrahman.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -283,6 +304,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Eduardo_Contreras.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -296,6 +318,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Blair-Subbaraman.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -309,6 +332,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Madison_Maxey-.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -322,6 +346,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Joseph-Long.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -335,6 +360,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Anool_Mahidharia.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "workshop"
     },
     {
@@ -348,6 +374,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Mehrdad_Majzoobi.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -361,19 +388,21 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Katherine_Connell.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
         "Day": "Saturday",
         "Location": "LACM",
         "Time": "4:00-4:40 PM",
-        "First and Last Name: ": "Allie Katz, Samy Kamkar, and Al Williams",
-        "Presenter Bio (edited, 20-40 words)": "[Moderator] Allie Katz is an international nonbinary creative technologist, designer, inventor and occasional YouTuber. They're notorious for diving head first into new hardware, and putting entirely too many LEDs in things.\n\nSamy Kamkar is an independent security researcher engineering tools to highlight security implications of everyday technologies. His work's been cited by the NSA, triggered hearings on Capitol Hill, and has advanced security from the device in your pocket to the ones surveilling you from the sky.\n\nAl Williams is a Hackaday editor and contributor. While most of his engineering is done in the forward mode, there was a time when he professionally took apart microprocessors under a microscope to determine why they had failed. ",
+        "First and Last Name: ": "Allie Katz, Samy Kamkar, Al Williams, and Shayena Khandker ",
+        "Presenter Bio (edited, 20-40 words)": "[Moderator] Allie Katz is an international nonbinary creative technologist, designer, inventor and occasional YouTuber. They're notorious for diving head first into new hardware, and putting entirely too many LEDs in things.\n\nSamy Kamkar is an independent security researcher engineering tools to highlight security implications of everyday technologies. His work's been cited by the NSA, triggered hearings on Capitol Hill, and has advanced security from the device in your pocket to the ones surveilling you from the sky.\n\nAl Williams is a Hackaday editor and contributor. While most of his engineering is done in the forward mode, there was a time when he professionally took apart microprocessors under a microscope to determine why they had failed. \n\nShayena Khandker is an electronics engineer currently working at the Jet Propulsion Laboratory. Her projects include the recently launched Europa Clipper, EMIT, Lunar Trailblazer, and Mars Sample Return. Prior to working at JPL, she was a VLSI layout design engineer at Broadcom and Avago.",
         "Talk Title": "Unlocking Designs with Reverse Engineering\n[Panel]",
         "Talk Description (20-40 words)": "",
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Allie-Katz.png",
         "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Samy_Kamkar.jpg",
         "Headshot 2/2": "https://hackaday.com/wp-content/uploads/2015/07/al-williams-headshot.png",
+        "Headshot 3": "https://hackaday.com/wp-content/uploads/2024/10/Shayena-Khandker-.jpg",
         "Type": "speaker"
     },
     {
@@ -387,6 +416,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Justin_McAllister-Nick_Foster.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -400,6 +430,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Shawn_Hymel_and_Jorvon_Moss.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -413,6 +444,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Wayne_Pavalko.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -426,6 +458,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Shrouk_El-Attar.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -439,6 +472,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -452,6 +486,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -465,6 +500,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -478,6 +514,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -491,6 +528,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Adam-_McCombs.jpeg\n\n",
         "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Isabel_Burgos.jpeg",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "workshop"
     },
     {
@@ -504,6 +542,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Dave_Rowntree.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -517,6 +556,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Zach_Fredin.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -530,6 +570,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -543,6 +584,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Ayesha-Iftiqhar-Wilson.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -556,6 +598,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Alex_Toussaint.jpeg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -569,6 +612,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Andy_Kong.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -582,6 +626,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Pink-Pixie-Sarah_Vollmer.jpeg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -595,19 +640,21 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Wenting_Zhang.jpeg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
         "Day": "Sunday",
         "Location": "DesignLab ",
-        "Time": "2:00-2:40 PM",
-        "First and Last Name: ": "Yohan Hadji",
-        "Presenter Bio (edited, 20-40 words)": "Yohan Hadji is a student at the Swiss Federal Institute of Technology in Lausanne (EPFL), and since 2019, he has been working on stratospheric gliders to make radiosondes reusable under the R2HOME project.",
-        "Talk Title": "Ultralight Glider Returns Home from the Stratosphere ",
-        "Talk Description (20-40 words)": "This talk discusses the challenges of getting a 250-gram sub to autonomously return home after being released from a stratospheric balloon at 100,000 feet. ",
-        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Yohan_Hadji.jpg",
+        "Time": "2:00-2:20 PM",
+        "First and Last Name: ": "Paul Zhou",
+        "Presenter Bio (edited, 20-40 words)": "Paul is a mechanical engineering graduate from the University of Toronto with a knack for building electro-mechanical prototypes on a budget. He is an avid tinkerer, a vinyl record collector, and a scale model enthusiast.",
+        "Talk Title": "Live Long and Puzzle: Creating Sci-fi Inspired Escape Room Puzzles",
+        "Talk Description (20-40 words)": "This talk is about Paul's journey of designing and building the electro-mechanical puzzles of a sci-fi geeks escape room, as well as the ups and downs he faced and what the future holds for the project.",
+        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Paul_Zhou.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -621,6 +668,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Priyanka_Makin.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -634,6 +682,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Kino-DeVita.jpeg",
         "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Cat-Morse.jpg",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -647,6 +696,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Cedric-Honnet.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -660,6 +710,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Janelle-Wellons.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -673,6 +724,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Joshua_Wise.png",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "speaker"
     },
     {
@@ -686,6 +738,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "other"
     },
     {
@@ -699,6 +752,7 @@ const SCHEDULE = [
         "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Matt_Venn.jpg",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "workshop"
     },
     {
@@ -712,6 +766,7 @@ const SCHEDULE = [
         "Headshot": "",
         "Headshot 1/2": "",
         "Headshot 2/2": "",
+        "Headshot 3": "",
         "Type": "Other"
     }
 ]
