@@ -938,6 +938,7 @@ function getSpeakerTalks(schedule) {
             if (speaker.Headshot) headshots.push(speaker.Headshot);
             if (speaker["Headshot 1/2"]) headshots.push(speaker["Headshot 1/2"]);
             if (speaker["Headshot 2/2"]) headshots.push(speaker["Headshot 2/2"]);
+            if (speaker["Headshot 3"]) headshots.push(speaker["Headshot 3"]);
 
             return {
                 "Final Copy Approved": "TRUE", // Assuming this is always "TRUE" for this case
@@ -968,6 +969,7 @@ function getWorkshopEntries(schedule) {
             if (workshop.Headshot) headshots.push(workshop.Headshot);
             if (workshop["Headshot 1/2"]) headshots.push(workshop["Headshot 1/2"]);
             if (workshop["Headshot 2/2"]) headshots.push(workshop["Headshot 2/2"]);
+            if (workshop["Headshot 3"]) headshots.push(workshop["Headshot 3"]);
 
             return {
                 "Final Copy Approved": "TRUE", // Assuming this is always "TRUE" for this case
