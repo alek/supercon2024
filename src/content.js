@@ -154,9 +154,9 @@ const SCHEDULE = [
         "Type": "speaker"
     },
     {
-        "Day": "Saturday",
+        "Day": "Sunday",
         "Location": "DesignLab ",
-        "Time": "11:00-11:20 AM",
+        "Time": "11:30-11:50 AM",
         "First and Last Name: ": "Dev Kennedy",
         "Presenter Bio (edited, 20-40 words)": "Dev Kennedy began his journey into smart glasses nearly ten years ago when the vision of the concept outpaced available technology. He’s spent the last decade developing the necessary building blocks to make it a reality and is excited to show the world how far it has come. ",
         "Talk Title": "Photonics/Optical Stack for Smart-Glasses ",
@@ -516,20 +516,6 @@ const SCHEDULE = [
         "Headshot 2/2": "",
         "Headshot 3": "",
         "Type": "other"
-    },
-    {
-        "Day": "Sunday",
-        "Location": "DesignLab ",
-        "Time": "10:00-12:00 PM",
-        "First and Last Name: ": "Adam McCombs + Isabel Burgos",
-        "Presenter Bio (edited, 20-40 words)": "Adam McCombs and Isabel Burgos develop open source hardware for electron and ion microscopes. They have over 10 years of combined experience moving, hacking, rebuilding, and repairing electron microscopes of every vintage and every make.",
-        "Talk Title": "Hands on with an Electron Microscope",
-        "Talk Description (20-40 words)": "This workshop will teach you how to become an electron microscope knob turner, starting with basic principles and which fields you are actually manipulating in the column. We will also cover sample preparation and considerations, so bring something you want to examine!",
-        "Headshot": "https://hackaday.com/wp-content/uploads/2024/10/Adam-_McCombs.jpeg\n\n",
-        "Headshot 1/2": "https://hackaday.com/wp-content/uploads/2024/10/Isabel_Burgos.jpeg",
-        "Headshot 2/2": "",
-        "Headshot 3": "",
-        "Type": "workshop"
     },
     {
         "Day": "Sunday",
