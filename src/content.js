@@ -156,7 +156,7 @@ const SCHEDULE = [
     {
         "Day": "Sunday",
         "Location": "DesignLab ",
-        "Time": "11:30-11:50 AM",
+        "Time": "10:30-10:50 AM",
         "First and Last Name: ": "Dev Kennedy",
         "Presenter Bio (edited, 20-40 words)": "Dev Kennedy began his journey into smart glasses nearly ten years ago when the vision of the concept outpaced available technology. He’s spent the last decade developing the necessary building blocks to make it a reality and is excited to show the world how far it has come. ",
         "Talk Title": "Photonics/Optical Stack for Smart-Glasses ",
