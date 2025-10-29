@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slick Minimal Header</title>
+  <style>
+    body {
+      margin: 0;
+      background: rgb(30,30,30);
+      color: white;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: start;
+      padding: 5vh 5vw;
+      gap: 5vw;
+      max-height: 20vh;
+    }
+
+    .block {
+      text-align: left;
+    }
+
+    .block h2 {
+      font-size: clamp(10px, 1.6vh, 14px);
+      font-weight: 400;
+      text-transform: uppercase;
+      margin: 0 0 0.5vh 0;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .block h2 .bold {
+      font-weight: 700;   /* bold only the 9 */
+    }
+
+    .underline {
+      width: 100%;
+      height: 0.5px;
+      background: #aaa;
+      margin-bottom: 0.7vh;
+    }
+
+    .block p {
+      margin: 0;
+      font-size: clamp(9px, 1.3vh, 12px);
+      font-weight: 300;
+      color: #ccc;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+    }
+
+    .logo {
+      height: 2.5vh;
+      max-height: 30px;
+      width: auto;
+      display: block;
+      margin: 0;
+    }
+
+    .ticket-badge {
+      display: inline-block;
+      background: white;
+      color: black;
+      font-size: clamp(9px, 1.3vh, 12px);
+      padding: 0.3em 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+
+      /* smaller right-isosceles triangle cut-out */
+      clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - 5px),
+        calc(100% - 5px) 100%,
+        0 100%
+      );
+
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .ticket-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .ticket-link:hover .ticket-badge {
+      background: rgb(255,211,0); /* Cyber Yellow */
+      color: black;
+    }
+
+    main {
+      flex: 1;
+      position: relative;
+    }
+
+    .tile-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;                /* 👈 no margin at bottom */
+      background-image: url("2025.svg");
+      background-repeat: repeat-x;
+      background-size: auto 100%;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Left block -->
+    <div class="block">
+      <h2>Hackaday Superconference <span class="bold">9</span></h2>
+      <div class="underline"></div>
+      <img src="logo.svg" alt="Hackaday Logo" class="logo">
+    </div>
+
+    <!-- Middle block -->
+    <div class="block">
+      <h2>Oct 31 – Nov 01 2025</h2>
+      <div class="underline"></div>
+      <p>Pasadena, CA</p>
+    </div>
+
+    <!-- Right block -->
+    <div class="block">
+      <h2>
+        <a class="ticket-link" href="https://www.eventbrite.com/e/2025-hackaday-superconference-tickets-1505260116529" target="_blank" rel="noopener noreferrer">
+          <span class="ticket-badge">Buy Tickets</span>
+        </a>
+      </h2>
+      <!-- no underline, no subtitle -->
+    </div>
+  </header>
+
+  <main>
+    <div class="tile-strip"></div>
+  </main>
+</body>
+</html>

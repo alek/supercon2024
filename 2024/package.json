@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.2.4",
+    "catenary-curve": "^2.0.1"
+  }
+}

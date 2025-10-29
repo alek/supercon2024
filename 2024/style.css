@@ -1,0 +1,393 @@
+/* SVG should be positioned underneath the canvas */
+.catenarySvg {
+    position: absolute; /* Position SVG underneath the canvas */
+    z-index: -1; /* Ensure the SVG is below the canvas */
+    fill: #201E1F; /* Color the SVG elements red */
+    width: 900;
+    height: 600px;
+}
+/* Ensure the canvas is transparent and above the SVG */
+canvas {
+    position: absolute; /* Keep the canvas above the SVG */
+    z-index: 1;
+    background-color: transparent; /* Ensure the canvas is transparent */
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #252725;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #E6E5D7;
+}
+
+header {
+    max-width: 850px;
+    align:  center;
+    align-items: center;
+    height: 3em;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin: 0.5em auto 2em auto;
+}
+
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header a:hover {
+    color: #D57729;
+}
+
+.header-nav {
+    display: flex;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.6em;
+    color:  #E6E5D7;
+    /*gap: 2em;    */
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.header-nav > * {
+    cursor: pointer;
+    margin-right: 3em;
+}
+
+.header-nav div,
+.header-nav a {
+    text-align: center;
+}
+
+.header-nav .button {
+    color:  #222322;
+    background-color: #E5E6D5;
+    padding: 1em 2em 1em 2em;
+    border-radius: 2em;
+}
+
+.header-nav .button:hover {
+    background-color: #D57729;
+    color: #fff;
+}
+
+/*.button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}*/
+
+.patch-container {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+}
+/* Style for dots that are "on" */
+.dot-on {
+    fill: #FF0000; /* Red color for active dots */
+}
+
+/* Style for dots that are "off" */
+.dot-off {
+    fill: #555; /* Dark gray for inactive dots */
+}        
+
+#debug {
+    color:  #fff;
+    margin:  auto;
+}
+
+
+a {
+    color: #D57729;
+    text-decoration: none;
+}
+
+/* Enclosing container */
+.content-container {
+    padding: 2em;
+    max-width: 850px;                  /* Fixed width */
+    margin: 0 auto;                /* Center the container */
+    margin-bottom: 5em;
+}
+
+/* Flexbox container for all talks */
+#speakers {
+    display: flex;
+    flex-wrap: wrap;               /* Enable wrapping of items */
+    justify-content: space-between;/* Distribute space between items */
+    gap: 2em;                      /* Space between items */
+    font-weight: 300;
+    font-size: 1em;
+}
+
+/* Each speaker item should flex to a minimum width but fill available space */
+#speakers > div {
+    flex: 1 1 calc(50% - 1em);     /* Flex to 50% minus gap (1em) */
+    box-sizing: border-box;        /* Make sure padding/borders don't affect width */
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 850px) {
+    #speakers > div {
+        flex: 1 1 100%;            /* On smaller screens, items take full width */
+    }
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+}
+
+h1 img {
+    margin-right: 10px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* Styling each talk */
+.talk {
+    margin-bottom: 20px;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect for each talk */
+/*.talk:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}*/
+
+/* Presenter name and pronouns */
+.talk h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Talk title */
+.talk h3 {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+    /*color: #555;*/
+}
+
+.talk h4 {
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    color:  rgba(255,255,255,0.5);
+}
+
+/* Description and bio */
+.talk p {
+    margin-bottom: 15px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8em;
+}
+
+/* Headshot link styling */
+.headshot-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    overflow: hidden; /* Ensure the radius is applied */
+}
+
+.headshot-link img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the container */
+    object-position: top; /* Crops the top of the image */
+    border-radius: 4px;
+}
+
+.headshot-link:hover {
+    background-color: #0056b3;
+}
+
+/* Style for headshots container */
+.headshot-container {
+    display: flex;        /* Use flexbox to align headshots in a row */
+    gap: 10px;            /* Adds space between headshots */
+    margin-bottom: 10px;  /* Space between the headshots and next content */
+}
+
+/* Style for each headshot image */
+.headshot-img {
+    width: 100px;            /* Adjust the size as needed */
+    height: 100px;           /* Ensure height matches the width for the circle */
+    border-radius: 50%;      /* Make the image circular */
+    object-fit: cover;       /* Ensure the image fills the circle without distortion */
+    filter: grayscale(100%); /* Apply black & white effect */
+    display: inline-block;   /* Ensure images are inline within the flex container */
+    margin-top: 1em;
+}
+
+/* Flex container to hold schedule items per day */
+.schedule-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;            /* Space between the items */
+    justify-content: flex-start; /* Align items from the left */
+    margin-top: 20px;
+}
+
+/* Each schedule item */
+.schedule-item {
+    padding: 10px;
+    flex: 1 1 300px;              /* Each item takes up a minimum width of 300px */
+    max-width: 400px;             /* Maximum width for each card */
+    margin-bottom: 20px;
+}
+
+#schedule {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#schedule h1 {
+    border-top: 1px solid rgba(255,255,255,0.5);
+    padding-top: 1em;
+}
+
+#schedule .time {
+    font-weight: 400;
+}
+
+#schedule .location {
+    font-weight: 300;
+    line-height: 1em;
+    margin-top: -1em;
+}
+
+#schedule .event-title {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+#schedule .presenter-name {
+    font-weight: 300;
+}
+
+#schedule .description {
+    font-weight: 200;
+    font-size: 0.75em;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.sponsors {
+    display: flex;
+    gap:  2em;
+}
+
+footer {
+    background-color: #E5E6D5;
+    height: 5em;
+    padding-top: 1em;
+    color: black;
+}
+
+footer h4 {
+    font-weight: 500;
+}
+
+.footer-content {
+    max-width: 850px;
+    align:  center;
+    align-items: center;
+    height: 3em;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin: 0.5em auto 2em auto;
+    font-size: 0.75em;    
+    gap:  1em;
+}
+
+
+@media (max-width: 780px) {
+
+    .header-nav > * {
+        cursor: pointer;
+        margin-right: 2em;
+    }
+
+}
+
+@media (max-width: 540px) {
+
+    .header-nav {
+        display: block;
+    }
+
+    .content-container {
+        padding-top: 10em;
+    }
+
+    .display {
+        padding-top: 12em;
+    }
+
+    .header-nav > * {
+        cursor: pointer;
+        margin-right: 1em;
+        margin-top: 3em;
+    }
+
+    header {
+        display: block;
+        text-align: center;
+    }
+
+    .header-nav .button {
+        margin-top: 3em;
+    }
+
+    footer {
+        height: 3em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .footer-content {
+        font-size: 0.5em;
+        gap:  0.5em;
+    }
+
+}
+
+/*@media (max-width: 540px) {
+    .header-nav > *:not(a) {
+        display: none;
+    }
+}
+*/
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .schedule-item {
+        flex: 1 1 100%;    /* Make each item take full width on small screens */
+    }
+}
