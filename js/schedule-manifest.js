@@ -1,10 +1,10 @@
 // Supercon Schedule Manifest
-// Auto-generated on 2025-10-28T21:29:21+00:00
+// Auto-generated on 2025-10-29T14:40:49+00:00
 // Days: 3
 // Venues: 3
 window.SCHEDULE_MANIFEST = {
-    "version": "2025.10.28.222921",
-    "lastUpdated": "2025-10-28T21:29:21+00:00",
+    "version": "2025.10.29.154049",
+    "lastUpdated": "2025-10-29T14:40:49+00:00",
     "location": "Pasadena, CA",
     "timezone": "America/Los_Angeles",
     "timeFormat": "12h",
@@ -15,7 +15,7 @@ window.SCHEDULE_MANIFEST = {
             "id": "hq",
             "name": "Supplyframe HQ",
             "label": "Supplyframe HQ",
-            "location": "525 E Colorado Blvd, Pasadena, CA 91101",
+            "location": "61 S Fair Oaks Ave Suite 200, Pasadena, CA 91105",
             "mapUrl": "https://maps.app.goo.gl/j6p8mXxo77FooeVN6",
             "order": 0
         },
